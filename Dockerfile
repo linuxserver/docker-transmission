@@ -1,6 +1,6 @@
 FROM linuxserver/baseimage
 
-MAINTAINER sparklyballs <sparklyballs@linuxserver.io>
+MAINTAINER Sparklyballs <sparklyballs@linuxserver.io>
 
 ENV APTLIST="transmission-daemon"
 
