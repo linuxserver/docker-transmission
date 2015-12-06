@@ -22,5 +22,5 @@ ADD defaults/ /defaults/
 RUN chmod -v +x /etc/service/*/run && chmod -v +x /etc/my_init.d/*.sh
    
 # Volumes and Ports
-VOLUME /config /downloads 
+VOLUME /config /downloads /watch 
 EXPOSE 9091 51413

@@ -9,7 +9,14 @@ Transmission is designed for easy, powerful use. Transmission has the features y
 ## Usage
 
 ```
-docker create --name=transmission -v /etc/localtime:/etc/localtime:ro -v <path to data>:/config -v <path to downloads>:/downloads -e PGID=<gid> -e PUID=<uid>  -p 9091:9091 -p 51413:51413 linuxserver/transmission
+docker create --name=transmission \
+-v /etc/localtime:/etc/localtime:ro \
+-v <path to data>:/config \
+-v <path to downloads>:/downloads \
+-v <path to watch folder>:/watch \
+-e PGID=<gid> -e PUID=<uid> \
+-p 9091:9091 -p 51413:51413 \
+linuxserver/transmission
 ```
 
 **Parameters**
@@ -19,6 +26,7 @@ docker create --name=transmission -v /etc/localtime:/etc/localtime:ro -v <path t
 * `-v /etc/localtime` for timesync - *optional*
 * `-v /config` - where transmission should store config files and logs
 * `-v /downloads` - local path for downloads
+* `-v /watch` - watch folder for torrent files
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
 
@@ -43,6 +51,6 @@ Webui is on port 9091, the settings.json file in /config has extra settings not 
 
 
 ## Versions
-
++ **06.12.2015:** Separate mapping for watch folder.
 + **16.11.2015:** Initial Release. 
 
