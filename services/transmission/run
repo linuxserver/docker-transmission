@@ -1,3 +1,0 @@
-#!/bin/bash
-
-/sbin/setuser abc /usr/bin/transmission-daemon -g /config -c /watch -f

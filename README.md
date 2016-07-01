@@ -1,6 +1,6 @@
 ![https://linuxserver.io](http://www.linuxserver.io/wp-content/uploads/2015/06/linuxserver_medium.png)
 
-The [LinuxServer.io](https://www.linuxserver.io/) team brings you another quality container release featuring auto-update on startup, easy user mapping and community support. Be sure to checkout our [forums](https://forum.linuxserver.io/index.php) or for real-time support our [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
+The [LinuxServer.io](https://www.linuxserver.io/) team brings you another quality container release featuring easy user mapping and community support. Be sure to checkout our [forums](https://forum.linuxserver.io/index.php) or for real-time support our [IRC](https://www.linuxserver.io/index.php/irc/) on freenode at `#linuxserver.io`.
 
 # linuxserver/transmission
 
@@ -30,7 +30,7 @@ linuxserver/transmission
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
 
-It is based on phusion-baseimage with ssh removed, for shell access whilst the container is running do `docker exec -it transmission /bin/bash`.
+It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it transmission /bin/bash`.
 
 ### User / Group Identifiers
 
@@ -43,14 +43,14 @@ Part of what makes our containers work so well is by allowing you to specify you
 Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
 
 
-## Updates
+## Info
 
-* Upgrade to the latest version simply `docker restart transmission`.
 * To monitor the logs of the container in realtime `docker logs -f transmission`.
 
 
 
 ## Versions
-+ **06.12.2015:** Separate mapping for watch folder.
-+ **16.11.2015:** Initial Release. 
++ **01.07.16:** Rebase to alpine for smaller image size.
++ **06.12.15:** Separate mapping for watch folder.
++ **16.11.15:** Initial Release. 
 
