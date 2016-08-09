@@ -1,3 +1,5 @@
 #!/usr/bin/with-contenv bash
 
-s6-setuidgid abc /usr/bin/transmission-daemon -g /config -c /watch -f
+exec \
+	s6-setuidgid abc /usr/bin/transmission-daemon \
+	-g /config -c /watch -f

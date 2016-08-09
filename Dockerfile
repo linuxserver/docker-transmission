@@ -6,9 +6,9 @@ RUN \
  apk add --no-cache \
 	transmission-daemon
 
-# add local files
+# copy local files
 COPY root/ /
 
-# Volumes and Ports
-VOLUME /config /downloads /watch
+# ports and volumes
 EXPOSE 9091 51413
+VOLUME /config /downloads /watch

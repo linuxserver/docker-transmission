@@ -1,7 +1,17 @@
 #!/usr/bin/with-contenv bash
 
-mkdir -p /downloads/{complete,incomplete} /watch
+# make folders
+mkdir -p \
+	/downloads/{complete,incomplete} /watch
 
-[[ ! -f /config/settings.json ]] && cp /defaults/settings.json /config/settings.json
+# copy config
+[[ ! -f /config/settings.json ]] && cp \
+	/defaults/settings.json /config/settings.json
 
-chown abc:abc /watch /config/settings.json /downloads /downloads/incomplete /downloads/complete
+# permissions
+chown abc:abc \
+	/config/settings.json \
+	/downloads \
+	/downloads/complete \
+	/downloads/incomplete \
+	/watch
