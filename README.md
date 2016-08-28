@@ -6,9 +6,15 @@ The [LinuxServer.io](https://linuxserver.io) team brings you another container r
 * [Podcast](https://www.linuxserver.io/index.php/category/podcast/) covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
 
 # linuxserver/transmission
-![](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png)
+[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/transmission.svg)][hub]
+[![Docker Stars](https://img.shields.io/docker/stars/linuxserver/transmission.svg)][hub]
+[![Build Status](http://jenkins.linuxserver.io:8080/buildStatus/icon?job=Dockers/LinuxServer.io/linuxserver-transmission)](http://jenkins.linuxserver.io:8080/job/Dockers/job/LinuxServer.io/job/linuxserver-transmission/)
+[hub]: https://hub.docker.com/r/linuxserver/transmission/
 
 Transmission is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more. [Transmission](http://www.transmissionbt.com/about/)
+
+[![transmission](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png)][transurl]
+[transurl]: https://www.transmissionbt.com/
 
 ## Usage
 
@@ -60,6 +66,8 @@ Webui is on port 9091, the settings.json file in /config has extra settings not 
 
 
 ## Versions
+
++ **28.08.16:** Add badges to README.
 + **09.08.16:** Rebase to alpine linux.
 + **06.12.15:** Separate mapping for watch folder.
 + **16.11.15:** Initial Release. 
