@@ -70,6 +70,7 @@ Webui is on port 9091, the settings.json file in /config has extra settings not 
 
 ## Versions
 
++ **21.09.16:** Add curl package.
 + **09.09.16:** Add layer badges to README.
 + **28.08.16:** Add badges to README.
 + **09.08.16:** Rebase to alpine linux.

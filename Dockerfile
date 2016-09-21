@@ -4,6 +4,7 @@ MAINTAINER sparklyballs
 # install packages
 RUN \
  apk add --no-cache \
+	curl \
 	transmission-daemon
 
 # copy local files
