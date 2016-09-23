@@ -61,6 +61,13 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
 
+Securing the webui with a username/password, this requires 3 settings to be changed in the settings.json file.
+Make sure the container is stopped before editing these settings.
+`"rpc-authentication-required": true,` - check this, the default is false, change to true.
+`"rpc-username": "transmission",` substitute transmission for your chosen user name, this is just an example.
+`rpc-password` will be a hash starting with {, replace everything including the { with your chosen password, keeping the quotes.
+Transmission will convert it to a hash when you restart the container after making the above edits.
+
 
 ## Info
 
