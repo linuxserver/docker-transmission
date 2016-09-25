@@ -1,17 +1,8 @@
 #!/usr/bin/with-contenv bash
 
 # make folders
-mkdir -p \
-	/downloads/{complete,incomplete} /watch
+s6-setuidgid abc /bin/bash -c "mkdir -p /downloads/{complete,incomplete} /watch"
 
 # copy config
-[[ ! -f /config/settings.json ]] && cp \
-	/defaults/settings.json /config/settings.json
-
-# permissions
-chown abc:abc \
-	/config/settings.json \
-	/downloads \
-	/downloads/complete \
-	/downloads/incomplete \
-	/watch
+[[ ! -f /config/settings.json ]] && \
+  s6-setuidgid abc /bin/bash -c "cp /defaults/settings.json /config/settings.json"
