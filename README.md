@@ -107,6 +107,7 @@ The automatic update will run once a day at 3am local server time.
 
 ## Versions
 
++ **16.10.16:** Blocklist autoupdate with optional authentication.
 + **14.10.16:** Add version layer information.
 + **23.09.16:** Add information about securing the webui to README..
 + **21.09.16:** Add curl package.
