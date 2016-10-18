@@ -17,9 +17,6 @@ RUN \
 # copy local files
 COPY root/ /
 
-# add files
-ADD cron/ /etc/cron.d/
-
 # ports and volumes
 EXPOSE 9091 51413
 VOLUME /config /downloads /watch
