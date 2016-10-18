@@ -97,7 +97,7 @@ Transmission will convert it to a hash when you restart the container after maki
 
 ## Versions
 
-+ **14-10-16:** Add version layer information.
++ **14.10.16:** Add version layer information.
 + **23.09.16:** Add information about securing the webui to README..
 + **21.09.16:** Add curl package.
 + **09.09.16:** Add layer badges to README.
