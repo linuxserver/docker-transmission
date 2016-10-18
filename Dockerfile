@@ -10,10 +10,15 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 RUN \
  apk add --no-cache \
 	curl \
+	jq \
+	transmission-cli \
 	transmission-daemon
 
 # copy local files
 COPY root/ /
+
+# add files
+ADD cron/ /etc/cron.d/
 
 # ports and volumes
 EXPOSE 9091 51413

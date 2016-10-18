@@ -8,10 +8,17 @@ mkdir -p \
 [[ ! -f /config/settings.json ]] && cp \
 	/defaults/settings.json /config/settings.json
 
+# copy blocklist-update script
+[[ ! -f /config/blocklist-update.sh ]] && cp \
+	/defaults/blocklist-update.sh /config/blocklist-update.sh
+
 # permissions
 chown abc:abc \
 	/config/settings.json \
+	/config/blocklist-update.sh \
 	/downloads \
 	/downloads/complete \
 	/downloads/incomplete \
 	/watch
+
+chmod 755 /config/blocklist-update.sh
