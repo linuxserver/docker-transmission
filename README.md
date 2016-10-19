@@ -27,7 +27,6 @@ docker create --name=transmission \
 -v <path to downloads>:/downloads \
 -v <path to watch folder>:/watch \
 -e PGID=<gid> -e PUID=<uid> \
--e UIUSER=<uiuser> -e UIPASS=<uipass>
 -e TZ=<timezone> \
 -p 9091:9091 -p 51413:51413 \
 -p 51413:51413/udp \
@@ -49,8 +48,6 @@ http://192.168.x.x:8080 would show you what's running INSIDE the container on po
 * `-v /watch` - watch folder for torrent files
 * `-e PGID` for GroupID - see below for explanation
 * `-e PUID` for UserID - see below for explanation
-* `-e UIUSER` for WebUI Username - see Updating Blocklists Automatically for explanation
-* `-e UIPASS` for WebUI Password - see Updating Blocklists Automatically for explanation
 * `-e TZ` for timezone information, eg Europe/London
 
 It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it transmission /bin/bash`.
@@ -88,7 +85,7 @@ Transmission will convert it to a hash when you restart the container after maki
 
 This requires `"blocklist-enabled": true,` to be set. By setting this to true, it is assumed you have also populated `blocklist-url` with a valid block list.
 
-If you have webui security enabled, you will need to set the `UIUSER` and `UIPASS` environment variables in your docker configuration.
+The automatic update is a shell script that downloads a blocklist from the url stored in the settings.json, gunzips it, and restarts the transmission daemon.
 
 The automatic update will run once a day at 3am local server time.
 

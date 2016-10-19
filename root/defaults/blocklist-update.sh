@@ -1,12 +1,10 @@
 #!/usr/bin/with-contenv bash
 
-RESULT=`jq '.["blocklist-enabled"]' settings.json`
-REQUIRE_AUTH=`jq '.["rpc-authentication-required"]' settings.json`
+BLOCKLIST_URL=`jq -r '.["blocklist-url"]' settings.json`
 
-if [ $RESULT == true ]; then
-	if [ $REQUIRE_AUTH == true ]; then
-		transmission-remote -n $UIUSER:$UIPASS --blocklist-update
-	else
-		transmission-remote --blocklist-update
-	fi
-fi
+rm /config/blocklists/*
+cd /config/blocklists
+wget -q $BLOCKLIST_URL
+gunzip *.gz
+chmod go+r *
+s6-svc -h /var/run/s6/services/transmission
