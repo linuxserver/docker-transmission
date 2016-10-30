@@ -81,6 +81,13 @@ this requires 3 settings to be changed in the settings.json file.
 
 Transmission will convert it to a hash when you restart the container after making the above edits.
 
+## Updating Blocklists Automatically
+
+This requires `"blocklist-enabled": true,` to be set. By setting this to true, it is assumed you have also populated `blocklist-url` with a valid block list.
+
+The automatic update is a shell script that downloads a blocklist from the url stored in the settings.json, gunzips it, and restarts the transmission daemon.
+
+The automatic update will run once a day at 3am local server time.
 
 ## Info
 
@@ -97,6 +104,7 @@ Transmission will convert it to a hash when you restart the container after maki
 
 ## Versions
 
++ **16.10.16:** Blocklist autoupdate with optional authentication.
 + **14.10.16:** Add version layer information.
 + **23.09.16:** Add information about securing the webui to README..
 + **21.09.16:** Add curl package.
