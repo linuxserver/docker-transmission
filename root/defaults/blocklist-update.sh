@@ -1,7 +1,7 @@
 #!/usr/bin/with-contenv bash
 
-BLOCKLIST_ENABLED=`jq -r '.["blocklist-enabled"]' settings.json`
-BLOCKLIST_URL=`jq -r '.["blocklist-url"]' settings.json | sed 's/\&amp;/\&/g'`
+BLOCKLIST_ENABLED=`jq -r '.["blocklist-enabled"]' /config/settings.json`
+BLOCKLIST_URL=`jq -r '.["blocklist-url"]' /config/settings.json | sed 's/\&amp;/\&/g'`
 
 if [ $BLOCKLIST_ENABLED == true ]; then
 	mkdir -p /tmp/blocklists
