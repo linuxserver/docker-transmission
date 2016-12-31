@@ -40,9 +40,6 @@ if 'SMTP_USERNAME' in environ and 'SMTP_PASSWORD' in environ:
 else:
   smtp_auth = False
 
-if 'SMTP_SSL' in environ:
-  smtp_ssl = environ['SMTP_SSL']
-
 if 'SMTP_STARTTLS' in environ:
   smtp_starttls = environ['SMTP_STARTTLS'] == 'yes'
 else:
