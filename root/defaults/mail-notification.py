@@ -33,7 +33,7 @@ else:
   sys.exit(1)
 
 # Configure SMTP AUTH if needed
-if 'SMTP_USERNAME' in environ:
+if 'SMTP_USERNAME' in environ and 'SMTP_PASSWORD' in environ:
   smtp_auth = True
   smtp_username = environ['SMTP_USERNAME']
   smtp_password = environ['SMTP_PASSWORD']
