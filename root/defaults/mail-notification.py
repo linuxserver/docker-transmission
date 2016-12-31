@@ -93,5 +93,5 @@ msg = MIMEText(mail_body)
 msg['Subject'] = mail_subject
 msg['From'] = smtp_from
 msg['To'] = smtp_to
-m.sendmail(smtp_from, smtp_to.split(','), msg.as_string())
+m.sendmail(smtp_from, smtp_to.split(';'), msg.as_string())
 m.quit()
