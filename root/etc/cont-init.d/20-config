@@ -12,13 +12,19 @@ mkdir -p \
 [[ ! -f /config/blocklist-update.sh ]] && cp \
 	/defaults/blocklist-update.sh /config/blocklist-update.sh
 
+# copy mail notification script
+[[ ! -f /config/mail-notification.py ]] && cp \
+	/defaults/mail-notification.py /config/mail-notification.py
+
 # permissions
 chown abc:abc \
 	/config/settings.json \
 	/config/blocklist-update.sh \
+	/config/mail-notification.py \
 	/downloads \
 	/downloads/complete \
 	/downloads/incomplete \
 	/watch
 
-chmod 755 /config/blocklist-update.sh
+chmod 755 /config/blocklist-update.sh \
+          /config/mail-notification.py
