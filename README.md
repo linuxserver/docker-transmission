@@ -67,7 +67,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
 
-## Securing the webui with a username/password.
+## Securing the webui with a username/password.
 
 this requires 3 settings to be changed in the settings.json file.
 
@@ -88,6 +88,31 @@ This requires `"blocklist-enabled": true,` to be set. By setting this to true, i
 The automatic update is a shell script that downloads a blocklist from the url stored in the settings.json, gunzips it, and restarts the transmission daemon.
 
 The automatic update will run once a day at 3am local server time.
+
+## Notification by mail for done torrents
+
+A notification script is included into this container. This script is run each times a Torrent has finished to be downloaded. By default it is able to send a mail but you can edit it to make something else.
+You can activate in by simply configure at least the following environment variables into your container
+
+| Name of the value  | Type              | Description                                                  |
+| ------------------ | ----------------- | ------------------------------------------------------------ |
+| SMTP_SERVER        | hostname/adress   | The address of the smtp server                               |
+| SMTP_FROM          | string            | The email address of the sender of the email                 |
+| SMTP_TO            | string            | The semi-colon separated list of recipient emails address(es) |
+
+The following parameters are optionnal, they depends of your configuration needs
+
+| Name of the value  | Type         | Description                                                           |
+| ------------------ | ------------ | --------------------------------------------------------------------- |
+| SMTP_PORT          | int          | The SMTP port of the server (default to 25)                           |
+| SMTP_USERNAME      | string       | The optionnal login username to authenticate against the email server |
+| SMTP_PASSWORD      | string       | The optionnal login password to authenticate against the email server |
+| SMTP_SSL           | bool(yes/no) | Enable SSL connection to the email server                             |
+| SMTP_STARTTLS      | bool(yes/no) | Enable STARTTLS mode for connection to the email server               |
+| MAIL_SUBJECT       | string       | The subject's string of the email                                     |
+
+You can include any other environment variable that will be available in the mail body of the notification script (localised into /config/mail-notification.py)
+
 
 ## Info
 
