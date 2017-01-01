@@ -70,7 +70,12 @@ Torrent informations:
   Version : {TR_APP_VERSION}
 
 Regards,
-""".format(**environ)
+"""
+
+try:
+  mail_body = mail_body.format(**environ)
+except KeyError as e:
+  mail_body += "\nError value not found : " + str(e)
 
 # Configure SSL
 if smtp_ssl == True:
