@@ -98,7 +98,7 @@ You can activate in by simply configure at least the following environment varia
 | ------------------ | ----------------- | ------------------------------------------------------------ |
 | SMTP_SERVER        | hostname/adress   | The address of the smtp server                               |
 | SMTP_FROM          | string            | The email address of the sender of the email                 |
-| SMTP_TO            | string            | The dot-comma separated list of recipient emails address(es) |
+| SMTP_TO            | string            | The semi-colon separated list of recipient emails address(es) |
 
 The following parameters are optionnal, they depends of your configuration needs
 
