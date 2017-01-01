@@ -95,21 +95,21 @@ A notification script is included into this container. This script is run each t
 You can activate in by simply configure at least the following environment variables into your container
 
 | Name of the value  | Type              | Description                                                  |
-| ------------------ | --------------  - | ------------------------------------------------------------ |
+| ------------------ | ----------------- | ------------------------------------------------------------ |
 | SMTP_SERVER        | hostname/adress   | The address of the smtp server                               |
 | SMTP_FROM          | string            | The email address of the sender of the email                 |
 | SMTP_TO            | string            | The dot-comma separated list of recipient emails address(es) |
 
 The following parameters are optionnal, they depends of your configuration needs
 
-| Name of the value  | Type         | Description                                                          |
-| ------------------ | ------------ | -----------   ------------------------------------------------------ |
-| SMTP_PORT          | int          | The SMTP port of the server (default to 25)                          |
-| SMTP_USERNAME      | string       | The optionnal login username to authenticate against the email server|
-| SMTP_PASSWORD      | string       | The optionnal login password to authenticate against the email server|
-| SMTP_SSL           | bool(yes/no) | Enable SSL connection to the email server                            |
-| SMTP_STARTTLS      | bool(yes/no) | Enable STARTTLS mode for connection to the email server              |
-| MAIL_SUBJECT       | string       | The subject's string of the email                                    |
+| Name of the value  | Type         | Description                                                           |
+| ------------------ | ------------ | --------------------------------------------------------------------- |
+| SMTP_PORT          | int          | The SMTP port of the server (default to 25)                           |
+| SMTP_USERNAME      | string       | The optionnal login username to authenticate against the email server |
+| SMTP_PASSWORD      | string       | The optionnal login password to authenticate against the email server |
+| SMTP_SSL           | bool(yes/no) | Enable SSL connection to the email server                             |
+| SMTP_STARTTLS      | bool(yes/no) | Enable STARTTLS mode for connection to the email server               |
+| MAIL_SUBJECT       | string       | The subject's string of the email                                     |
 
 You can include any other environment variable that will be available in the mail body of the notification script (localised into /config/mail-notification.py)
 
