@@ -12,13 +12,27 @@ mkdir -p \
 [[ ! -f /config/blocklist-update.sh ]] && cp \
 	/defaults/blocklist-update.sh /config/blocklist-update.sh
 
+# copy mail notify script
+[[ ! -f /config/mail-notification.sh ]] && cp \
+	/defaults/mail-notification.sh /config/mail-notification.sh
+
 # permissions
 chown abc:abc \
 	/config/settings.json \
 	/config/blocklist-update.sh \
+	/config/mail-notification.sh \
 	/downloads \
 	/downloads/complete \
 	/downloads/incomplete \
 	/watch
 
 chmod 755 /config/blocklist-update.sh
+
+# setting email config file.
+
+if [ ! -f "/config/ssmtp.conf" ]; then
+  cp /defaults/ssmtp.conf /config/ssmtp.conf
+  chown abc:abc /config/ssmtp.conf
+fi
+
+cp /config/ssmtp.conf /etc/ssmtp/ssmtp.conf
