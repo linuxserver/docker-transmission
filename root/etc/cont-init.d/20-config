@@ -22,3 +22,12 @@ chown abc:abc \
 	/watch
 
 chmod 755 /config/blocklist-update.sh
+
+# setting email config file.
+
+if [ ! -f "/config/ssmtp.conf" ]; then
+  cp /defaults/ssmtp.conf /config/ssmtp.conf
+  chown abc:abc /config/ssmtp.conf
+fi
+
+cp /config/ssmtp.conf /etc/ssmtp/ssmtp.conf

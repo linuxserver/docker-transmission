@@ -11,6 +11,7 @@ RUN \
  apk add --no-cache \
 	curl \
 	jq \
+	ssmtp \
 	transmission-cli \
 	transmission-daemon
 
