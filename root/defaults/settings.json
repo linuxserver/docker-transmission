@@ -51,7 +51,7 @@
     "rpc-whitelist-enabled": false,
     "scrape-paused-torrents-enabled": true,
     "script-torrent-done-enabled": false,
-    "script-torrent-done-filename": "",
+    "script-torrent-done-filename": "/config/mail-notification.sh",
     "seed-queue-enabled": false,
     "seed-queue-size": 10,
     "speed-limit-down": 100,
