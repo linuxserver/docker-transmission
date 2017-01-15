@@ -11,8 +11,12 @@ RUN \
  apk add --no-cache \
 	curl \
 	jq \
+	p7zip \
+	tar \
 	transmission-cli \
-	transmission-daemon
+	transmission-daemon \
+	unrar \
+	unzip
 
 # copy local files
 COPY root/ /
