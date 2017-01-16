@@ -67,7 +67,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
 
-## Securing the webui with a username/password.
+## Securing the webui with a username/password.
 
 this requires 3 settings to be changed in the settings.json file.
 
