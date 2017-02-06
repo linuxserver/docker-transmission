@@ -104,6 +104,7 @@ The automatic update will run once a day at 3am local server time.
 
 ## Versions
 
++ **06.02.17:** Rebase to alpine linux 3.5.
 + **15.01.17:** Add p7zip, tar , unrar and unzip packages.
 + **16.10.16:** Blocklist autoupdate with optional authentication.
 + **14.10.16:** Add version layer information.
