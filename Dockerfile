@@ -11,6 +11,7 @@ RUN \
  apk add --no-cache \
 	curl \
 	jq \
+	openssl \
 	p7zip \
 	tar \
 	transmission-cli \
