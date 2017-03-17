@@ -14,7 +14,7 @@ if [ $BLOCKLIST_ENABLED == true ]; then
 			chmod go+r *
 			rm -rf /config/blocklists/*
 			cp /tmp/blocklists/* /config/blocklists
-			s6-svc -h /var/run/s6/services/transmission
+			s6-svc -k /var/run/s6/services/transmission
 		fi
 	fi
 fi
