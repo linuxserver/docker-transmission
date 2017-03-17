@@ -1,0 +1,21 @@
+version: '2'
+services:
+  torrent:
+    image: linuxserver/transmission
+    container_name: transmission
+    ports:
+      - "9091:9091"
+      - "51413:51413"
+      - "51413:51413/udp"
+    environment:
+      - PGID=<gid>
+      - PUID=<uid>
+      - TZ=<timezone>
+    network_mode: "host"
+    dns:
+      - 8.8.8.8
+      - 8.8.4.4
+    volumes:
+      - ./root/defaults:/config
+      - /downloads:/downloads
+      - /watch:/watch
