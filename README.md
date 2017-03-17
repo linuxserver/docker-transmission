@@ -101,6 +101,11 @@ The automatic update will run once a day at 3am local server time.
 
 `docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/transmission`
 
+## Docker Compose
+
+If you prefer to use docker-compose.
+`docker-compose up`
+
 
 ## Versions
 
