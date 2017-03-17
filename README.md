@@ -23,6 +23,7 @@ Transmission is designed for easy, powerful use. Transmission has the features y
 
 ```
 docker create --name=transmission \
+--net=host \
 -v <path to data>:/config \
 -v <path to downloads>:/downloads \
 -v <path to watch folder>:/watch \
@@ -40,7 +41,7 @@ For example with a port -p external:internal - what this shows is the port mappi
 So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
 http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
 
-
+* `--net=host` - Shares host networking with container, **required**.
 * `-p 9091` 
 * `-p 51413` - the port(s)
 * `-v /config` - where transmission should store config files and logs
