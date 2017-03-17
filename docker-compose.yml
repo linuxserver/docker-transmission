@@ -1,0 +1,15 @@
+version: '2'
+
+services:
+  transmission:
+    image: linuxserver/transmission
+    container_name: transmission
+    restart: always
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    volumes:
+      - /absolute/path/on/host/transmission/config:/config
+      - /absolute/path/on/host/transmission/:/downloads
+      - /absolute/path/on/host/transmission/:/watch
