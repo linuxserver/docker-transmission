@@ -2,4 +2,4 @@
 
 exec \
 	s6-setuidgid abc /usr/bin/transmission-daemon \
-	-g /config -c /watch -f
+	-g /config -c /watch -f -e /config/tm.log
