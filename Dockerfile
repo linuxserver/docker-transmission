@@ -13,6 +13,7 @@ RUN \
 	jq \
 	openssl \
 	p7zip \
+	rsync \
 	tar \
 	transmission-cli \
 	transmission-daemon \
