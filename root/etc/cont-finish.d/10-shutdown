@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+
+# Shutdown transmission nicely
+/usr/bin/transmission-remote --exit >/dev/null
