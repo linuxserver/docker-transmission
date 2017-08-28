@@ -1,10 +1,10 @@
 FROM lsiobase/alpine:3.6
-MAINTAINER sparklyballs
+MAINTAINER oisann
 
 # set version label
 ARG BUILD_DATE
 ARG VERSION
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
+LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE} Modified by: Oisann"
 
 # install packages
 RUN \
@@ -24,5 +24,5 @@ RUN \
 COPY root/ /
 
 # ports and volumes
-EXPOSE 9091 51413
-VOLUME /config /downloads /watch
+EXPOSE 9091 51414
+VOLUME /config /movies /watch
