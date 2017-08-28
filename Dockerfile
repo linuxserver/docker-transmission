@@ -24,5 +24,5 @@ RUN \
 COPY root/ /
 
 # ports and volumes
-EXPOSE 9091 51413
-VOLUME /config /tv /watch
+EXPOSE 9091 51414
+VOLUME /config /movies /watch
