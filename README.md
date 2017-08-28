@@ -1,3 +1,4 @@
+# WARNING: THIS IS A MODIFIED VERSION. MADE JUST TO FIT MY SETUP
 [linuxserverurl]: https://linuxserver.io
 [forumurl]: https://forum.linuxserver.io
 [ircurl]: https://www.linuxserver.io/irc/
