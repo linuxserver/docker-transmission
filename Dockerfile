@@ -15,10 +15,12 @@ RUN \
 	p7zip \
 	rsync \
 	tar \
-	transmission-cli \
-	transmission-daemon \
 	unrar \
-	unzip
+	unzip && \
+ apk add --no-cache \
+	--repository http://nl.alpinelinux.org/alpine/edge/main \
+	transmission-cli \
+	transmission-daemon
 
 # copy local files
 COPY root/ /
