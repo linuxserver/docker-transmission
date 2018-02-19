@@ -101,6 +101,16 @@ The automatic update will run once a day at 3am local server time.
 
 `docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/transmission`
 
+## Troubleshooting
+
+Some matcine need run follow command
+
+```
+echo "net.core.rmem_max = 4194304" | sudo tee -a /etc/sysctl.conf
+echo "net.core.wmem_max = 1048576" | sudo tee -a /etc/sysctl.conf
+sudo sysctl -p
+```
+
 
 ## Versions
 
