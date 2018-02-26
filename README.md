@@ -89,6 +89,9 @@ The automatic update is a shell script that downloads a blocklist from the url s
 
 The automatic update will run once a day at 3am local server time.
 
+For users pulling an update and unable to access the webui setting you may need to set `"rpc-host-whitelist-enabled": false,` in /config/settings.json`
+
+
 ## Info
 
 * To monitor the logs of the container in realtime `docker logs -f transmission`.
@@ -104,6 +107,7 @@ The automatic update will run once a day at 3am local server time.
 
 ## Versions
 
++ **26.02.18:** Add info on rpc whitelist for users upgrading.
 + **12.02.18:** Pull transmission from edge repo.
 + **10.01.18:** Rebase to alpine linux 3.7.
 + **25.07.17:** Add rsync package.
