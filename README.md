@@ -67,6 +67,8 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
 
 Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
 
+For users pulling an update and unable to access the webui setting you may need to set `"rpc-host-whitelist-enabled": false,` in /config/settings.json`
+
 ## Securing the webui with a username/password.
 
 this requires 3 settings to be changed in the settings.json file.
@@ -88,8 +90,6 @@ This requires `"blocklist-enabled": true,` to be set. By setting this to true, i
 The automatic update is a shell script that downloads a blocklist from the url stored in the settings.json, gunzips it, and restarts the transmission daemon.
 
 The automatic update will run once a day at 3am local server time.
-
-For users pulling an update and unable to access the webui setting you may need to set `"rpc-host-whitelist-enabled": false,` in /config/settings.json`
 
 
 ## Info
