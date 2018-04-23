@@ -16,7 +16,8 @@ RUN \
 	rsync \
 	tar \
 	unrar \
-	unzip && \
+	unzip \
+  findutils && \
  apk add --no-cache \
 	--repository http://nl.alpinelinux.org/alpine/edge/main \
 	transmission-cli \
