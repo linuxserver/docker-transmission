@@ -81,6 +81,17 @@ this requires 3 settings to be changed in the settings.json file.
 
 Transmission will convert it to a hash when you restart the container after making the above edits.
 
+## Custom Web UI
+
+There's a few custom Transmission Web UIs out there. For example [transmission-web-control](https://github.com/ronggang/transmission-web-control), this one provides a lot of features that the default Transmission UI lacks.
+
+Here's how to add it:
+
+1) Add environment variable `TRANSMISSION_WEB_HOME` and set it to `/transmission-web-control`
+2) Git clone that repo somewhere on the host where transmission container is running
+3) Add a volume mapping to the container, e.g. `/apps/docker/transmission/transmission-web-control/src:/transmission-web-control`
+4) Start the container
+
 ## Updating Blocklists Automatically
 
 This requires `"blocklist-enabled": true,` to be set. By setting this to true, it is assumed you have also populated `blocklist-url` with a valid block list.
