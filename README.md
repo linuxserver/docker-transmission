@@ -104,6 +104,7 @@ The automatic update will run once a day at 3am local server time.
 
 ## Versions
 
++ **15.08.18:** Rebase to alpine linux 3.8.
 + **12.02.18:** Pull transmission from edge repo.
 + **10.01.18:** Rebase to alpine linux 3.7.
 + **25.07.17:** Add rsync package.
