@@ -24,7 +24,7 @@ RUN \
 curl -fSL https://github.com/ronggang/transmission-web-control/archive/${WEBUI_VERSION}.zip -o twc.zip && \
 unzip twc.zip -d /tmp && \
 mv /usr/share/transmission/web/index.html /usr/share/transmission/web/index.original.html && \
-mv /tmp/src/* /usr/share/transmission/web/
+mv /tmp/transmission-web-control-${WEBUI_VERSION}/src/* /usr/share/transmission/web/
 
 # copy local files
 COPY root/ /
