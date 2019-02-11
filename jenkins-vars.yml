@@ -1,0 +1,27 @@
+---
+
+# jenkins variables
+project_name: docker-transmission
+external_type: na
+custom_version_command: "curl -s http://dl-cdn.alpinelinux.org/alpine/v3.8/main/x86_64/ |awk -F '(transmission-cli-|.apk)' '/transmission-cli.*.apk/ {print $2}'"
+release_type: stable
+release_tag: latest
+ls_branch: master
+repo_vars:
+  - BUILD_VERSION_ARG = 'TRANSMISSION_VERSION'
+  - LS_USER = 'linuxserver'
+  - LS_REPO = 'docker-transmission'
+  - CONTAINER_NAME = 'transmission'
+  - DOCKERHUB_IMAGE = 'linuxserver/transmission'
+  - DEV_DOCKERHUB_IMAGE = 'lsiodev/transmission'
+  - PR_DOCKERHUB_IMAGE = 'lspipepr/transmission'
+  - DIST_IMAGE = 'alpine'
+  - MULTIARCH='true'
+  - CI='true'
+  - CI_WEB='true'
+  - CI_PORT='9091'
+  - CI_SSL='false'
+  - CI_DELAY='120'
+  - CI_DOCKERENV='TZ=US/Pacific'
+  - CI_AUTH='user:password'
+  - CI_WEBPATH=''

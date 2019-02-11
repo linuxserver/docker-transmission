@@ -35,13 +35,13 @@ linuxserver/transmission
 
 ## Parameters
 
-`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side. 
+`The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side.
 For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container.
 So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
 http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
 
 
-* `-p 9091` 
+* `-p 9091`
 * `-p 51413` - the port(s)
 * `-v /config` - where transmission should store config files and logs
 * `-v /downloads` - local path for downloads
@@ -63,7 +63,7 @@ In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as bel
     uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
 ```
 
-## Setting up the application 
+## Setting up the application
 
 Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
 
@@ -93,7 +93,7 @@ The automatic update will run once a day at 3am local server time.
 
 * To monitor the logs of the container in realtime `docker logs -f transmission`.
 
-* container version number 
+* container version number
 
 `docker inspect -f '{{ index .Config.Labels "build_version" }}' transmission`
 
@@ -104,6 +104,7 @@ The automatic update will run once a day at 3am local server time.
 
 ## Versions
 
++ **07.02.19:** Add pipeline logic and multi arch.
 + **15.08.18:** Rebase to alpine linux 3.8.
 + **12.02.18:** Pull transmission from edge repo.
 + **10.01.18:** Rebase to alpine linux 3.7.
@@ -119,5 +120,4 @@ The automatic update will run once a day at 3am local server time.
 + **28.08.16:** Add badges to README.
 + **09.08.16:** Rebase to alpine linux.
 + **06.12.15:** Separate mapping for watch folder.
-+ **16.11.15:** Initial Release. 
-
++ **16.11.15:** Initial Release.
