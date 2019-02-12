@@ -2,77 +2,53 @@
 
 # project information
 project_name: transmission
-full_custom_readme: |
-  {% raw -%}
-  [linuxserverurl]: https://linuxserver.io
-  [forumurl]: https://forum.linuxserver.io
-  [ircurl]: https://www.linuxserver.io/irc/
-  [podcasturl]: https://www.linuxserver.io/podcast/
-  [appurl]: https://www.transmissionbt.com/
-  [hub]: https://hub.docker.com/r/linuxserver/transmission/
+project_url: "https://www.transmissionbt.com/"
+project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png"
+project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more."
+project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+project_blurb_optional_extras_enabled: false
 
-  [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
+  - { arch: "{{ arch_armhf }}", tag: "arm32v6-latest"}
 
-  The [LinuxServer.io][linuxserverurl] team brings you another container release featuring easy user mapping and community support. Find us for support at:
-  * [forum.linuxserver.io][forumurl]
-  * [IRC][ircurl] on freenode at `#linuxserver.io`
-  * [Podcast][podcasturl] covers everything to do with getting the most from your Linux Server plus a focus on all things Docker and containerisation!
+# development version
+development_versions: false
 
-  # linuxserver/transmission
-  [![](https://images.microbadger.com/badges/version/linuxserver/transmission.svg)](https://microbadger.com/images/linuxserver/transmission "Get your own version badge on microbadger.com")[![](https://images.microbadger.com/badges/image/linuxserver/transmission.svg)](https://microbadger.com/images/linuxserver/transmission "Get your own image badge on microbadger.com")[![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/transmission.svg)][hub][![Docker Stars](https://img.shields.io/docker/stars/linuxserver/transmission.svg)][hub][![Build Status](https://ci.linuxserver.io/buildStatus/icon?job=Docker-Builders/x86-64/x86-64-transmission)](https://ci.linuxserver.io/job/Docker-Builders/job/x86-64/job/x86-64-transmission/)
+# container parameters
+common_param_env_vars_enabled: true
+param_container_name: "{{ project_name }}"
+param_usage_include_net: false
+param_usage_include_env: true
+param_env_vars:
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where transmission should store config files and logs." }
+  - { vol_path: "/downloads", vol_host_path: "<path to downloads>", desc: "Local path for downloads." }
+  - { vol_path: "/watch", vol_host_path: "<path to watch folder>", desc: "Watch folder for torrent files." }
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "9091", internal_port: "9091", port_desc: "WebUI" }
+  - { external_port: "51413", internal_port: "51413", port_desc: "Torrent Port TCP" }
+  - { external_port: "51413", internal_port: "51413/udp", port_desc: "Torrent Port UDP" }
+param_device_map: false
+cap_add_param: false
 
-  Transmission is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more. [Transmission](http://www.transmissionbt.com/about/)
+# optional container parameters
+opt_param_usage_include_env: false
+opt_param_usage_include_vols: false
+opt_param_usage_include_ports: false
+opt_param_device_map: false
+opt_cap_add_param: false
+optional_block_1: false
 
-  [![transmission](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png)][appurl]
-
-  ## Usage
-
-  ```
-  docker create --name=transmission \
-  -v <path to data>:/config \
-  -v <path to downloads>:/downloads \
-  -v <path to watch folder>:/watch \
-  -e PGID=<gid> -e PUID=<uid> \
-  -e TZ=<timezone> \
-  -p 9091:9091 -p 51413:51413 \
-  -p 51413:51413/udp \
-  linuxserver/transmission
-  ```
-
-  ## Parameters
-
-  `The parameters are split into two halves, separated by a colon, the left hand side representing the host and the right the container side.
-  For example with a port -p external:internal - what this shows is the port mapping from internal to external of the container.
-  So -p 8080:80 would expose port 80 from inside the container to be accessible from the host's IP on port 8080
-  http://192.168.x.x:8080 would show you what's running INSIDE the container on port 80.`
-
-
-  * `-p 9091`
-  * `-p 51413` - the port(s)
-  * `-v /config` - where transmission should store config files and logs
-  * `-v /downloads` - local path for downloads
-  * `-v /watch` - watch folder for torrent files
-  * `-e PGID` for GroupID - see below for explanation
-  * `-e PUID` for UserID - see below for explanation
-  * `-e TZ` for timezone information, eg Europe/London
-
-  It is based on alpine linux with s6 overlay, for shell access whilst the container is running do `docker exec -it transmission /bin/bash`.
-
-  ### User / Group Identifiers
-
-  Sometimes when using data volumes (`-v` flags) permissions issues can arise between the host OS and the container. We avoid this issue by allowing you to specify the user `PUID` and group `PGID`. Ensure the data volume directory on the host is owned by the same user you specify and it will "just work" ™.
-
-  In this instance `PUID=1001` and `PGID=1001`. To find yours use `id user` as below:
-
-  ```
-    $ id <dockeruser>
-      uid=1001(dockeruser) gid=1001(dockergroup) groups=1001(dockergroup)
-  ```
-
-  ## Setting up the application
-
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
   Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
-
   ## Securing the webui with a username/password.
 
   this requires 3 settings to be changed in the settings.json file.
@@ -95,36 +71,22 @@ full_custom_readme: |
 
   The automatic update will run once a day at 3am local server time.
 
-  ## Info
-
-  * To monitor the logs of the container in realtime `docker logs -f transmission`.
-
-  * container version number
-
-  `docker inspect -f '{{ index .Config.Labels "build_version" }}' transmission`
-
-  * image version number
-
-  `docker inspect -f '{{ index .Config.Labels "build_version" }}' linuxserver/transmission`
-
-
-  ## Versions
-
-  + **07.02.19:** Add pipeline logic and multi arch.
-  + **15.08.18:** Rebase to alpine linux 3.8.
-  + **12.02.18:** Pull transmission from edge repo.
-  + **10.01.18:** Rebase to alpine linux 3.7.
-  + **25.07.17:** Add rsync package.
-  + **27.05.17:** Rebase to alpine linux 3.6.
-  + **06.02.17:** Rebase to alpine linux 3.5.
-  + **15.01.17:** Add p7zip, tar , unrar and unzip packages.
-  + **16.10.16:** Blocklist autoupdate with optional authentication.
-  + **14.10.16:** Add version layer information.
-  + **23.09.16:** Add information about securing the webui to README..
-  + **21.09.16:** Add curl package.
-  + **09.09.16:** Add layer badges to README.
-  + **28.08.16:** Add badges to README.
-  + **09.08.16:** Rebase to alpine linux.
-  + **06.12.15:** Separate mapping for watch folder.
-  + **16.11.15:** Initial Release.
-  {%- endraw %}
+# changelog
+changelogs:
+  - { date: "07.02.19:", desc: "Add pipeline logic and multi arch." }
+  - { date: "15.08.18:", desc: "Rebase to alpine linux 3.8." }
+  - { date: "12.02.18:", desc: "Pull transmission from edge repo." }
+  - { date: "10.01.18:", desc: "Rebase to alpine linux 3.7." }
+  - { date: "25.07.17:", desc: "Add rsync package." }
+  - { date: "27.05.17:", desc: "Rebase to alpine linux 3.6." }
+  - { date: "06.02.17:", desc: "Rebase to alpine linux 3.5." }
+  - { date: "15.01.17:", desc: "Add p7zip, tar , unrar and unzip packages." }
+  - { date: "16.10.16:", desc: "Blocklist autoupdate with optional authentication." }
+  - { date: "14.10.16:", desc: "Add version layer informationE." }
+  - { date: "23.09.16:", desc: "Add information about securing the webui to README." }
+  - { date: "21.09.16:", desc: "Add curl package." }
+  - { date: "09.09.16:", desc: "Add layer badges to README." }
+  - { date: "28.08.16:", desc: "Add badges to README." }
+  - { date: "09.08.16:", desc: "Rebase to alpine linux." }
+  - { date: "06.12.15:", desc: "Separate mapping for watch folder." }
+  - { date: "16.11.15:", desc: "Initial Release." }
