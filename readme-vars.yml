@@ -73,6 +73,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+
   - { date: "22.02.19:", desc: "Catch term and clean exit." }
   - { date: "07.02.19:", desc: "Add pipeline logic and multi arch." }
   - { date: "15.08.18:", desc: "Rebase to alpine linux 3.8." }
