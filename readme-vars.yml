@@ -1,0 +1,94 @@
+---
+
+# project information
+project_name: transmission
+project_url: "https://www.transmissionbt.com/"
+project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png"
+project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more."
+project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
+project_blurb_optional_extras_enabled: false
+
+# supported architectures
+available_architectures:
+  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
+  - { arch: "{{ arch_armhf }}", tag: "arm32v6-latest"}
+
+# development version
+development_versions: false
+
+# container parameters
+common_param_env_vars_enabled: true
+param_container_name: "{{ project_name }}"
+param_usage_include_net: false
+param_usage_include_env: true
+param_env_vars:
+  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
+param_usage_include_vols: true
+param_volumes:
+  - { vol_path: "/config", vol_host_path: "<path to data>", desc: "Where transmission should store config files and logs." }
+  - { vol_path: "/downloads", vol_host_path: "<path to downloads>", desc: "Local path for downloads." }
+  - { vol_path: "/watch", vol_host_path: "<path to watch folder>", desc: "Watch folder for torrent files." }
+param_usage_include_ports: true
+param_ports:
+  - { external_port: "9091", internal_port: "9091", port_desc: "WebUI" }
+  - { external_port: "51413", internal_port: "51413", port_desc: "Torrent Port TCP" }
+  - { external_port: "51413", internal_port: "51413/udp", port_desc: "Torrent Port UDP" }
+param_device_map: false
+cap_add_param: false
+
+# optional container parameters
+opt_param_usage_include_env: false
+opt_param_usage_include_vols: false
+opt_param_usage_include_ports: false
+opt_param_device_map: false
+opt_cap_add_param: false
+optional_block_1: false
+
+# application setup block
+app_setup_block_enabled: true
+app_setup_block: |
+  Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
+  ## Securing the webui with a username/password.
+
+  this requires 3 settings to be changed in the settings.json file.
+
+  `Make sure the container is stopped before editing these settings.`
+
+  `"rpc-authentication-required": true,` - check this, the default is false, change to true.
+
+  `"rpc-username": "transmission",` substitute transmission for your chosen user name, this is just an example.
+
+  `rpc-password` will be a hash starting with {, replace everything including the { with your chosen password, keeping the quotes.
+
+  Transmission will convert it to a hash when you restart the container after making the above edits.
+
+  ## Updating Blocklists Automatically
+
+  This requires `"blocklist-enabled": true,` to be set. By setting this to true, it is assumed you have also populated `blocklist-url` with a valid block list.
+
+  The automatic update is a shell script that downloads a blocklist from the url stored in the settings.json, gunzips it, and restarts the transmission daemon.
+
+  The automatic update will run once a day at 3am local server time.
+
+# changelog
+changelogs:
+  - { date: "22.02.19:", desc: "Catch term and clean exit." }
+  - { date: "07.02.19:", desc: "Add pipeline logic and multi arch." }
+  - { date: "15.08.18:", desc: "Rebase to alpine linux 3.8." }
+  - { date: "12.02.18:", desc: "Pull transmission from edge repo." }
+  - { date: "10.01.18:", desc: "Rebase to alpine linux 3.7." }
+  - { date: "25.07.17:", desc: "Add rsync package." }
+  - { date: "27.05.17:", desc: "Rebase to alpine linux 3.6." }
+  - { date: "06.02.17:", desc: "Rebase to alpine linux 3.5." }
+  - { date: "15.01.17:", desc: "Add p7zip, tar , unrar and unzip packages." }
+  - { date: "16.10.16:", desc: "Blocklist autoupdate with optional authentication." }
+  - { date: "14.10.16:", desc: "Add version layer informationE." }
+  - { date: "23.09.16:", desc: "Add information about securing the webui to README." }
+  - { date: "21.09.16:", desc: "Add curl package." }
+  - { date: "09.09.16:", desc: "Add layer badges to README." }
+  - { date: "28.08.16:", desc: "Add badges to README." }
+  - { date: "09.08.16:", desc: "Rebase to alpine linux." }
+  - { date: "06.12.15:", desc: "Separate mapping for watch folder." }
+  - { date: "16.11.15:", desc: "Initial Release." }
+
