@@ -1,5 +1,13 @@
 #!/usr/bin/with-contenv bash
 
-exec \
+_term() {
+  echo "Caught SIGTERM signal!"
+  /usr/bin/transmission-remote --exit
+}
+
+        trap _term SIGTERM
+	
 	s6-setuidgid abc /usr/bin/transmission-daemon \
-	-g /config -c /watch -f
+	-g /config -c /watch -f &
+
+	wait

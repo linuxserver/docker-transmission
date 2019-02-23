@@ -186,6 +186,7 @@ Below are the instructions for updating containers:
 
 ## Versions
 
+* **22.02.19:** - Catch term and clean exit.
 * **07.02.19:** - Add pipeline logic and multi arch.
 * **15.08.18:** - Rebase to alpine linux 3.8.
 * **12.02.18:** - Pull transmission from edge repo.
