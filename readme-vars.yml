@@ -38,7 +38,9 @@ param_device_map: false
 cap_add_param: false
 
 # optional container parameters
-opt_param_usage_include_env: false
+opt_param_usage_include_env: true
+opt_param_env_vars:
+  - { env_var: "TRANSMISSION_WEB_HOME", env_value: "/combustion-release/", desc: "Specify an alternative UI options are `/combustion-release/` and `/transmission-web-control/`." }
 opt_param_usage_include_vols: false
 opt_param_usage_include_ports: false
 opt_param_device_map: false
@@ -49,6 +51,11 @@ optional_block_1: false
 app_setup_block_enabled: true
 app_setup_block: |
   Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
+
+  For users pulling an update and unable to access the webui setting you may need to set "rpc-host-whitelist-enabled": false, in /config/settings.json`
+
+  If you choose to use transmission-web-control as your default UI, just note that the origional Web UI will not be available to you despite the button being present.
+
   ## Securing the webui with a username/password.
 
   this requires 3 settings to be changed in the settings.json file.
@@ -74,6 +81,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "22.02.19:", desc: "Rebase to Alpine 3.9, add themes to baseimage, add python and findutils." }
   - { date: "22.02.19:", desc: "Catch term and clean exit." }
   - { date: "07.02.19:", desc: "Add pipeline logic and multi arch." }
   - { date: "15.08.18:", desc: "Rebase to alpine linux 3.8." }
