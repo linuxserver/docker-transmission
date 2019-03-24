@@ -43,8 +43,6 @@ RUN \
 	/tmp/*
 
 
-
-
 # copy local files
 COPY root/ /
 
