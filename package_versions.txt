@@ -46,7 +46,7 @@ ssl_client-1.29.3-r10
 tar-1.32-r0
 transmission-cli-2.94-r1
 transmission-daemon-2.94-r1
-tzdata-2018i-r0
+tzdata-2019a-r0
 unrar-5.6.8-r0
 unzip-6.0-r4
 xz-5.2.4-r0
