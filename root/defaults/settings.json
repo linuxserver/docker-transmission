@@ -19,7 +19,7 @@
     "idle-seeding-limit": 30,
     "idle-seeding-limit-enabled": false,
     "incomplete-dir": "/downloads/incomplete",
-    "incomplete-dir-enabled": true,
+    "incomplete-dir-enabled": false,
     "lpd-enabled": false,
     "message-level": 2,
     "peer-congestion-algorithm": "",
