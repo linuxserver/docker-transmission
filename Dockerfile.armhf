@@ -47,7 +47,9 @@ RUN \
 	/kettu --strip-components=1 && \
  echo "**** cleanup ****" && \
  rm -rf \
-	/tmp/*
+	/tmp/* && \
+ rm -rf \
+    /var/cache/apk/*
 
 
 # copy local files
