@@ -8,3 +8,6 @@
 
 # run daily blocklist update
 0 3 * * * /app/blocklist-update.sh 2>&1
+
+# run stop torrent script minutely
+* * * * * /app/stop-done-torrent.sh 2>&1

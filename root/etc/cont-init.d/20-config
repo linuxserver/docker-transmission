@@ -42,7 +42,10 @@ fi
 
 # permissions
 chown abc:abc \
-	/config/settings.json \
+	/config/settings.json
+
+# group permission on local media dirs
+chown abc:8675309 \
 	/downloads \
 	/downloads/complete \
 	/downloads/incomplete \
