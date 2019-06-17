@@ -40,7 +40,7 @@ cap_add_param: false
 # optional container parameters
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "TRANSMISSION_WEB_HOME", env_value: "/combustion-release/", desc: "Specify an alternative UI options are `/combustion-release/` and `/transmission-web-control/`." }
+  - { env_var: "TRANSMISSION_WEB_HOME", env_value: "/combustion-release/", desc: "Specify an alternative UI options are `/combustion-release/`, `/transmission-web-control/`, and `/kettu/` ." }
 opt_param_usage_include_vols: false
 opt_param_usage_include_ports: false
 opt_param_device_map: false
