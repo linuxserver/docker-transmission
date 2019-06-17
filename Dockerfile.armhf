@@ -38,13 +38,13 @@ RUN \
 	/tmp/twc.tar.gz -C \
 	/tmp/twctemp --strip-components=1 && \
  mv /tmp/twctemp/src /transmission-web-control && \
+ mkdir -p /kettu && \
  curl -o \
 	/tmp/kettu.tar.gz -L \
 	"https://github.com/endor/kettu/archive/master.tar.gz" && \
  tar xf \
 	/tmp/kettu.tar.gz -C \
-	/tmp && \
- mv /tmp/kettu-master /kettu && \
+	/kettu --strip-components=1 && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/tmp/*
