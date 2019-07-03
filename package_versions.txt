@@ -7,7 +7,7 @@ ca-certificates-20190108-r0
 ca-certificates-cacert-20190108-r0
 coreutils-8.30-r0
 curl-7.64.0-r2
-expat-2.2.6-r0
+expat-2.2.7-r0
 findutils-4.6.0-r1
 gdbm-1.13-r1
 jq-1.6-r0
