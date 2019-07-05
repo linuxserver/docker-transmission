@@ -81,6 +81,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
   - { date: "22.02.19:", desc: "Rebase to Alpine 3.9, add themes to baseimage, add python and findutils." }
   - { date: "22.02.19:", desc: "Catch term and clean exit." }
