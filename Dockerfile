@@ -6,7 +6,7 @@ ARG VERSION
 LABEL build_version="blog.auska.win version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="Auska"
 
-ENV TZ=Asia/Shanghai WEBUI_VERSION=1.6.0-beta2 USER=admin PASSWD=admin
+ENV TZ=Asia/Shanghai WEBUI_VERSION=1.6.0-beta2 USER=admin PASSWD=admin UPDATE=Yes
 
 RUN \
  echo "**** install packages ****" && \
