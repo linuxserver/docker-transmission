@@ -2,7 +2,11 @@
 
 _term() {
   echo "Caught SIGTERM signal!"
-  /usr/bin/transmission-remote --exit
+  if [ ! -z "$USER" ] && [ ! -z "$PASS" ]; then
+    /usr/bin/transmission-remote -n "$USER":"$PASS" --exit
+  else
+    /usr/bin/transmission-remote --exit
+  fi
 }
 
         trap _term SIGTERM
