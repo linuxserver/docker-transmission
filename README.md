@@ -54,6 +54,8 @@ docker create \
   -e PGID=1000 \
   -e TZ=Europe/London \
   -e TRANSMISSION_WEB_HOME=/combustion-release/ `#optional` \
+  -e USER=username `#optional` \
+  -e PASS=password `#optional` \
   -p 9091:9091 \
   -p 51413:51413 \
   -p 51413:51413/udp \
@@ -81,6 +83,8 @@ services:
       - PGID=1000
       - TZ=Europe/London
       - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
+      - USER=username #optional
+      - PASS=password #optional
     volumes:
       - <path to data>:/config
       - <path to downloads>:/downloads
@@ -105,6 +109,8 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
 | `-e TRANSMISSION_WEB_HOME=/combustion-release/` | Specify an alternative UI options are `/combustion-release/`, `/transmission-web-control/`, and `/kettu/` . |
+| `-e USER=username` | Specify an optional username for the interface |
+| `-e PASS=password` | Specify an optional password for the interface |
 | `-v /config` | Where transmission should store config files and logs. |
 | `-v /downloads` | Local path for downloads. |
 | `-v /watch` | Watch folder for torrent files. |
@@ -220,6 +226,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **21.08.19:** - Add optional user/pass environment variables, fix transmission shut down if user/pass are set.
 * **19.07.19:** - Send SIGTERM in blocklist update to properly close pid.
 * **28.06.19:** - Rebasing to alpine 3.10.
 * **23.03.19:** - Switching to new Base images, shift to arm32v7 tag.

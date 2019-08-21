@@ -41,6 +41,8 @@ cap_add_param: false
 opt_param_usage_include_env: true
 opt_param_env_vars:
   - { env_var: "TRANSMISSION_WEB_HOME", env_value: "/combustion-release/", desc: "Specify an alternative UI options are `/combustion-release/`, `/transmission-web-control/`, and `/kettu/` ." }
+  - { env_var: "USER", env_value: "username", desc: "Specify an optional username for the interface" }
+  - { env_var: "PASS", env_value: "password", desc: "Specify an optional password for the interface" }
 opt_param_usage_include_vols: false
 opt_param_usage_include_ports: false
 opt_param_device_map: false
@@ -81,6 +83,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "21.08.19:", desc: "Add optional user/pass environment variables, fix transmission shut down if user/pass are set." }
   - { date: "19.07.19:", desc: "Send SIGTERM in blocklist update to properly close pid." }
   - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
   - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
