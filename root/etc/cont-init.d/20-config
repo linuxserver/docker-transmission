@@ -16,8 +16,6 @@ if [ ! -z "$USER" ] && [ ! -z "$PASS" ]; then
 	sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": true,' /config/settings.json
 	sed -i "/rpc-username/c\    \"rpc-username\": \"$USER\"," /config/settings.json
 	sed -i "/rpc-password/c\    \"rpc-password\": \"$PASS\"," /config/settings.json
-else
-	sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": false,' /config/settings.json
 fi
 
 # permissions
