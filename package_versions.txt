@@ -30,7 +30,7 @@ musl-utils-1.1.22-r3
 ncurses-libs-6.1_p20190518-r0
 ncurses-terminfo-6.1_p20190518-r0
 ncurses-terminfo-base-6.1_p20190518-r0
-nghttp2-libs-1.38.0-r0
+nghttp2-libs-1.39.2-r0
 oniguruma-6.9.2-r0
 openssl-1.1.1c-r0
 p7zip-16.02-r3
