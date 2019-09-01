@@ -1,7 +1,9 @@
 #!/bin/bash
 # Get transmission credentials and ip or dns address
 auth=$USER:$PASSWD
-host=localhost
+host=localhost:$PORT
+
+[[ $UPDATE == No ]] && exit 1
 
 while true ; do
 sleep 25

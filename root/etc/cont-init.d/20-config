@@ -27,3 +27,4 @@ chmod 755 /config/tracker-add-auto.sh
 
 sed -i -e "s/\"rpc-username\":.*/\"rpc-username\": \"$USER\",/g" /config/settings.json
 sed -i -e "s/\"rpc-password\":.*/\"rpc-password\": \"$PASSWD\",/g" /config/settings.json
+sed -i -e "s/\"rpc-port\":.*/\"rpc-password\": \"$PORT\",/g" /config/settings.json
