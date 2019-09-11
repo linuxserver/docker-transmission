@@ -64,8 +64,11 @@ docker create \
   -e PGID=1000 \
   -e TZ=Europe/London \
   -e TRANSMISSION_WEB_HOME=/combustion-release/ `#optional` \
+  -e AUTOREMOVE=yes `#optional` \
   -e USER=username `#optional` \
   -e PASS=password `#optional` \
+  -e AUTHENABLE=yes `#optional` \
+  -e CRONDATE=monthly `#optional` \
   -p 9091:9091 \
   -p 51413:51413 \
   -p 51413:51413/udp \
@@ -93,8 +96,11 @@ services:
       - PGID=1000
       - TZ=Europe/London
       - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
+      - AUTOREMOVE=yes `#optional`
       - USER=username #optional
       - PASS=password #optional
+      - AUTHENABLE=yes `#optional`
+      - CRONDATE=monthly `#optional`
     volumes:
       - <path to data>:/config
       - <path to downloads>:/downloads
@@ -119,8 +125,11 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
 | `-e TRANSMISSION_WEB_HOME=/combustion-release/` | Specify an alternative UI options are `/combustion-release/`, `/transmission-web-control/`, and `/kettu/` . |
+| `-e AUTOREMOVE=yes` | Active a script to autoremove torrents when these have finished |
 | `-e USER=username` | Specify an optional username for the interface |
 | `-e PASS=password` | Specify an optional password for the interface |
+| `-e AUTHENABLE=yes` | When **user** and **pass** have been defined and **autoremove ** is enabled, this parameter has to be activated. |
+| `-e CRONDATE=monthly` | Specify when the torrents have to be removed. Options are: **monthly**, **weekly** or **daily**. **Monthly** is defined by default. |
 | `-v /config` | Where transmission should store config files and logs. |
 | `-v /downloads` | Local path for downloads. |
 | `-v /watch` | Watch folder for torrent files. |

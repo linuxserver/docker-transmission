@@ -8,3 +8,6 @@
 
 # run daily blocklist update
 0 3 * * * /config/blocklist-update.sh 2>&1
+
+#run autoremove script when we create our container
+@reboot /defaults/autoremove.sh
