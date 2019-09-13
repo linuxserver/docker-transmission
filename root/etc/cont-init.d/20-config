@@ -17,7 +17,7 @@ mkdir -p \
 	/defaults/tracker-add-auto.sh /config/tracker-add-auto.sh
 
 # permissions
-if [ "$FIX" == "YES" ];then
+if [ "$FIX" == "Yes" ];then
 chown -R abc:abc \
 	/config \
 	/downloads \
