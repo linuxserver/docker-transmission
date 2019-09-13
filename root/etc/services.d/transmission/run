@@ -2,4 +2,5 @@
 
 exec \
 	s6-setuidgid abc /usr/bin/transmission-daemon \
+	-u $USER -v $PASSWD -p $PORT -P $PEER \
 	-g /config -c /watch -f
