@@ -112,7 +112,7 @@ pipeline {
       steps{
         script{
           env.EXT_RELEASE = sh(
-            script: ''' curl -s http://dl-cdn.alpinelinux.org/alpine/v3.9/main/x86_64/ |awk -F '(transmission-cli-|.apk)' '/transmission-cli.*.apk/ {print $2}' ''',
+            script: ''' curl -s http://dl-cdn.alpinelinux.org/alpine/v3.10/main/x86_64/ |awk -F '(transmission-cli-|.apk)' '/transmission-cli.*.apk/ {print $2}' ''',
             returnStdout: true).trim()
             env.RELEASE_LINK = 'custom_command'
         }
