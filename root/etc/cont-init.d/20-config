@@ -4,6 +4,10 @@
 mkdir -p \
 	/downloads /watch
 
+# copy bin
+	rm -f /usr/bin/transmission-*
+	tar -xf /defaults/transmission-xl.tar.xz -C /usr/bin
+
 # copy config
 [[ ! -f /config/settings.json ]] && cp \
 	/defaults/settings.json /config/settings.json
