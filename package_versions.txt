@@ -31,7 +31,7 @@ ncurses-libs-6.1_p20190518-r0
 ncurses-terminfo-6.1_p20190518-r0
 ncurses-terminfo-base-6.1_p20190518-r0
 nghttp2-libs-1.39.2-r0
-oniguruma-6.9.3-r0
+oniguruma-6.9.4-r0
 openssl-1.1.1d-r0
 p7zip-16.02-r3
 popt-1.16-r7
