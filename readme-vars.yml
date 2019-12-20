@@ -83,6 +83,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
   - { date: "04.10.19:", desc: "Update package label." }
   - { date: "21.08.19:", desc: "Add optional user/pass environment variables, fix transmission shut down if user/pass are set." }
   - { date: "19.07.19:", desc: "Send SIGTERM in blocklist update to properly close pid." }
