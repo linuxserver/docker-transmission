@@ -60,17 +60,7 @@ app_setup_block: |
 
   ## Securing the webui with a username/password.
 
-  this requires 3 settings to be changed in the settings.json file.
-
-  `Make sure the container is stopped before editing these settings.`
-
-  `"rpc-authentication-required": true,` - check this, the default is false, change to true.
-
-  `"rpc-username": "transmission",` substitute transmission for your chosen user name, this is just an example.
-
-  `rpc-password` will be a hash starting with {, replace everything including the { with your chosen password, keeping the quotes.
-
-  Transmission will convert it to a hash when you restart the container after making the above edits.
+  Use the `USER` and `PASS` variables in docker run/create/compose to set authentication. Do not manually edit the `settings.json` to input user/pass, otherwise transmission cannot be stopped cleanly by the s6 supervisor.
 
   ## Updating Blocklists Automatically
 
@@ -83,6 +73,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "29.03.20:", desc: "Update auth info in readme." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
   - { date: "04.10.19:", desc: "Update package label." }
   - { date: "21.08.19:", desc: "Add optional user/pass environment variables, fix transmission shut down if user/pass are set." }

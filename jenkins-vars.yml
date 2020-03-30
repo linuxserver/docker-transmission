@@ -3,7 +3,7 @@
 # jenkins variables
 project_name: docker-transmission
 external_type: na
-custom_version_command: "curl -s http://dl-cdn.alpinelinux.org/alpine/v3.10/main/x86_64/ |awk -F '(transmission-cli-|.apk)' '/transmission-cli.*.apk/ {print $2}'"
+custom_version_command: "curl -s http://dl-cdn.alpinelinux.org/alpine/v3.11/main/x86_64/ |awk -F '(transmission-cli-|.apk)' '/transmission-cli.*.apk/ {print $2}'"
 release_type: stable
 release_tag: latest
 ls_branch: master
