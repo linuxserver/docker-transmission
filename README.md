@@ -166,17 +166,7 @@ If you choose to use transmission-web-control as your default UI, just note that
 
 ## Securing the webui with a username/password.
 
-this requires 3 settings to be changed in the settings.json file.
-
-`Make sure the container is stopped before editing these settings.`
-
-`"rpc-authentication-required": true,` - check this, the default is false, change to true.
-
-`"rpc-username": "transmission",` substitute transmission for your chosen user name, this is just an example.
-
-`rpc-password` will be a hash starting with {, replace everything including the { with your chosen password, keeping the quotes.
-
-Transmission will convert it to a hash when you restart the container after making the above edits.
+Use the `USER` and `PASS` variables in docker run/create/compose to set authentication. Do not manually edit the `settings.json` to input user/pass, otherwise transmission cannot be stopped cleanly by the s6 supervisor.
 
 ## Updating Blocklists Automatically
 
@@ -252,6 +242,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **29.03.20:** - Update auth info in readme.
 * **19.12.19:** - Rebasing to alpine 3.11.
 * **04.10.19:** - Update package label.
 * **21.08.19:** - Add optional user/pass environment variables, fix transmission shut down if user/pass are set.
