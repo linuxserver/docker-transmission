@@ -7,4 +7,4 @@
 0       5       1       *       *       run-parts /etc/periodic/monthly
 
 # run daily blocklist update
-0 3 * * * /config/blocklist-update.sh 2>&1
+0 3 * * * /app/blocklist-update.sh 2>&1

@@ -8,10 +8,6 @@ mkdir -p \
 [[ ! -f /config/settings.json ]] && cp \
 	/defaults/settings.json /config/settings.json
 
-# copy blocklist-update script
-[[ ! -f /config/blocklist-update.sh ]] && cp \
-	/defaults/blocklist-update.sh /config/blocklist-update.sh
-
 if [ ! -z "$USER" ] && [ ! -z "$PASS" ]; then
 	sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": true,' /config/settings.json
 	sed -i "/rpc-username/c\    \"rpc-username\": \"$USER\"," /config/settings.json

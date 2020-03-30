@@ -73,6 +73,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "30.03.20:", desc: "Internalize blocklist-update.sh." }
   - { date: "29.03.20:", desc: "Update auth info in readme." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
   - { date: "04.10.19:", desc: "Update package label." }
