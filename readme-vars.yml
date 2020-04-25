@@ -68,11 +68,15 @@ app_setup_block: |
 
   The automatic update is a shell script that downloads a blocklist from the url stored in the settings.json, gunzips it, and restarts the transmission daemon.
 
+
+  If a custom shell script located at `/config/blocklist-update.sh` exsists it will takes precedent over the default script and will not use the `blocklist-url`. This is usefull if you want to create a custom script to concatinate multiple blocklists from multiple URLs.
+
   The automatic update will run once a day at 3am local server time.
 
 # changelog
 changelogs:
 
+  - { date: "25.04.20:", desc: "Updated blocklist-update.sh to also run custom scripts located in the /config folder." }
   - { date: "30.03.20:", desc: "Internalize blocklist-update.sh." }
   - { date: "29.03.20:", desc: "Update auth info in readme." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
