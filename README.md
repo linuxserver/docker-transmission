@@ -247,6 +247,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **28.04.20:** - Use transmission-remote to update blocklist.
 * **30.03.20:** - Internalize blocklist-update.sh.
 * **29.03.20:** - Update auth info in readme.
 * **19.12.19:** - Rebasing to alpine 3.11.
