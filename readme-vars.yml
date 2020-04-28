@@ -73,6 +73,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "28.04.20:", desc: "Use transmission-remote to update blocklist." }
   - { date: "30.03.20:", desc: "Internalize blocklist-update.sh." }
   - { date: "29.03.20:", desc: "Update auth info in readme." }
   - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
@@ -100,4 +101,3 @@ changelogs:
   - { date: "09.08.16:", desc: "Rebase to alpine linux." }
   - { date: "06.12.15:", desc: "Separate mapping for watch folder." }
   - { date: "16.11.15:", desc: "Initial Release." }
-
