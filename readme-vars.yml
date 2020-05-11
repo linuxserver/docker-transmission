@@ -73,6 +73,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "11.05.20:", desc: "Remove unnecessary chmod (remnant of previous change)." }
   - { date: "28.04.20:", desc: "Use transmission-remote to update blocklist." }
   - { date: "30.03.20:", desc: "Internalize blocklist-update.sh." }
   - { date: "29.03.20:", desc: "Update auth info in readme." }
