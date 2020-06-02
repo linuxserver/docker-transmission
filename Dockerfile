@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:3.11
+FROM lsiobase/alpine:3.12
 
 # set version label
 ARG BUILD_DATE
@@ -14,7 +14,7 @@ RUN \
 	jq \
 	openssl \
 	p7zip \
-	python \
+	python3 \
 	rsync \
 	tar \
 	transmission-cli \
