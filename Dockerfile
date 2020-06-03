@@ -3,6 +3,7 @@ FROM lsiobase/alpine:3.12
 # set version label
 ARG BUILD_DATE
 ARG VERSION
+ARG TRANSMISSION_VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="aptalca"
 
@@ -21,6 +22,14 @@ RUN \
 	transmission-daemon \
 	unrar \
 	unzip && \
+ echo "**** install transmission ****" && \
+ if [ -z ${TRANSMISSION_VERSION+x} ]; then \
+	TRANSMISSION_VERSION=$(curl -s http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/ \
+	| awk -F '(transmission-cli-|.apk)' '/transmission-cli.*.apk/ {print $2}'); \
+ fi && \
+ apk add --no-cache \
+	transmission-cli==${TRANSMISSION_VERSION} \
+	transmission-daemon==${TRANSMISSION_VERSION} && \
  echo "**** install third party themes ****" && \
  curl -o \
 	/tmp/combustion.zip -L \
