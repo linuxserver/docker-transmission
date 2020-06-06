@@ -73,6 +73,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "02.06.20:", desc: "Rebase to alpine 3.12, update to transmission 3.0, remove python2, add python3." }
   - { date: "11.05.20:", desc: "Remove unnecessary chmod (remnant of previous change)." }
   - { date: "28.04.20:", desc: "Use transmission-remote to update blocklist." }
   - { date: "30.03.20:", desc: "Internalize blocklist-update.sh." }
