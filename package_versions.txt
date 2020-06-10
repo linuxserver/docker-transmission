@@ -3,8 +3,8 @@ alpine-keys-2.2-r0
 apk-tools-2.10.5-r1
 bash-5.0.17-r0
 busybox-1.31.1-r16
-ca-certificates-20191127-r2
-ca-certificates-bundle-20191127-r2
+ca-certificates-20191127-r3
+ca-certificates-bundle-20191127-r3
 coreutils-8.32-r0
 curl-7.69.1-r0
 expat-2.2.9-r1
