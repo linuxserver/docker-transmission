@@ -2,7 +2,7 @@ alpine-baselayout-3.2.0-r7
 alpine-keys-2.2-r0
 apk-tools-2.10.5-r1
 bash-5.0.17-r0
-busybox-1.31.1-r16
+busybox-1.31.1-r19
 ca-certificates-20191127-r3
 ca-certificates-bundle-20191127-r3
 coreutils-8.32-r0
@@ -42,7 +42,7 @@ rsync-3.1.3-r3
 scanelf-1.2.6-r0
 shadow-4.8.1-r0
 sqlite-libs-3.32.1-r0
-ssl_client-1.31.1-r16
+ssl_client-1.31.1-r19
 tar-1.32-r1
 transmission-cli-3.00-r0
 transmission-daemon-3.00-r0
