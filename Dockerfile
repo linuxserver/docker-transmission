@@ -64,4 +64,4 @@ COPY root/ /
 
 # ports and volumes
 EXPOSE 9091 51413
-VOLUME /config /downloads /watch
+VOLUME /config
