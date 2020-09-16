@@ -6,7 +6,7 @@ busybox-1.31.1-r19
 ca-certificates-20191127-r4
 ca-certificates-bundle-20191127-r4
 coreutils-8.32-r0
-curl-7.69.1-r0
+curl-7.69.1-r1
 expat-2.2.9-r1
 findutils-4.7.0-r0
 gdbm-1.13-r1
@@ -16,7 +16,7 @@ libattr-2.4.48-r0
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
 libcrypto1.1-1.1.1g-r0
-libcurl-7.69.1-r0
+libcurl-7.69.1-r1
 libevent-2.1.11-r1
 libffi-3.3-r2
 libgcc-9.3.0-r2
