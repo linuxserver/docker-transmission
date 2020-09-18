@@ -63,6 +63,6 @@
     "umask": 2,
     "upload-slots-per-torrent": 14,
     "utp-enabled": false,
-    "watch-dir": "/config/watch",
+    "watch-dir": "/watch",
     "watch-dir-enabled": true
 }
