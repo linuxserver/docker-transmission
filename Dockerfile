@@ -63,5 +63,5 @@ RUN \
 COPY root/ /
 
 # ports and volumes
-EXPOSE 9091 51413
+EXPOSE 9091 51413/tcp 51413/udp
 VOLUME /config /downloads /watch
