@@ -31,7 +31,7 @@ musl-utils-1.1.24-r9
 ncurses-libs-6.2_p20200523-r0
 ncurses-terminfo-base-6.2_p20200523-r0
 nghttp2-libs-1.41.0-r0
-oniguruma-6.9.5-r1
+oniguruma-6.9.5-r2
 openssl-1.1.1g-r0
 p7zip-16.02-r3
 popt-1.16-r7
