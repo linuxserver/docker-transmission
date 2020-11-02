@@ -1,4 +1,4 @@
-FROM lsiobase/alpine:arm32v7-3.12
+FROM ghcr.io/linuxserver/baseimage-alpine:arm32v7-3.12
 
 ARG BUILD_DATE
 ARG VERSION
