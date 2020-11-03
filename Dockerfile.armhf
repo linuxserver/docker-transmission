@@ -10,7 +10,7 @@ RUN \
  echo "**** install packages ****" && \
  apk add --no-cache \
 	ca-certificates \
-        curl \
+	curl \
 	findutils \
 	jq \
 	openssl \
