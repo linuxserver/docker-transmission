@@ -11,7 +11,8 @@ RUN \
  echo "**** install packages ****" && \
  apk add --no-cache \
 	curl \
-	findutils \
+	ca-certificates \
+        findutils \
 	jq \
 	openssl \
 	p7zip \
