@@ -127,6 +127,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e TRANSMISSION_WEB_HOME=/combustion-release/` | Specify an alternative UI options are `/combustion-release/`, `/transmission-web-control/`, and `/kettu/` . |
 | `-e USER=username` | Specify an optional username for the interface |
 | `-e PASS=password` | Specify an optional password for the interface |
+| `-e WHITELIST=iplist` | Specify an optional list of comma separated host whitelist |
 | `-v /config` | Where transmission should store config files and logs. |
 | `-v /downloads` | Local path for downloads. |
 | `-v /watch` | Watch folder for torrent files. |
@@ -167,8 +168,6 @@ In this instance `PUID=1000` and `PGID=1000`, to find yours use `id user` as bel
 
 Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
 
-For users pulling an update and unable to access the webui setting you may need to set "rpc-host-whitelist-enabled": false, in /config/settings.json`
-
 If you choose to use transmission-web-control as your default UI, just note that the origional Web UI will not be available to you despite the button being present.
 
 ## Securing the webui with a username/password.
@@ -183,6 +182,9 @@ The automatic update is a shell script that downloads a blocklist from the url s
 
 The automatic update will run once a day at 3am local server time.
 
+## Using whitelist
+
+Use `WHITELIST` to enable an ip of whitelist. Both notation `rpc-whitelist` and `rpc-host-whitelist` are supported. When `WHITELIST` is empty the whitelist is disabled.
 
 ## Docker Mods
 [![Docker Mods](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=transmission&query=%24.mods%5B%27transmission%27%5D.mod_count&url=https%3A%2F%2Fraw.githubusercontent.com%2Flinuxserver%2Fdocker-mods%2Fmaster%2Fmod-list.yml)](https://mods.linuxserver.io/?mod=transmission "view available mods for this container.") [![Docker Universal Mods](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=universal&query=%24.mods%5B%27universal%27%5D.mod_count&url=https%3A%2F%2Fraw.githubusercontent.com%2Flinuxserver%2Fdocker-mods%2Fmaster%2Fmod-list.yml)](https://mods.linuxserver.io/?mod=universal "view available universal mods.")
