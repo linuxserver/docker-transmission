@@ -47,6 +47,8 @@
     "rpc-port": 9091,
     "rpc-url": "/transmission/",
     "rpc-username": "",
+    "rpc-host-whitelist": "127.0.0.1",
+    "rpc-host-whitelist-enabled": false,
     "rpc-whitelist": "127.0.0.1",
     "rpc-whitelist-enabled": false,
     "scrape-paused-torrents-enabled": true,
