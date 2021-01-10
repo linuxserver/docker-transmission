@@ -46,7 +46,7 @@ ssl_client-1.31.1-r19
 tar-1.32-r1
 transmission-cli-3.00-r0
 transmission-daemon-3.00-r0
-tzdata-2020c-r1
+tzdata-2020f-r0
 unrar-5.9.2-r0
 unzip-6.0-r8
 xz-5.2.5-r0
