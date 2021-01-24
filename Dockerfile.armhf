@@ -1,4 +1,4 @@
-FROM ghcr.io/linuxserver/baseimage-alpine:arm32v7-3.12
+FROM ghcr.io/linuxserver/baseimage-alpine:arm32v7-3.13
 
 ARG BUILD_DATE
 ARG VERSION
@@ -24,7 +24,7 @@ RUN \
 	unzip && \
  echo "**** install transmission ****" && \
  if [ -z ${TRANSMISSION_VERSION+x} ]; then \
-	TRANSMISSION_VERSION=$(curl -s http://dl-cdn.alpinelinux.org/alpine/v3.12/community/x86_64/ \
+	TRANSMISSION_VERSION=$(curl -s http://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/ \
 	| awk -F '(transmission-cli-|.apk)' '/transmission-cli.*.apk/ {print $2}'); \
  fi && \
  apk add --no-cache \
