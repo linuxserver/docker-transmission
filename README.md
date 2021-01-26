@@ -79,6 +79,7 @@ services:
       - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
       - USER=username #optional
       - PASS=password #optional
+      - WHITELIST=iplist #optional
     volumes:
       - <path to data>:/config
       - <path to downloads>:/downloads
@@ -101,6 +102,7 @@ docker run -d \
   -e TRANSMISSION_WEB_HOME=/combustion-release/ `#optional` \
   -e USER=username `#optional` \
   -e PASS=password `#optional` \
+  -e WHITELIST=iplist `#optional` \
   -p 9091:9091 \
   -p 51413:51413 \
   -p 51413:51413/udp \
@@ -185,6 +187,7 @@ The automatic update will run once a day at 3am local server time.
 ## Using whitelist
 
 Use `WHITELIST` to enable an ip of whitelist. Both notation `rpc-whitelist` and `rpc-host-whitelist` are supported. When `WHITELIST` is empty the whitelist is disabled.
+
 
 ## Docker Mods
 [![Docker Mods](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=transmission&query=%24.mods%5B%27transmission%27%5D.mod_count&url=https%3A%2F%2Fraw.githubusercontent.com%2Flinuxserver%2Fdocker-mods%2Fmaster%2Fmod-list.yml)](https://mods.linuxserver.io/?mod=transmission "view available mods for this container.") [![Docker Universal Mods](https://img.shields.io/badge/dynamic/yaml?color=94398d&labelColor=555555&logoColor=ffffff&style=for-the-badge&label=universal&query=%24.mods%5B%27universal%27%5D.mod_count&url=https%3A%2F%2Fraw.githubusercontent.com%2Flinuxserver%2Fdocker-mods%2Fmaster%2Fmod-list.yml)](https://mods.linuxserver.io/?mod=universal "view available universal mods.")
