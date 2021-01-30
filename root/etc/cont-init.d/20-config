@@ -21,8 +21,8 @@ fi
 if [ ! -z "$WHITELIST" ]; then
 	sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": true,' /config/settings.json
 	sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$WHITELIST\"," /config/settings.json
-	sed -i '/rpc-whitelist-enabled/c\    "rpc-host-whitelist-enabled": true,' /config/settings.json
-	sed -i "/\"rpc-whitelist\"/c\    \"rpc-host-whitelist\": \"$WHITELIST\"," /config/settings.json
+	sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": true,' /config/settings.json
+	sed -i "/\"rpc-whitelist\"/c\    \"rpc-whitelist\": \"$WHITELIST\"," /config/settings.json
 else
 	sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": false,' /config/settings.json
 	sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$WHITELIST\"," /config/settings.json
