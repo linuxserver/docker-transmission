@@ -71,7 +71,7 @@ RUN \
  mv /tmp/flood-for-transmission/public/** /flood-for-transmission && \
  echo "**** cleanup ****" && \
  rm -rf \
-	/tmp/*
+	/tmp/* && \
  apk del nodejs npm
 
 # copy local files
