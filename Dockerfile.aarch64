@@ -13,8 +13,6 @@ RUN \
 	curl \
 	findutils \
 	jq \
-	nodejs \
-	npm \
 	openssl \
 	p7zip \
 	python3 \
@@ -64,8 +62,8 @@ RUN \
 	/ && \
  echo "**** cleanup ****" && \
  rm -rf \
-	/tmp/* && \
- apk del nodejs npm
+	/tmp/*
+
 
 # copy local files
 COPY root/ /

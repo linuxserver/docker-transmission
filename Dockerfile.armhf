@@ -13,8 +13,6 @@ RUN \
 	curl \
 	findutils \
 	jq \
-	nodejs \
-	npm \
 	openssl \
 	p7zip \
 	python3 \
