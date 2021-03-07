@@ -18,10 +18,12 @@ RUN \
 	python3 \
 	rsync \
 	tar \
+	unrar \
+	unzip \
 	transmission-cli \
 	transmission-daemon \
-	unrar \
-	unzip && \
+	nodejs \
+	npm && \
  echo "**** install transmission ****" && \
  if [ -z ${TRANSMISSION_VERSION+x} ]; then \
 	TRANSMISSION_VERSION=$(curl -sL "http://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz" | tar -xz -C /tmp \
@@ -32,11 +34,11 @@ RUN \
 	transmission-daemon==${TRANSMISSION_VERSION} && \
  echo "**** install third party themes ****" && \
  curl -o \
-	/tmp/combustion.zip -L \
-	"https://github.com/Secretmapper/combustion/archive/release.zip" && \
- unzip \
-	/tmp/combustion.zip -d \
-	/ && \
+	/tmp/combustion.tar.gz -L \
+	"https://github.com/Secretmapper/combustion/archive/release.tar.gz" && \
+ tar xf \
+	/tmp/combustion.tar.gz -C \
+	/ --strip-components=1 && \
  mkdir -p /tmp/twctemp && \
  TWCVERSION=$(curl -sX GET "https://api.github.com/repos/ronggang/transmission-web-control/releases/latest" \
 	| awk '/tag_name/{print $4;exit}' FS='[""]') && \
@@ -54,9 +56,23 @@ RUN \
  tar xf \
 	/tmp/kettu.tar.gz -C \
 	/kettu --strip-components=1 && \
+ mkdir -p /flood-for-transmission && \
+ mkdir -p /tmp/flood-for-transmission && \
+ curl -o \
+	/tmp/flood-for-transmission.tar.gz -L \
+	"https://github.com/johman10/flood-for-transmission/archive/master.tar.gz" && \
+ tar xf \
+	/tmp/flood-for-transmission.tar.gz -C \
+	/tmp/flood-for-transmission --strip-components=1 && \
+ cd /tmp/flood-for-transmission && \
+ npm ci && \
+ npm run build && \
+ cd / && \
+ mv /tmp/flood-for-transmission/public/** /flood-for-transmission && \
  echo "**** cleanup ****" && \
  rm -rf \
-	/tmp/*
+	/tmp/* && \
+ apk del nodejs npm
 
 
 # copy local files
