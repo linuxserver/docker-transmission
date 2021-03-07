@@ -40,7 +40,7 @@ cap_add_param: false
 # optional container parameters
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "TRANSMISSION_WEB_HOME", env_value: "/combustion-release/", desc: "Specify an alternative UI options are `/combustion-release/`, `/transmission-web-control/`, and `/kettu/` ." }
+  - { env_var: "TRANSMISSION_WEB_HOME", env_value: "/combustion-release/", desc: "Specify an alternative UI options are [`/combustion-release/`](https://github.com/Secretmapper/combustion), [`/transmission-web-control/`](https://github.com/ronggang/transmission-web-control), [`/kettu/`](https://github.com/endor/kettu) and [`/flood-for-transmission/`](https://github.com/johman10/flood-for-transmission)." }
   - { env_var: "USER", env_value: "username", desc: "Specify an optional username for the interface" }
   - { env_var: "PASS", env_value: "password", desc: "Specify an optional password for the interface" }
   - { env_var: "WHITELIST", env_value: "iplist", desc: "Specify an optional list of comma separated host whitelist"}
@@ -68,7 +68,7 @@ app_setup_block: |
   The automatic update is a shell script that downloads a blocklist from the url stored in the settings.json, gunzips it, and restarts the transmission daemon.
 
   The automatic update will run once a day at 3am local server time.
-  
+
   ## Using whitelist
 
   Use `WHITELIST` to enable an ip of whitelist. Both notation `rpc-whitelist` and `rpc-host-whitelist` are supported. When `WHITELIST` is empty the whitelist is disabled.
@@ -76,6 +76,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "06.03.21:", desc: "Add Flood for Transmission as a UI option" }
   - { date: "23.01.21:", desc: "Rebasing to alpine 3.13." }
   - { date: "02.11.20:", desc: "Add ca-certificates package to allow connecting to https trackers." }
   - { date: "02.06.20:", desc: "Rebase to alpine 3.12, update to transmission 3.0, remove python2, add python3." }
