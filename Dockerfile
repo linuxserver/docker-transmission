@@ -13,17 +13,17 @@ RUN \
 	curl \
 	findutils \
 	jq \
+	nodejs \
+	npm \
 	openssl \
 	p7zip \
 	python3 \
 	rsync \
 	tar \
-	unrar \
-	unzip \
 	transmission-cli \
 	transmission-daemon \
-	nodejs \
-	npm && \
+	unrar \
+	unzip && \
  echo "**** install transmission ****" && \
  if [ -z ${TRANSMISSION_VERSION+x} ]; then \
 	TRANSMISSION_VERSION=$(curl -sL "http://dl-cdn.alpinelinux.org/alpine/v3.13/community/x86_64/APKINDEX.tar.gz" | tar -xz -C /tmp \
