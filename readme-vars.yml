@@ -43,7 +43,8 @@ opt_param_env_vars:
   - { env_var: "TRANSMISSION_WEB_HOME", env_value: "/combustion-release/", desc: "Specify an alternative UI options are `/combustion-release/`, `/transmission-web-control/`, and `/kettu/` ." }
   - { env_var: "USER", env_value: "username", desc: "Specify an optional username for the interface" }
   - { env_var: "PASS", env_value: "password", desc: "Specify an optional password for the interface" }
-  - { env_var: "WHITELIST", env_value: "iplist", desc: "Specify an optional list of comma separated host whitelist"}
+  - { env_var: "WHITELIST", env_value: "iplist", desc: "Specify an optional list of comma separated ip whitelist. Fill rpc-whitelist setting."}
+  - { env_var: "HOST_WHITELIST", env_value: "dnsnane list", desc: "Specify an optional list of comma separated dns name whitelist. Fill rpc-host-whitelist setting."}
 opt_param_usage_include_vols: false
 opt_param_usage_include_ports: false
 opt_param_device_map: false
@@ -71,7 +72,9 @@ app_setup_block: |
   
   ## Using whitelist
 
-  Use `WHITELIST` to enable an ip of whitelist. Both notation `rpc-whitelist` and `rpc-host-whitelist` are supported. When `WHITELIST` is empty the whitelist is disabled.
+  Use `WHITELIST` to enable a list of ip as whitelist. This enable support for `rpc-whitelist`. When `WHITELIST` is empty support for whitelist is disabled.
+
+  Use `HOST_WHITELIST` to enable an list of dns names as host-whitelist. This enable support for `rpc-host-whitelist`. When `HOST_WHITELIST` is empty support for host-whitelist is disabled.
 
 # changelog
 changelogs:
