@@ -16,14 +16,14 @@ libacl-2.2.53-r0
 libattr-2.4.48-r0
 libbz2-1.0.8-r1
 libc-utils-0.7.2-r3
-libcrypto1.1-1.1.1j-r0
+libcrypto1.1-1.1.1k-r0
 libcurl-7.74.0-r1
 libevent-2.1.12-r1
 libffi-3.3-r2
 libgcc-10.2.1_pre1-r3
 libintl-0.20.2-r2
 libproc-3.3.16-r0
-libssl1.1-1.1.1j-r0
+libssl1.1-1.1.1k-r0
 libstdc++-10.2.1_pre1-r3
 libtls-standalone-2.9.1-r1
 linux-pam-1.5.1-r0
@@ -33,7 +33,7 @@ ncurses-libs-6.2_p20210109-r0
 ncurses-terminfo-base-6.2_p20210109-r0
 nghttp2-libs-1.42.0-r1
 oniguruma-6.9.6-r0
-openssl-1.1.1j-r0
+openssl-1.1.1k-r0
 p7zip-16.02-r4
 popt-1.18-r0
 procps-3.3.16-r0
