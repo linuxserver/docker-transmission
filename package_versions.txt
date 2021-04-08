@@ -1,9 +1,9 @@
 alpine-baselayout-3.2.0-r8
 alpine-keys-2.2-r0
-apk-tools-2.12.1-r0
+apk-tools-2.12.4-r2
 bash-5.1.0-r0
 brotli-libs-1.0.9-r3
-busybox-1.32.1-r3
+busybox-1.32.1-r5
 ca-certificates-20191127-r5
 ca-certificates-bundle-20191127-r5
 coreutils-8.32-r2
@@ -45,8 +45,8 @@ scanelf-1.2.8-r0
 shadow-4.8.1-r0
 skalibs-2.10.0.0-r0
 sqlite-libs-3.34.1-r0
-ssl_client-1.32.1-r3
-tar-1.33-r1
+ssl_client-1.32.1-r5
+tar-1.34-r0
 transmission-cli-3.00-r2
 transmission-daemon-3.00-r2
 tzdata-2021a-r0
