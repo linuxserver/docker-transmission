@@ -54,6 +54,12 @@ RUN \
  tar xf \
 	/tmp/kettu.tar.gz -C \
 	/kettu --strip-components=1 && \
+ curl -o \
+	/tmp/flood-for-transmission.tar.gz -L \
+	"https://github.com/johman10/flood-for-transmission/releases/download/latest/flood-for-transmission.tar.gz" && \
+ tar xf \
+	/tmp/flood-for-transmission.tar.gz -C \
+	/ && \
  echo "**** cleanup ****" && \
  rm -rf \
 	/tmp/*
