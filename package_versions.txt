@@ -37,7 +37,7 @@ openssl-1.1.1k-r0
 p7zip-16.02-r4
 popt-1.18-r0
 procps-3.3.16-r0
-python3-3.8.8-r0
+python3-3.8.10-r0
 readline-8.1.0-r0
 rsync-3.2.3-r1
 s6-ipcserver-2.10.0.0-r0
