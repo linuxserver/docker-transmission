@@ -56,4 +56,4 @@ utmps-0.1.0.0-r0
 xz-5.2.5-r0
 xz-libs-5.2.5-r0
 zlib-1.2.11-r3
-zstd-libs-1.4.5-r3
+zstd-libs-1.4.9-r0
