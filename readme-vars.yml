@@ -79,6 +79,7 @@ app_setup_block: |
 # changelog
 changelogs:
 
+  - { date: "09.07.21:", desc: "Wait for the transmission-daemon termination after a caught sigterm" }
   - { date: "06.03.21:", desc: "Add Flood for Transmission as a UI option" }
   - { date: "23.01.21:", desc: "Rebasing to alpine 3.13." }
   - { date: "02.11.20:", desc: "Add ca-certificates package to allow connecting to https trackers." }
