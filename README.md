@@ -266,6 +266,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **09.07.21:** - Wait for the transmission-daemon termination after a caught sigterm
 * **06.03.21:** - Add Flood for Transmission as a UI option
 * **23.01.21:** - Rebasing to alpine 3.13.
 * **02.11.20:** - Add ca-certificates package to allow connecting to https trackers.
