@@ -2,11 +2,15 @@
 
 _term() {
   echo "Caught SIGTERM signal!"
+  echo "Tell the transmission session to shut down."
+  pid=$(pidof transmission-daemon)
   if [ ! -z "$USER" ] && [ ! -z "$PASS" ]; then
     /usr/bin/transmission-remote -n "$USER":"$PASS" --exit
   else
     /usr/bin/transmission-remote --exit
   fi
+  # terminate when the transmission-daemon process dies
+  tail --pid=${pid} -f /dev/null
 }
 
         trap _term SIGTERM
