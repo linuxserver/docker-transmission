@@ -1,6 +1,6 @@
 alpine-baselayout-3.2.0-r8
 alpine-keys-2.2-r0
-apk-tools-2.12.5-r0
+apk-tools-2.12.6-r0
 bash-5.1.0-r0
 brotli-libs-1.0.9-r3
 busybox-1.32.1-r6
@@ -39,7 +39,7 @@ popt-1.18-r0
 procps-3.3.16-r0
 python3-3.8.10-r0
 readline-8.1.0-r0
-rsync-3.2.3-r1
+rsync-3.2.3-r4
 s6-ipcserver-2.10.0.0-r0
 scanelf-1.2.8-r0
 shadow-4.8.1-r0
