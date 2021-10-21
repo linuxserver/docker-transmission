@@ -1,5 +1,5 @@
 alpine-baselayout-3.2.0-r8
-alpine-keys-2.2-r0
+alpine-keys-2.4-r0
 apk-tools-2.12.7-r0
 bash-5.1.0-r0
 brotli-libs-1.0.9-r3
@@ -49,7 +49,7 @@ ssl_client-1.32.1-r6
 tar-1.34-r0
 transmission-cli-3.00-r2
 transmission-daemon-3.00-r2
-tzdata-2021c-r0
+tzdata-2021d-r0
 unrar-6.0.3-r0
 unzip-6.0-r9
 utmps-0.1.0.0-r0
