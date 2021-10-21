@@ -34,6 +34,15 @@ else
 	sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$HOST_WHITELIST\"," /config/settings.json
 fi
 
+if [ ! -z "${PEERPORT}" ]; then
+    sed -i "/\"peer-port\"/c\    \"peer-port\": ${PEERPORT}," /config/settings.json
+    sed -i '/peer-port-random-on-start/c\     "peer-port-random-on-start": false,' /config/settings.json
+fi
+
+if [ ! -z "${WEBUI}" ]; then
+    sed -i "/\"rpc-port\"/c\    \"rpc-port\": ${WEBUI}," /config/settings.json
+fi
+
 
 # permissions
 chown abc:abc \
