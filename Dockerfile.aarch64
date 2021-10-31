@@ -47,6 +47,11 @@ RUN \
 	/tmp/twc.tar.gz -C \
 	/tmp/twctemp --strip-components=1 && \
  mv /tmp/twctemp/src /transmission-web-control && \
+ # Enables the original UI button in transmission-web-control
+ ln -s /usr/share/transmission/web/style /transmission-web-control && \
+ ln -s /usr/share/transmission/web/images /transmission-web-control && \
+ ln -s /usr/share/transmission/web/javascript /transmission-web-control && \
+ ln -s /usr/share/transmission/web/index.html /transmission-web-control/index.original.html && \
  mkdir -p /kettu && \
  curl -o \
 	/tmp/kettu.tar.gz -L \
