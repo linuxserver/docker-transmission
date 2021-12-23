@@ -157,7 +157,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PASS=password` | Specify an optional password for the interface |
 | `-e WHITELIST=iplist` | Specify an optional list of comma separated ip whitelist. Fill rpc-whitelist setting. |
 | `-e HOST_WHITELIST=dnsnane list` | Specify an optional list of comma separated dns name whitelist. Fill rpc-host-whitelist setting. |
-| `-e PEERPORT=51413` | Specify an optional alternative port for Tranmission to listen for TCP/UDP connections on.. Fill peer-port and disables peer-port-random-on-start settings. |
+| `-e PEERPORT=51413` | Specify an optional alternative port for Tranmission to listen for TCP/UDP connections on. Fill peer-port and disables peer-port-random-on-start settings. |
 | `-v /config` | Where transmission should store config files and logs. |
 | `-v /downloads` | Local path for downloads. |
 | `-v /watch` | Watch folder for torrent files. |
