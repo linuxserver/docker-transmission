@@ -275,8 +275,9 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
-* **09.07.21:** - Wait for the transmission-daemon termination after a caught sigterm
-* **06.03.21:** - Add Flood for Transmission as a UI option
+* **21.02.22:** - Build unrar from source, rebase to Alpine 3.15, add symlinks neeeded for TWC. Credit @alexbelgium
+* **09.07.21:** - Wait for the transmission-daemon termination after a caught sigterm.
+* **06.03.21:** - Add Flood for Transmission as a UI option.
 * **23.01.21:** - Rebasing to alpine 3.13.
 * **02.11.20:** - Add ca-certificates package to allow connecting to https trackers.
 * **02.06.20:** - Rebase to alpine 3.12, update to transmission 3.0, remove python2, add python3.
