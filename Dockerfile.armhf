@@ -49,7 +49,8 @@ RUN \
     "https://github.com/6c65726f79/Transmissionic/releases/download/${TRANSMISSIONIC_VERSION}/Transmissionic-webui-${TRANSMISSIONIC_VERSION}.zip" && \
   unzip \
     /tmp/transmissionic.zip -d \
-    / && \
+    /tmp && \
+  mv /tmp/web /transmissionic && \
   curl -o \
     /tmp/combustion.zip -L \
     "https://github.com/Secretmapper/combustion/archive/release.zip" && \
