@@ -108,11 +108,11 @@ services:
       - PASS=password #optional
       - WHITELIST=iplist #optional
       - PEERPORT=peerport #optional
-      - HOST_WHITELIST=dnsnane list #optional
+      - HOST_WHITELIST=dnsname list #optional
     volumes:
-      - <path to data>:/config
-      - <path to downloads>:/downloads
-      - <path to watch folder>:/watch
+      - /path/to/data:/config
+      - /path/to/downloads:/downloads
+      - /path/to/watch/folder:/watch
     ports:
       - 9091:9091
       - 51413:51413
@@ -133,13 +133,13 @@ docker run -d \
   -e PASS=password `#optional` \
   -e WHITELIST=iplist `#optional` \
   -e PEERPORT=peerport `#optional` \
-  -e HOST_WHITELIST=dnsnane list `#optional` \
+  -e HOST_WHITELIST=dnsname list `#optional` \
   -p 9091:9091 \
   -p 51413:51413 \
   -p 51413:51413/udp \
-  -v <path to data>:/config \
-  -v <path to downloads>:/downloads \
-  -v <path to watch folder>:/watch \
+  -v /path/to/data:/config \
+  -v /path/to/downloads:/downloads \
+  -v /path/to/watch/folder:/watch \
   --restart unless-stopped \
   lscr.io/linuxserver/transmission
 ```
@@ -156,12 +156,12 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
-| `-e TRANSMISSION_WEB_HOME=/combustion-release/` | Specify an alternative UI options are [`/combustion-release/`](https://github.com/Secretmapper/combustion), [`/transmission-web-control/`](https://github.com/ronggang/transmission-web-control), [`/kettu/`](https://github.com/endor/kettu) and [`/flood-for-transmission/`](https://github.com/johman10/flood-for-transmission). |
+| `-e TRANSMISSION_WEB_HOME=/combustion-release/` | Specify an alternative UI options are [`/combustion-release/`](https://github.com/Secretmapper/combustion), [`/transmission-web-control/`](https://github.com/ronggang/transmission-web-control), [`/kettu/`](https://github.com/endor/kettu), [`/flood-for-transmission/`](https://github.com/johman10/flood-for-transmission), and [`/transmissionic/`](https://github.com/6c65726f79/Transmissionic). |
 | `-e USER=username` | Specify an optional username for the interface |
 | `-e PASS=password` | Specify an optional password for the interface |
-| `-e WHITELIST=iplist` | Specify an optional list of comma separated ip whitelist. Fill rpc-whitelist setting. |
-| `-e PEERPORT=peerport` | Specify an optional port for torrent TCP/UDP connections. Fill peer-port setting. |
-| `-e HOST_WHITELIST=dnsnane list` | Specify an optional list of comma separated dns name whitelist. Fill rpc-host-whitelist setting. |
+| `-e WHITELIST=iplist` | Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting. |
+| `-e PEERPORT=peerport` | Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting. |
+| `-e HOST_WHITELIST=dnsname list` | Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting. |
 | `-v /config` | Where transmission should store config files and logs. |
 | `-v /downloads` | Local path for downloads. |
 | `-v /watch` | Watch folder for torrent files. |
@@ -275,6 +275,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **03.04.22:** - Add Transmissionic as a UI option.
 * **21.02.22:** - Build unrar from source, rebase to Alpine 3.15, add symlinks neeeded for TWC. Credit @alexbelgium
 * **09.07.21:** - Wait for the transmission-daemon termination after a caught sigterm.
 * **06.03.21:** - Add Flood for Transmission as a UI option.
@@ -300,7 +301,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 * **25.07.17:** - Add rsync package.
 * **27.05.17:** - Rebase to alpine linux 3.6.
 * **06.02.17:** - Rebase to alpine linux 3.5.
-* **15.01.17:** - Add p7zip, tar , unrar and unzip packages.
+* **15.01.17:** - Add p7zip, tar, unrar, and unzip packages.
 * **16.10.16:** - Blocklist autoupdate with optional authentication.
 * **14.10.16:** - Add version layer informationE.
 * **23.09.16:** - Add information about securing the webui to README.
