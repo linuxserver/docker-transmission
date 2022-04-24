@@ -1,49 +1,37 @@
 #!/usr/bin/with-contenv bash
 
-# make folders
-mkdir -p \
-	/downloads/{complete,incomplete} /watch
+# Copy settings
+cp -n /defaults/settings.json /config/settings.json
+SETTINGS=$(< /config/settings.json)
+DEFAULTS=$(< /defaults/settings.json)
 
-# copy config
-[[ ! -f /config/settings.json ]] && cp \
-	/defaults/settings.json /config/settings.json
+# Set directories
+SETTINGS=$(jq --arg key "download-dir" --argjson defaults "$DEFAULTS" -r '.[$key]=([.[$key], $defaults[$key]] | map(select(. | length > 0))[0])' <<< $SETTINGS)
+SETTINGS=$(jq --arg key "incomplete-dir" --argjson defaults "$DEFAULTS" -r '.[$key]=([.[$key], $defaults[$key]] | map(select(. | length > 0))[0])' <<< $SETTINGS)
+SETTINGS=$(jq --arg key "watch-dir" --argjson defaults "$DEFAULTS" -r '.[$key]=([.[$key], $defaults[$key]] | map(select(. | length > 0))[0])' <<< $SETTINGS)
 
-if [ ! -z "$USER" ] && [ ! -z "$PASS" ]; then
-	sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": true,' /config/settings.json
-	sed -i "/rpc-username/c\    \"rpc-username\": \"$USER\"," /config/settings.json
-	sed -i "/rpc-password/c\    \"rpc-password\": \"$PASS\"," /config/settings.json
-else
-	sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": false,' /config/settings.json
-	sed -i "/rpc-username/c\    \"rpc-username\": \"$USER\"," /config/settings.json
-	sed -i "/rpc-password/c\    \"rpc-password\": \"$PASS\"," /config/settings.json
-fi
+# Set authentication
+SETTINGS=$(jq --arg value "$USER" -r '."rpc-username"=$value' <<< $SETTINGS)
+SETTINGS=$(jq --arg value "$PASS" -r '."rpc-password"=$value' <<< $SETTINGS)
+SETTINGS=$(jq -r '."rpc-authentication-required"=((."rpc-username" | length > 0) and (."rpc-password" | length > 0))' <<< $SETTINGS)
 
-if [ ! -z "$WHITELIST" ]; then
-	sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": true,' /config/settings.json
-	sed -i "/\"rpc-whitelist\"/c\    \"rpc-whitelist\": \"$WHITELIST\"," /config/settings.json
-else
-	sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": false,' /config/settings.json
-	sed -i "/\"rpc-whitelist\"/c\    \"rpc-whitelist\": \"$WHITELIST\"," /config/settings.json
-fi
+# Set whitelist
+SETTINGS=$(jq --arg value "$WHITELIST" -r '."rpc-whitelist"=$value' <<< $SETTINGS)
+SETTINGS=$(jq -r '."rpc-whitelist-enabled"=(."rpc-whitelist" | length > 0)' <<< $SETTINGS)
 
-if [ ! -z "$HOST_WHITELIST" ]; then
-	sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": true,' /config/settings.json
-	sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$HOST_WHITELIST\"," /config/settings.json
-else
-	sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": false,' /config/settings.json
-	sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$HOST_WHITELIST\"," /config/settings.json
-fi
+# Set host whitelist
+SETTINGS=$(jq --arg value "$HOST_WHITELIST" -r '."rpc-host-whitelist"=$value' <<< $SETTINGS)
+SETTINGS=$(jq -r '."rpc-host-whitelist-enabled"=(."rpc-host-whitelist" | length > 0)' <<< $SETTINGS)
 
-if [ ! -z "${PEERPORT}" ]; then
-    sed -i "/\"peer-port\"/c\    \"peer-port\": ${PEERPORT}," /config/settings.json
-    sed -i '/peer-port-random-on-start/c\     "peer-port-random-on-start": false,' /config/settings.json
-fi
+# Set peer port
+SETTINGS=$(jq --arg value "$PEERPORT" -r '."peer-port"=([$value, ."peer-port"] | map(select(. | length > 0))[0] | tonumber)' <<< $SETTINGS)
+SETTINGS=$(jq -r '."peer-port-random-on-start"=(."peer-port" | length == 0)' <<< $SETTINGS)
 
+# Creates directories
+install -o abc -g abc -d "$(jq -r '."download-dir"' <<< $SETTINGS)"
+install -o abc -g abc -d "$(jq -r '."incomplete-dir"' <<< $SETTINGS)"
+install -o abc -g abc -d "$(jq -r '."watch-dir"' <<< $SETTINGS)"
 
-# permissions
-chown abc:abc \
-	/config/settings.json \
-	/downloads \
-	/downloads/complete \
-	/downloads/incomplete \
-	/watch
+# Save configuration
+echo $SETTINGS > /config/settings.json
+chown abc:abc config/settings.json
