@@ -1,9 +1,14 @@
+---
+name: Bug report
+about: Create a report to help us improve
+
+---
 [linuxserverurl]: https://linuxserver.io
 [![linuxserver.io](https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/linuxserver_medium.png)][linuxserverurl]
 
-If you are new to Docker or this application our issue tracker is **ONLY** used for reporting bugs or requesting features. Please use [our discord server](https://discord.gg/YWrKVTn) for general support.
+<!--- If you are new to Docker or this application our issue tracker is **ONLY** used for reporting bugs or requesting features. Please use [our discord server](https://discord.gg/YWrKVTn) for general support. --->
 
-<!--- Provide a general summary of the issue in the Title above -->
+<!--- Provide a general summary of the bug in the Title above -->
 
 ------------------------------
 
@@ -22,9 +27,10 @@ If you are new to Docker or this application our issue tracker is **ONLY** used 
 4.
 
 ## Environment
-**OS:**      
-**CPU architecture:** x86_64/arm32/arm64      
-**How docker service was installed:**      
+**OS:**
+**CPU architecture:** x86_64/arm32/arm64
+**How docker service was installed:**
+<!--- ie. from the official docker repo, from the distro repo, nas OS provided, etc. -->
 <!--- Providing context helps us come up with a solution that is most useful in the real world -->
 
 ## Command used to create docker container (run/create/compose/screenshot)

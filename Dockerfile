@@ -1,8 +1,9 @@
-FROM lsiobase/alpine:3.11
+FROM ghcr.io/linuxserver/baseimage-alpine:3.15
 
-# set version label
+ARG UNRAR_VERSION=6.1.4
 ARG BUILD_DATE
 ARG VERSION
+ARG TRANSMISSION_VERSION
 LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
 LABEL maintainer="aptalca"
 
@@ -55,5 +56,5 @@ RUN \
 COPY root/ /
 
 # ports and volumes
-EXPOSE 9091 51413
-VOLUME /config /downloads /watch
+EXPOSE 9091 51413/tcp 51413/udp
+VOLUME /config

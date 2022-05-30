@@ -2,8 +2,7 @@
 
 # jenkins variables
 project_name: docker-transmission
-external_type: na
-custom_version_command: "curl -s http://dl-cdn.alpinelinux.org/alpine/v3.11/main/x86_64/ |awk -F '(transmission-cli-|.apk)' '/transmission-cli.*.apk/ {print $2}'"
+external_type: alpine_repo
 release_type: stable
 release_tag: latest
 ls_branch: master
@@ -16,6 +15,9 @@ repo_vars:
   - DEV_DOCKERHUB_IMAGE = 'lsiodev/transmission'
   - PR_DOCKERHUB_IMAGE = 'lspipepr/transmission'
   - DIST_IMAGE = 'alpine'
+  - DIST_TAG = '3.15'
+  - DIST_REPO = 'http://nl.alpinelinux.org/alpine/v3.15/community/'
+  - DIST_REPO_PACKAGES = 'transmission-daemon'
   - MULTIARCH='true'
   - CI='true'
   - CI_WEB='true'
