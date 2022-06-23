@@ -39,6 +39,14 @@ if [ ! -z "${PEERPORT}" ]; then
     sed -i '/peer-port-random-on-start/c\     "peer-port-random-on-start": false,' /config/settings.json
 fi
 
+if [ ! -z "$DOWNLOAD_DIR" ]; then
+	sed -i "/\"download-dir\"/c\    \"download-dir\": \"$DOWNLOAD_DIR\"," /config/settings.json
+fi
+
+if [ ! -z "$INCOMPLETE_DIR" ]; then
+    sed -i '/incomplete-dir-enabled/c\    "incomplete-dir-enabled": true,' /config/settings.json
+	sed -i "/\"incomplete-dir\"/c\    \"incomplete-dir\": \"$INCOMPLETE_DIR\"," /config/settings.json
+fi
 
 # permissions
 chown abc:abc \
