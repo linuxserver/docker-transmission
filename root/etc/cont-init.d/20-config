@@ -40,11 +40,15 @@ if [ ! -z "${PEERPORT}" ]; then
 fi
 
 if [ ! -z "$DOWNLOAD_DIR" ]; then
+	mkdir -p $DOWNLOAD_DIR
+	chown -R abc:abc $DOWNLOAD_DIR
 	sed -i "/\"download-dir\"/c\    \"download-dir\": \"$DOWNLOAD_DIR\"," /config/settings.json
 fi
 
 if [ ! -z "$INCOMPLETE_DIR" ]; then
-    sed -i '/incomplete-dir-enabled/c\    "incomplete-dir-enabled": true,' /config/settings.json
+    mkdir -p $INCOMPLETE_DIR
+	chown -R abc:abc $INCOMPLETE_DIR
+	sed -i '/incomplete-dir-enabled/c\    "incomplete-dir-enabled": true,' /config/settings.json
 	sed -i "/\"incomplete-dir\"/c\    \"incomplete-dir\": \"$INCOMPLETE_DIR\"," /config/settings.json
 fi
 
