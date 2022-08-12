@@ -83,7 +83,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
-
+  - { date: "12.08.22:", desc: "Bump unrar to 6.1.7." }
   - { date: "03.04.22:", desc: "Add Transmissionic as a UI option." }
   - { date: "21.02.22:", desc: "Build unrar from source, rebase to Alpine 3.15, add symlinks neeeded for TWC. Credit @alexbelgium" }
   - { date: "09.07.21:", desc: "Wait for the transmission-daemon termination after a caught sigterm." }
