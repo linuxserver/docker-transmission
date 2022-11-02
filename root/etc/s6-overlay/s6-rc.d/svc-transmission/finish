@@ -1,0 +1,11 @@
+#!/usr/bin/with-contenv bash
+
+pid=$(pidof transmission-daemon)
+
+if [[ -n "$USER" ]] && [[ -n "$PASS" ]]; then
+    /usr/bin/transmission-remote -n "$USER":"$PASS" --exit
+else
+    /usr/bin/transmission-remote --exit
+fi
+
+tail --pid=${pid} -f /dev/null

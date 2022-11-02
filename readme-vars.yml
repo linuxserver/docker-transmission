@@ -83,6 +83,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "02.11.22:", desc: "Rebase to Alpine 3.16, migrate to s6v3." }
   - { date: "12.08.22:", desc: "Bump unrar to 6.1.7." }
   - { date: "03.04.22:", desc: "Add Transmissionic as a UI option." }
   - { date: "21.02.22:", desc: "Build unrar from source, rebase to Alpine 3.15, add symlinks neeeded for TWC. Credit @alexbelgium" }

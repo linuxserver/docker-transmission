@@ -275,6 +275,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **02.11.22:** - Rebase to Alpine 3.16, migrate to s6v3.
 * **12.08.22:** - Bump unrar to 6.1.7.
 * **03.04.22:** - Add Transmissionic as a UI option.
 * **21.02.22:** - Build unrar from source, rebase to Alpine 3.15, add symlinks neeeded for TWC. Credit @alexbelgium
