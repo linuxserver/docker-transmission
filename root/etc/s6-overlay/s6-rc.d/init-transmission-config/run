@@ -45,7 +45,10 @@ chown abc:abc \
     /config/settings.json \
 
 if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
-    chown abc:abc /downloads
+    chown abc:abc \
+        /downloads \
+        /downloads/complete \
+        /downloads/incomplete
 fi
 
 if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then
