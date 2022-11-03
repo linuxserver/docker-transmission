@@ -43,7 +43,11 @@ fi
 # permissions
 chown abc:abc \
     /config/settings.json \
-    /downloads \
-    /downloads/complete \
-    /downloads/incomplete \
-    /watch
+
+if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
+    chown abc:abc /downloads
+fi
+
+if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then
+    chown abc:abc /watch
+fi
