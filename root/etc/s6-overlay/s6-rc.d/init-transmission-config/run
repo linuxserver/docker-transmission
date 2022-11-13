@@ -41,16 +41,16 @@ if [[ -n "${PEERPORT}" ]]; then
 fi
 
 # permissions
-chown abc:abc \
+lsiown abc:abc \
     /config/settings.json \
 
 if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
-    chown abc:abc \
+    lsiown abc:abc \
         /downloads \
         /downloads/complete \
         /downloads/incomplete
 fi
 
 if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then
-    chown abc:abc /watch
+    lsiown abc:abc /watch
 fi

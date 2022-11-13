@@ -15,18 +15,9 @@ RUN \
     gcc && \
   echo "**** install packages ****" && \
   apk add --no-cache \
-    ca-certificates \
-    findutils \
     openssl \
     p7zip \
     python3 \
-    rsync \
-    tar \
-    transmission-cli \
-    transmission-daemon \
-    unzip && \
-  echo "**** install transmission ****" && \
-  apk add --no-cache \
     transmission-cli \
     transmission-daemon && \
   echo "**** install unrar from source ****" && \
