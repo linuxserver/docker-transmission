@@ -45,10 +45,15 @@ lsiown abc:abc \
     /config/settings.json \
 
 if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
-    lsiown abc:abc \
-        /downloads \
-        /downloads/complete \
-        /downloads/incomplete
+    lsiown abc:abc /downloads
+fi
+
+if [[ "$(stat -c '%U' /downloads/complete)" != "abc" ]]; then
+    lsiown abc:abc /downloads/complete
+fi
+
+if [[ "$(stat -c '%U' /downloads/incomplete)" != "abc" ]]; then
+    lsiown abc:abc /downloads/incomplete
 fi
 
 if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then

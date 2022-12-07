@@ -1,3 +1,5 @@
+# syntax=docker/dockerfile:1
+
 FROM ghcr.io/linuxserver/baseimage-alpine:3.16
 
 ARG UNRAR_VERSION=6.1.7
