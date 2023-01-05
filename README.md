@@ -275,6 +275,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **05.01.23:** - Rebase to Alpine 3.17, restore GNU findutils package.
 * **02.11.22:** - Rebase to Alpine 3.16, migrate to s6v3.
 * **12.08.22:** - Bump unrar to 6.1.7.
 * **03.04.22:** - Add Transmissionic as a UI option.
