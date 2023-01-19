@@ -10,7 +10,7 @@ busybox-binsh-1.35.0-r29
 ca-certificates-20220614-r4
 ca-certificates-bundle-20220614-r4
 coreutils-9.1-r0
-curl-7.87.0-r0
+curl-7.87.0-r1
 findutils-4.9.0-r2
 gdbm-1.23-r0
 jq-1.6-r2
@@ -19,7 +19,7 @@ libattr-2.5.1-r2
 libbz2-1.0.8-r4
 libc-utils-0.7.2-r3
 libcrypto3-3.0.7-r2
-libcurl-7.87.0-r0
+libcurl-7.87.0-r1
 libevent-2.1.12-r5
 libexpat-2.5.0-r0
 libffi-3.4.4-r0
