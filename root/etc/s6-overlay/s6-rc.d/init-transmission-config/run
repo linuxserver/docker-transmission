@@ -41,6 +41,10 @@ if [[ -n "${PEERPORT}" ]]; then
     sed -i '/peer-port-random-on-start/c\     "peer-port-random-on-start": false,' /config/settings.json
 fi
 
+# Handle old theme locations
+mkdir -p {/transmissionic,/combustion-release,/flood-for-transmission,/kettu,/transmission-web-control,/transmissionic}
+echo /transmissionic /combustion-release /flood-for-transmission /kettu /transmission-web-control | xargs -n1 ln -s /defaults/index.html
+
 # permissions
 lsiown abc:abc \
     /config/settings.json \

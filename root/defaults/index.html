@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <title>Upgrade Required!</title>
+        <style>
+        body{
+            font-family: Helvetica, Arial, sans-serif;
+        }
+        .message{
+            width:440px;
+            padding:20px 40px;
+            margin:0 auto;
+            background-color:#f9f9f9;
+            border:1px solid #ddd;
+            color: #1e3d62;
+        }
+        center{
+            margin:40px 0;
+        }
+        h1{
+            font-size: 18px;
+            line-height: 26px;
+        }
+        p{
+            font-size: 12px;
+        }
+        a{
+            color: rgb(207, 48, 139);
+        }
+        </style>
+    </head>
+    <body>
+        <div class="message">
+            <h1>Changes Required!</h1>
+            <p>This image no longer bundles 3rd party Transmission UI packages.</p>
+            <p>You will need to either remove the <strong>TRANSMISSION_WEB_HOME</strong> environment variable from your container or source a UI package yourself and update the path to match</p>
+            <p>We would advise you to use subfolders under <strong>/config</strong> to store your UI packages so that they survive upgrades</p>
+        </div>
+    </body>
+</html>
