@@ -40,7 +40,7 @@ cap_add_param: false
 # optional container parameters
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "TRANSMISSION_WEB_HOME", env_value: "/combustion-release/", desc: "Specify an alternative UI options are [`/combustion-release/`](https://github.com/Secretmapper/combustion), [`/transmission-web-control/`](https://github.com/ronggang/transmission-web-control), [`/kettu/`](https://github.com/endor/kettu), [`/flood-for-transmission/`](https://github.com/johman10/flood-for-transmission), and [`/transmissionic/`](https://github.com/6c65726f79/Transmissionic)." }
+  - { env_var: "TRANSMISSION_WEB_HOME", env_value: "", desc: "Specify the path to an alternative UI folder." }
   - { env_var: "USER", env_value: "username", desc: "Specify an optional username for the interface" }
   - { env_var: "PASS", env_value: "password", desc: "Specify an optional password for the interface" }
   - { env_var: "WHITELIST", env_value: "iplist", desc: "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."}
@@ -56,8 +56,6 @@ optional_block_1: false
 app_setup_block_enabled: true
 app_setup_block: |
   Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
-
-  If you choose to use transmission-web-control as your default UI, just note that the origional Web UI will not be available to you despite the button being present.
 
   ## Securing the webui with a username/password.
 
@@ -83,6 +81,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "08.02.23:", desc: "Rebase to Alpine Edge to get access to most up to date builds of Transmission. Remove bundled 3rd party UI packages." }
   - { date: "05.01.23:", desc: "Rebase to Alpine 3.17, restore GNU findutils package." }
   - { date: "02.11.22:", desc: "Rebase to Alpine 3.16, migrate to s6v3." }
   - { date: "12.08.22:", desc: "Bump unrar to 6.1.7." }

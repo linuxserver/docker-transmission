@@ -62,8 +62,6 @@ The architectures supported by this image are:
 
 Webui is on port 9091, the settings.json file in /config has extra settings not available in the webui. Stop the container before editing it or any changes won't be saved.
 
-If you choose to use transmission-web-control as your default UI, just note that the origional Web UI will not be available to you despite the button being present.
-
 ## Securing the webui with a username/password.
 
 Use the `USER` and `PASS` variables in docker run/create/compose to set authentication. Do not manually edit the `settings.json` to input user/pass, otherwise transmission cannot be stopped cleanly by the s6 supervisor.
@@ -103,7 +101,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Europe/London
-      - TRANSMISSION_WEB_HOME=/combustion-release/ #optional
+      - TRANSMISSION_WEB_HOME= #optional
       - USER=username #optional
       - PASS=password #optional
       - WHITELIST=iplist #optional
@@ -128,7 +126,7 @@ docker run -d \
   -e PUID=1000 \
   -e PGID=1000 \
   -e TZ=Europe/London \
-  -e TRANSMISSION_WEB_HOME=/combustion-release/ `#optional` \
+  -e TRANSMISSION_WEB_HOME= `#optional` \
   -e USER=username `#optional` \
   -e PASS=password `#optional` \
   -e WHITELIST=iplist `#optional` \
@@ -156,7 +154,7 @@ Container images are configured using parameters passed at runtime (such as thos
 | `-e PUID=1000` | for UserID - see below for explanation |
 | `-e PGID=1000` | for GroupID - see below for explanation |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London. |
-| `-e TRANSMISSION_WEB_HOME=/combustion-release/` | Specify an alternative UI options are [`/combustion-release/`](https://github.com/Secretmapper/combustion), [`/transmission-web-control/`](https://github.com/ronggang/transmission-web-control), [`/kettu/`](https://github.com/endor/kettu), [`/flood-for-transmission/`](https://github.com/johman10/flood-for-transmission), and [`/transmissionic/`](https://github.com/6c65726f79/Transmissionic). |
+| `-e TRANSMISSION_WEB_HOME=` | Specify the path to an alternative UI folder. |
 | `-e USER=username` | Specify an optional username for the interface |
 | `-e PASS=password` | Specify an optional password for the interface |
 | `-e WHITELIST=iplist` | Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting. |
@@ -275,6 +273,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **08.02.23:** - Rebase to Alpine Edge to get access to most up to date builds of Transmission. Remove bundled 3rd party UI packages.
 * **05.01.23:** - Rebase to Alpine 3.17, restore GNU findutils package.
 * **02.11.22:** - Rebase to Alpine 3.16, migrate to s6v3.
 * **12.08.22:** - Bump unrar to 6.1.7.
