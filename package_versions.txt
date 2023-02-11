@@ -46,8 +46,8 @@ shadow-4.13-r1
 skalibs-2.13.0.0-r0
 sqlite-libs-3.40.1-r0
 ssl_client-1.36.0-r3
-transmission-cli-4.0.0-r0
-transmission-daemon-4.0.0-r0
+transmission-cli-4.0.0-r4
+transmission-daemon-4.0.0-r4
 tzdata-2022g-r0
 utmps-libs-0.1.2.1-r0
 xz-5.4.1-r0
