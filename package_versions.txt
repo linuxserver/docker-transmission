@@ -33,8 +33,8 @@ miniupnpc-2.2.4-r0
 mpdecimal-2.5.1-r1
 musl-1.2.3-r4
 musl-utils-1.2.3-r4
-ncurses-libs-6.4_p20230128-r0
-ncurses-terminfo-base-6.4_p20230128-r0
+ncurses-libs-6.4_p20230211-r0
+ncurses-terminfo-base-6.4_p20230211-r0
 nghttp2-libs-1.51.0-r0
 oniguruma-6.9.8-r0
 p7zip-17.04-r3
@@ -46,8 +46,8 @@ shadow-4.13-r1
 skalibs-2.13.0.0-r0
 sqlite-libs-3.40.1-r0
 ssl_client-1.36.0-r3
-transmission-cli-4.0.0-r4
-transmission-daemon-4.0.0-r4
+transmission-cli-4.0.0-r5
+transmission-daemon-4.0.0-r5
 tzdata-2022g-r0
 utmps-libs-0.1.2.1-r0
 xz-5.4.1-r0
