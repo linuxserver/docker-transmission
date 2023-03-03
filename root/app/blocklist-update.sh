@@ -1,4 +1,5 @@
 #!/usr/bin/with-contenv bash
+# shellcheck shell=bash
 
 BLOCKLIST_ENABLED=$(jq -r '.["blocklist-enabled"]' /config/settings.json)
 

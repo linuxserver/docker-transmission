@@ -81,6 +81,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "02.03.23:", desc: "Add cron init to allow user customizable crontabs." }
   - { date: "08.02.23:", desc: "Rebase to Alpine Edge to get access to most up to date builds of Transmission. Remove bundled 3rd party UI packages." }
   - { date: "05.01.23:", desc: "Rebase to Alpine 3.17, restore GNU findutils package." }
   - { date: "02.11.22:", desc: "Rebase to Alpine 3.16, migrate to s6v3." }

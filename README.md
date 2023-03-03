@@ -274,6 +274,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **02.03.23:** - Add cron init to allow user customizable crontabs.
 * **08.02.23:** - Rebase to Alpine Edge to get access to most up to date builds of Transmission. Remove bundled 3rd party UI packages.
 * **05.01.23:** - Rebase to Alpine 3.17, restore GNU findutils package.
 * **02.11.22:** - Rebase to Alpine 3.16, migrate to s6v3.
