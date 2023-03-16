@@ -53,8 +53,8 @@ shadow                  4.13-r2                apk
 skalibs                 2.13.1.0-r0            apk     
 sqlite-libs             3.41.1-r0              apk     
 ssl_client              1.36.0-r5              apk     
-transmission-cli        4.0.1-r1               apk     
-transmission-daemon     4.0.1-r1               apk     
+transmission-cli        4.0.2-r2               apk     
+transmission-daemon     4.0.2-r2               apk     
 tzdata                  2022g-r0               apk     
 utmps-libs              0.1.2.1-r0             apk     
 xz-libs                 5.4.1-r0               apk     
