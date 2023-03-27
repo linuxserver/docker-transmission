@@ -3,4 +3,4 @@
 
 s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z localhost 9091" \
     s6-setuidgid abc /usr/bin/transmission-daemon \
-    -g /config -c /watch -f
+    -g /config -f
