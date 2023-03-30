@@ -10,7 +10,7 @@ busybox                 1.36.0-r5              apk
 busybox-binsh           1.36.0-r5              apk     
 ca-certificates         20230106-r0            apk     
 ca-certificates-bundle  20230106-r0            apk     
-coreutils               9.2-r0                 apk     
+coreutils               9.2-r1                 apk     
 curl                    8.0.1-r0               apk     
 findutils               4.9.0-r4               apk     
 gdbm                    1.23-r0                apk     
@@ -20,7 +20,7 @@ libattr                 2.5.1-r3               apk
 libbsd                  0.11.7-r0              apk     
 libbz2                  1.0.8-r4               apk     
 libc-utils              0.7.2-r4               apk     
-libcrypto3              3.1.0-r1               apk     
+libcrypto3              3.1.0-r2               apk     
 libcurl                 8.0.1-r0               apk     
 libdeflate              1.18-r0                apk     
 libevent                2.1.12-r5              apk     
@@ -32,7 +32,7 @@ libmd                   1.0.4-r1               apk
 libncursesw             6.4_p20230311-r0       apk     
 libpanelw               6.4_p20230311-r0       apk     
 libproc2                4.0.3-r0               apk     
-libssl3                 3.1.0-r1               apk     
+libssl3                 3.1.0-r2               apk     
 libstdc++               12.2.1_git20220924-r9  apk     
 linux-pam               1.5.2-r7               apk     
 miniupnpc               2.2.4-r0               apk     
@@ -55,7 +55,7 @@ sqlite-libs             3.41.2-r1              apk
 ssl_client              1.36.0-r5              apk     
 transmission-cli        4.0.2-r3               apk     
 transmission-daemon     4.0.2-r3               apk     
-tzdata                  2022g-r0               apk     
+tzdata                  2023b-r1               apk     
 utmps-libs              0.1.2.1-r0             apk     
 xz-libs                 5.4.2-r0               apk     
 zlib                    1.2.13-r0              apk     
