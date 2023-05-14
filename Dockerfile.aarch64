@@ -36,7 +36,8 @@ RUN \
   fi && \
   apk add --no-cache --upgrade \
     transmission-cli==${TRANSMISSION_VERSION} \
-    transmission-daemon==${TRANSMISSION_VERSION} && \
+    transmission-daemon==${TRANSMISSION_VERSION} \
+    transmission-remote==${TRANSMISSION_VERSION} && \
   echo "**** cleanup ****" && \
   apk del --purge \
     build-dependencies && \
