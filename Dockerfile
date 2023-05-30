@@ -11,10 +11,10 @@ LABEL maintainer="aptalca"
 
 RUN \
   echo "**** install build packages ****" && \
-  apk add --no-cache --upgrade --virtual=build-dependencies \
+  apk add --no-cache --virtual=build-dependencies \
     build-base && \
   echo "**** install packages ****" && \
-  apk add --no-cache --upgrade \
+  apk add --no-cache \
     findutils \
     p7zip \
     python3 && \
@@ -34,7 +34,7 @@ RUN \
     TRANSMISSION_VERSION=$(curl -sL "http://dl-cdn.alpinelinux.org/alpine/edge/community/x86_64/APKINDEX.tar.gz" | tar -xz -C /tmp \
     && awk '/^P:transmission$/,/V:/' /tmp/APKINDEX | sed -n 2p | sed 's/^V://'); \
   fi && \
-  apk add --no-cache --upgrade \
+  apk add --no-cache \
     transmission-cli==${TRANSMISSION_VERSION} \
     transmission-daemon==${TRANSMISSION_VERSION} \
     transmission-remote==${TRANSMISSION_VERSION} && \
@@ -42,8 +42,8 @@ RUN \
   apk del --purge \
     build-dependencies && \
   rm -rf \
-    /root/.cache \
-    /tmp/*
+    /tmp/* \
+    $HOME/.cache
 
 # copy local files
 COPY root/ /

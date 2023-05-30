@@ -6,6 +6,7 @@ external_type: alpine_repo
 release_type: stable
 release_tag: latest
 ls_branch: master
+build_armhf: false
 repo_vars:
   - BUILD_VERSION_ARG = 'TRANSMISSION_VERSION'
   - LS_USER = 'linuxserver'
