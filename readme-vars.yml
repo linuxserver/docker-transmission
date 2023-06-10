@@ -80,7 +80,8 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - { date: "25.05.23:", desc: "Rebase to Alpine 3.18, deprecate armhf." }
+  - { date: "10.06.23:", desc: "Bump unrar to 6.2.8, install transmission-extra." }
+  - { date: "25.05.23:", desc: "Deprecate armhf." }
   - { date: "14.05.23:", desc: "Explicitly install transmission-remote." }
   - { date: "02.03.23:", desc: "Add cron init to allow user customizable crontabs." }
   - { date: "08.02.23:", desc: "Rebase to Alpine Edge to get access to most up to date builds of Transmission. Remove bundled 3rd party UI packages." }
