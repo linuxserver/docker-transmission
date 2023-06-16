@@ -35,8 +35,8 @@ libgcc                  13.1.1_git20230603-r0  apk
 libidn2                 2.3.4-r2               apk     
 libintl                 0.21.1-r9              apk     
 libmd                   1.0.4-r2               apk     
-libncursesw             6.4_p20230610-r0       apk     
-libpanelw               6.4_p20230610-r0       apk     
+libncursesw             6.4_p20230615-r0       apk     
+libpanelw               6.4_p20230615-r0       apk     
 libproc2                4.0.3-r2               apk     
 libpsl                  0.21.2-r1              apk     
 libssl3                 3.1.1-r1               apk     
@@ -47,7 +47,7 @@ miniupnpc               2.2.4-r0               apk
 mpdecimal               2.5.1-r2               apk     
 musl                    1.2.4-r1               apk     
 musl-utils              1.2.4-r1               apk     
-ncurses-terminfo-base   6.4_p20230610-r0       apk     
+ncurses-terminfo-base   6.4_p20230615-r0       apk     
 netcat-openbsd          1.219-r1               apk     
 nghttp2-libs            1.54.0-r0              apk     
 oniguruma               6.9.8-r1               apk     
@@ -65,6 +65,7 @@ sqlite-libs             3.42.0-r2              apk
 ssl_client              1.36.1-r1              apk     
 transmission-cli        4.0.3-r3               apk     
 transmission-daemon     4.0.3-r3               apk     
+transmission-extra      4.0.3-r3               apk     
 transmission-remote     4.0.3-r3               apk     
 tzdata                  2023c-r1               apk     
 utmps-libs              0.1.2.1-r2             apk     
