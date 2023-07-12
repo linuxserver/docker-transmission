@@ -28,6 +28,14 @@ else
     sed -i "/\"rpc-whitelist\"/c\    \"rpc-whitelist\": \"$WHITELIST\"," /config/settings.json
 fi
 
+if [[ -n "$SCRIPT_TORRENT_DONE_FILENAME" ]]; then
+    sed -i '/script-torrent-done-enabled/c\    "script-torrent-done-enabled": true,' /config/settings.json
+    sed -i "/\"script-torrent-done-filename\"/c\    \"script-torrent-done-filename\": \"$SCRIPT_TORRENT_DONE_FILENAME\"," /config/settings.json
+else
+    sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": false,' /config/settings.json
+    sed -i "/\"rpc-whitelist\"/c\    \"rpc-whitelist\": \"$WHITELIST\"," /config/settings.json
+fi
+
 if [[ -n "$HOST_WHITELIST" ]]; then
     sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": true,' /config/settings.json
     sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$HOST_WHITELIST\"," /config/settings.json
