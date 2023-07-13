@@ -45,6 +45,7 @@ opt_param_env_vars:
   - { env_var: "WHITELIST", env_value: "", desc: "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."}
   - { env_var: "PEERPORT", env_value: "", desc: "Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting."}
   - { env_var: "HOST_WHITELIST", env_value: "", desc: "Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting."}
+  - { env_var: "SCRIPT_TORRENT_DONE_FILENAME", env_value: "", desc: "Specify the path to a script to run when torrent download is complete. Fills script-torrent-done-filename setting." }
 opt_param_usage_include_vols: false
 opt_param_usage_include_ports: false
 opt_param_device_map: false
@@ -78,8 +79,13 @@ app_setup_block: |
   
   Use `PEERPORT` to specify the port(s) Transmission should listen on.  This disables random port selection.  This should be the same as the port mapped in your docker configuration.
 
+  ## Using script torrent done filename
+
+  Use `SCRIPT_TORRENT_DONE_FILENAME` to specify a path to a script to run when a dowload completes. This enables `script-torrent-done-enabled`. When `SCRIPT_TORRENT_DONE_FILENAME` is empty, `script-torrent-done-enabled` is disabled.
+
 # changelog
 changelogs:
+  - { date: "13.07.23:", desc: "Add optional script_torrent_done_filename environment variable." }
   - { date: "10.06.23:", desc: "Bump unrar to 6.2.8, install transmission-extra." }
   - { date: "25.05.23:", desc: "Deprecate armhf." }
   - { date: "14.05.23:", desc: "Explicitly install transmission-remote." }
