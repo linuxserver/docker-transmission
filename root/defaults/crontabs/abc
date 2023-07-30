@@ -1,0 +1,2 @@
+# min   hour    day     month   weekday command
+0       3       *       *       *       /app/blocklist-update.sh 2>&1
