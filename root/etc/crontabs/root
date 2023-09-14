@@ -6,5 +6,5 @@
 0       3       *       *       6       run-parts /etc/periodic/weekly
 0       5       1       *       *       run-parts /etc/periodic/monthly
 
-# run daily blocklist update
-0 3 * * * /app/blocklist-update.sh 2>&1
+# reload transmission daily (also updates blocklist)
+0 3 * * * /app/reload.sh 2>&1
