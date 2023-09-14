@@ -1,6 +1,8 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
+## Reminder : Never "else" them, it's overwriting the manual changes done in settings.json
+
 # make folders
 mkdir -p \
     /downloads/{complete,incomplete} /watch
@@ -10,35 +12,45 @@ if [[ ! -f /config/settings.json ]]; then
     cp /defaults/settings.json /config/settings.json
 fi
 
-if [[ -n "$USER" ]] && [[ -n "$PASS" ]]; then
-    sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": true,' /config/settings.json
+if [ -v USER ] && [ -v PASS ]; then
+    if [[ -n "$USER" ]] && [[ -n "$PASS" ]]; then
+        sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": true,' /config/settings.json
+    elif [[ -z "$USER" ]] && [[ -z "$PASS" ]]; then
+        sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": false,' /config/settings.json
+    fi
+
     sed -i "/rpc-username/c\    \"rpc-username\": \"$USER\"," /config/settings.json
     sed -i "/rpc-password/c\    \"rpc-password\": \"$PASS\"," /config/settings.json
-else
-    sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": false,' /config/settings.json
-    sed -i "/rpc-username/c\    \"rpc-username\": \"$USER\"," /config/settings.json
-    sed -i "/rpc-password/c\    \"rpc-password\": \"$PASS\"," /config/settings.json
 fi
 
-if [[ -n "$WHITELIST" ]]; then
-    sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": true,' /config/settings.json
-    sed -i "/\"rpc-whitelist\"/c\    \"rpc-whitelist\": \"$WHITELIST\"," /config/settings.json
-else
-    sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": false,' /config/settings.json
+if [ -v WHITELIST ]; then
+    if [[ -n "$WHITELIST" ]]; then
+        sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": true,' /config/settings.json
+    elif [[ -z "$WHITELIST" ]]; then
+        sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": false,' /config/settings.json
+    fi
+
     sed -i "/\"rpc-whitelist\"/c\    \"rpc-whitelist\": \"$WHITELIST\"," /config/settings.json
 fi
 
-if [[ -n "$HOST_WHITELIST" ]]; then
-    sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": true,' /config/settings.json
-    sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$HOST_WHITELIST\"," /config/settings.json
-else
-    sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": false,' /config/settings.json
+if [ -v HOST_WHITELIST ]; then
+    if [[ -n "$HOST_WHITELIST" ]]; then
+        sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": true,' /config/settings.json
+    elif [[ -z "$HOST_WHITELIST" ]]; then
+        sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": false,' /config/settings.json
+    fi
+
     sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$HOST_WHITELIST\"," /config/settings.json
 fi
 
-if [[ -n "${PEERPORT}" ]]; then
+if [ -v PEERPORT ]; then
+    if [[ -n "${PEERPORT}" ]]; then
+        sed -i '/peer-port-random-on-start/c\     "peer-port-random-on-start": false,' /config/settings.json
+    elif [[ -z "${PEERPORT}" ]]; then
+        sed -i '/peer-port-random-on-start/c\     "peer-port-random-on-start": true,' /config/settings.json
+    fi
+
     sed -i "/\"peer-port\"/c\    \"peer-port\": ${PEERPORT}," /config/settings.json
-    sed -i '/peer-port-random-on-start/c\     "peer-port-random-on-start": false,' /config/settings.json
 fi
 
 # Handle old theme locations

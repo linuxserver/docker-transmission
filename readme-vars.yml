@@ -80,7 +80,8 @@ app_setup_block: |
 
 # changelog
 changelogs:
-  - {date: "10.08.23:", desc: "Bump unrar to 6.2.10."}
+  - { date: "14.09.23:", desc: "Improved environment variable configuration."}
+  - { date: "10.08.23:", desc: "Bump unrar to 6.2.10." }
   - { date: "10.06.23:", desc: "Bump unrar to 6.2.8, install transmission-extra." }
   - { date: "25.05.23:", desc: "Deprecate armhf." }
   - { date: "14.05.23:", desc: "Explicitly install transmission-remote." }

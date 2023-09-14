@@ -3,10 +3,7 @@
 
 pid=$(pidof transmission-daemon)
 
-if [[ -n "$USER" ]] && [[ -n "$PASS" ]]; then
-    /usr/bin/transmission-remote -n "$USER":"$PASS" --exit
-else
-    /usr/bin/transmission-remote --exit
-fi
+/bin/kill -s STOP ${pid}
 
-tail --pid=${pid} -f /dev/null
+# tail --pid=${pid} -f /dev/null
+## This is causing an s6 timeout error.
