@@ -58,13 +58,17 @@ app_setup_block: |
 
   ## Securing the webui with a username/password.
 
-  Use the `USER` and `PASS` variables in docker run/create/compose to set authentication. Do not manually edit the `settings.json` to input user/pass, otherwise transmission cannot be stopped cleanly by the s6 supervisor.
+  Use the `USER` and `PASS` variables in docker run/create/compose to set authentication.
+  
+  Once initialized you can remove `USER`/`PASS` env variable as they are permanently set.
+
+  ### Disabling the webui username/password.
+
+  Simply use empty `USER` and `PASS` variables to unset authentication.
 
   ## Updating Blocklists Automatically
 
   This requires `"blocklist-enabled": true,` to be set. By setting this to true, it is assumed you have also populated `blocklist-url` with a valid block list.
-
-  The automatic update is a shell script that downloads a blocklist from the url stored in the settings.json, gunzips it, and restarts the transmission daemon.
 
   The automatic update will run once a day at 3am local server time.
 
@@ -80,6 +84,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "15.09.23:", desc: "Improved scripting to reduce redundant spam. Blocklist is now reloaded with transmission itself. USER/PASS env vars no longer required. Adjust README."}
   - { date: "14.09.23:", desc: "Improved environment variable configuration."}
   - { date: "10.08.23:", desc: "Bump unrar to 6.2.10." }
   - { date: "10.06.23:", desc: "Bump unrar to 6.2.8, install transmission-extra." }
