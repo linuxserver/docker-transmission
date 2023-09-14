@@ -55,7 +55,12 @@ fi
 
 # Handle old theme locations
 mkdir -p {/transmissionic,/combustion-release,/flood-for-transmission,/kettu,/transmission-web-control}
-echo /transmissionic /combustion-release /flood-for-transmission /kettu /transmission-web-control | xargs -n1 ln -s /defaults/index.html
+for dir in /transmissionic /combustion-release /flood-for-transmission /kettu /transmission-web-control; do
+    if [[ ! -f "$dir/index.html" ]]; then
+        ln -s "/defaults/index.html" ${dir}
+        echo "Created symlink for ${dir}/index.html"
+    fi
+done
 
 # permissions
 lsiown abc:abc \

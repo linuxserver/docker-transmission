@@ -14,8 +14,11 @@ if [[ ! -f /config/crontabs/root ]]; then
     fi
 
     # if crontabs still do not exist in config (were not copied from system)
-    # copy crontab from included defaults (using -n, do not overwrite an existing file)
-    cp -n /etc/crontabs/root /config/crontabs/
+    # copy crontab from included defaults
+    if [[ ! -f /config/crontabs/root ]]; then
+        cp /etc/crontabs/root /config/crontabs/
+        echo "Copied default crontabs to /config/crontabs/root"
+    fi
 fi
 # set permissions and import user crontabs
 lsiown root:root /config/crontabs/root
