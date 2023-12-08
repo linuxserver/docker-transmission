@@ -61,10 +61,10 @@ shadow                  4.14.2-r0              apk
 skalibs                 2.14.0.1-r0            apk   
 sqlite-libs             3.44.2-r0              apk   
 ssl_client              1.36.1-r15             apk   
-transmission-cli        4.0.4-r0               apk   
-transmission-daemon     4.0.4-r0               apk   
-transmission-extra      4.0.4-r0               apk   
-transmission-remote     4.0.4-r0               apk   
+transmission-cli        4.0.5-r0               apk   
+transmission-daemon     4.0.5-r0               apk   
+transmission-extra      4.0.5-r0               apk   
+transmission-remote     4.0.5-r0               apk   
 tzdata                  2023c-r1               apk   
 utmps-libs              0.1.2.2-r0             apk   
 xz-libs                 5.4.5-r0               apk   
