@@ -83,6 +83,12 @@ Use `HOST_WHITELIST` to enable an list of dns names as host-whitelist. This enab
 
 Use `PEERPORT` to specify the port(s) Transmission should listen on.  This disables random port selection.  This should be the same as the port mapped in your docker configuration.
 
+## Use alternative Transmission folder paths
+
+Use `COMPLETE_PATH` to specify a custom path for completed downloads.
+
+Use `INCOMPLETE_PATH` to specify a custom path for in-progress downloads.
+
 ## Usage
 
 To help you get started creating a container from this image you can either use docker-compose or the docker cli.
@@ -106,6 +112,8 @@ services:
       - WHITELIST= #optional
       - PEERPORT= #optional
       - HOST_WHITELIST= #optional
+      - COMPLETE_PATH=/downloads/complete #optional
+      - INCOMPLETE_PATH=/downloads/incomplete #optional
     volumes:
       - /path/to/data:/config
       - /path/to/downloads:/downloads
@@ -131,6 +139,8 @@ docker run -d \
   -e WHITELIST= `#optional` \
   -e PEERPORT= `#optional` \
   -e HOST_WHITELIST= `#optional` \
+  -e COMPLETE_PATH=/downloads/complete `#optional` \
+  -e INCOMPLETE_PATH=/downloads/incomplete `#optional` \
   -p 9091:9091 \
   -p 51413:51413 \
   -p 51413:51413/udp \
@@ -159,6 +169,8 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-e WHITELIST=` | Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting. |
 | `-e PEERPORT=` | Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting. |
 | `-e HOST_WHITELIST=` | Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting. |
+| `-e COMPLETE_PATH=/downloads/complete` | Custom path for completed downloads |
+| `-e INCOMPLETE_PATH=/downloads/incomplete` | Custom path for incomplete downloads |
 | `-v /config` | Where transmission should store config files and logs. |
 | `-v /downloads` | Local path for downloads. |
 | `-v /watch` | Watch folder for torrent files. |

@@ -45,6 +45,8 @@ opt_param_env_vars:
   - { env_var: "WHITELIST", env_value: "", desc: "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."}
   - { env_var: "PEERPORT", env_value: "", desc: "Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting."}
   - { env_var: "HOST_WHITELIST", env_value: "", desc: "Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting."}
+  - { env_var: "COMPLETE_PATH", env_value: "/downloads/complete", desc: "Custom path for completed downloads" }
+  - { env_var: "INCOMPLETE_PATH", env_value: "/downloads/incomplete", desc: "Custom path for incomplete downloads" }
 opt_param_usage_include_vols: false
 opt_param_usage_include_ports: false
 opt_param_device_map: false
@@ -77,6 +79,12 @@ app_setup_block: |
   ## Use alternative Transmission torrent ports
   
   Use `PEERPORT` to specify the port(s) Transmission should listen on.  This disables random port selection.  This should be the same as the port mapped in your docker configuration.
+
+  ## Use alternative Transmission folder paths
+
+  Use `COMPLETE_PATH` to specify a custom path for completed downloads.
+
+  Use `INCOMPLETE_PATH` to specify a custom path for in-progress downloads.
 
 # changelog
 changelogs:

@@ -1,14 +1,29 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-# make folders
-mkdir -p \
-    /downloads/{complete,incomplete} /watch
 
 # copy config
 if [[ ! -f /config/settings.json ]]; then
     cp /defaults/settings.json /config/settings.json
 fi
+
+# make folders, optionally set paths in config
+mkdir -p /watch
+
+INIT_COMPLETE_PATH="/downloads/complete"
+INIT_INCOMPLETE_PATH="/downloads/incomplete"
+
+if [[ -n "$COMPLETE_PATH" ]]; then
+    $INIT_COMPLETE_PATH="$COMPLETE_PATH"
+    sed -i "/\"download-dir\"/c\    \"download-dir\": \"$COMPLETE_PATH\"," /config/settings.json
+fi
+mkdir -p "$INIT_COMPLETE_PATH"
+
+if [[ -n "$INCOMPLETE_PATH" ]]; then
+    $INIT_INCOMPLETE_PATH="$INCOMPLETE_PATH"
+    sed -i "/\"incomplete-dir\"/c\    \"incomplete-dir\": \"$INCOMPLETE_PATH\"," /config/settings.json
+fi
+mkdir -p "$INIT_INCOMPLETE_PATH"
 
 if [[ -n "$USER" ]] && [[ -n "$PASS" ]]; then
     sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": true,' /config/settings.json
@@ -53,12 +68,12 @@ if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
     lsiown abc:abc /downloads
 fi
 
-if [[ "$(stat -c '%U' /downloads/complete)" != "abc" ]]; then
-    lsiown abc:abc /downloads/complete
+if [[ "$(stat -c '%U' "$INIT_COMPLETE_PATH")" != "abc" ]]; then
+    lsiown abc:abc "$INIT_COMPLETE_PATH"
 fi
 
-if [[ "$(stat -c '%U' /downloads/incomplete)" != "abc" ]]; then
-    lsiown abc:abc /downloads/incomplete
+if [[ "$(stat -c '%U' "$INIT_INCOMPLETE_PATH")" != "abc" ]]; then
+    lsiown abc:abc "$INIT_INCOMPLETE_PATH"
 fi
 
 if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then
