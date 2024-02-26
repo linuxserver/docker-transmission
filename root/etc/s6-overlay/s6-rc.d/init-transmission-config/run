@@ -14,13 +14,13 @@ INIT_COMPLETE_PATH="/downloads/complete"
 INIT_INCOMPLETE_PATH="/downloads/incomplete"
 
 if [[ -n "$COMPLETE_PATH" ]]; then
-    $INIT_COMPLETE_PATH="$COMPLETE_PATH"
+    INIT_COMPLETE_PATH="$COMPLETE_PATH"
     sed -i "/\"download-dir\"/c\    \"download-dir\": \"$COMPLETE_PATH\"," /config/settings.json
 fi
 mkdir -p "$INIT_COMPLETE_PATH"
 
 if [[ -n "$INCOMPLETE_PATH" ]]; then
-    $INIT_INCOMPLETE_PATH="$INCOMPLETE_PATH"
+    INIT_INCOMPLETE_PATH="$INCOMPLETE_PATH"
     sed -i "/\"incomplete-dir\"/c\    \"incomplete-dir\": \"$INCOMPLETE_PATH\"," /config/settings.json
 fi
 mkdir -p "$INIT_INCOMPLETE_PATH"
