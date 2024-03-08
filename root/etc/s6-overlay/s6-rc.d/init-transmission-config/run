@@ -1,14 +1,31 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-# make folders
-mkdir -p \
-    /downloads/{complete,incomplete} /watch
+SETTINGS=/config/settings.json
 
 # copy config
-if [[ ! -f /config/settings.json ]]; then
-    cp /defaults/settings.json /config/settings.json
+if [[ ! -f $SETTINGS ]]; then
+    cp /defaults/settings.json $SETTINGS
 fi
+
+# Default values
+DOWNLOAD_DIR="/downloads/complete"
+INCOMPLETE_DIR="/downloads/incomplete"
+
+# Check `settings.json` for custom download/incomplete directories
+settings_download_dir=$(grep -o '"download-dir": "[^"]*' "$SETTINGS" | sed 's/"download-dir": "//')
+if [ ! -z "$settings_download_dir" ]; then
+    DOWNLOAD_DIR="$settings_download_dir"
+fi
+settings_incomplete_dir=$(grep -o '"incomplete-dir": "[^"]*' "$SETTINGS" | sed 's/"incomplete-dir": "//')
+if [ ! -z "$settings_incomplete_dir" ]; then
+    INCOMPLETE_DIR="$settings_incomplete_dir"
+fi
+
+# make folders
+mkdir -p $DOWNLOAD_DIR
+mkdir -p $INCOMPLETE_DIR
+mkdir -p /watch
 
 if [[ -n "$USER" ]] && [[ -n "$PASS" ]]; then
     sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": true,' /config/settings.json
@@ -49,16 +66,16 @@ echo /transmissionic /combustion-release /flood-for-transmission /kettu /transmi
 lsiown abc:abc \
     /config/settings.json
 
-if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
+if [[ -d /downloads && "$(stat -c '%U' /downloads)" != "abc" ]]; then
     lsiown abc:abc /downloads
 fi
 
-if [[ "$(stat -c '%U' /downloads/complete)" != "abc" ]]; then
-    lsiown abc:abc /downloads/complete
+if [[ "$(stat -c '%U' $DOWNLOAD_DIR)" != "abc" ]]; then
+    lsiown abc:abc $DOWNLOAD_DIR
 fi
 
-if [[ "$(stat -c '%U' /downloads/incomplete)" != "abc" ]]; then
-    lsiown abc:abc /downloads/incomplete
+if [[ "$(stat -c '%U' $INCOMPLETE_DIR)" != "abc" ]]; then
+    lsiown abc:abc $INCOMPLETE_DIR
 fi
 
 if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then
