@@ -1,11 +1,9 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-SETTINGS=/config/settings.json
-
 # copy config
-if [[ ! -f $SETTINGS ]]; then
-    cp /defaults/settings.json $SETTINGS
+if [[ ! -f /config/settings.json ]]; then
+    cp /defaults/settings.json /config/settings.json
 fi
 
 # Default values
@@ -13,11 +11,11 @@ DOWNLOAD_DIR="/downloads/complete"
 INCOMPLETE_DIR="/downloads/incomplete"
 
 # Check `settings.json` for custom download/incomplete directories
-settings_download_dir=$(grep -o '"download-dir": "[^"]*' "$SETTINGS" | sed 's/"download-dir": "//')
+settings_download_dir=$(jq -r '."download-dir" | select( . != null )' /config/settings.json)
 if [ ! -z "$settings_download_dir" ]; then
     DOWNLOAD_DIR="$settings_download_dir"
 fi
-settings_incomplete_dir=$(grep -o '"incomplete-dir": "[^"]*' "$SETTINGS" | sed 's/"incomplete-dir": "//')
+settings_incomplete_dir=$(jq -r '."incomplete-dir" | select( . != null )' /config/settings.json)
 if [ ! -z "$settings_incomplete_dir" ]; then
     INCOMPLETE_DIR="$settings_incomplete_dir"
 fi
