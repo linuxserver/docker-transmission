@@ -23,9 +23,9 @@ libacl                  2.3.2-r0               apk
 libattr                 2.5.2-r0               apk     
 libbsd                  0.11.8-r0              apk     
 libbz2                  1.0.8-r6               apk     
-libcrypto3              3.1.5-r5               apk     
+libcrypto3              3.2.1-r0               apk     
 libcurl                 8.6.0-r0               apk     
-libdeflate              1.19-r0                apk     
+libdeflate              1.20-r0                apk     
 libevent                2.1.12-r7              apk     
 libexpat                2.6.2-r0               apk     
 libffi                  3.4.6-r0               apk     
@@ -37,7 +37,7 @@ libncursesw             6.4_p20240309-r0       apk
 libpanelw               6.4_p20240309-r0       apk     
 libproc2                4.0.4-r0               apk     
 libpsl                  0.21.5-r1              apk     
-libssl3                 3.1.5-r5               apk     
+libssl3                 3.2.1-r0               apk     
 libstdc++               13.2.1_git20240309-r0  apk     
 libunistring            1.2-r0                 apk     
 linux-pam               1.5.3-r8               apk     
@@ -47,7 +47,7 @@ musl                    1.2.5-r0               apk
 musl-utils              1.2.5-r0               apk     
 ncurses-terminfo-base   6.4_p20240309-r0       apk     
 netcat-openbsd          1.226-r0               apk     
-nghttp2-libs            1.59.0-r0              apk     
+nghttp2-libs            1.60.0-r0              apk     
 oniguruma               6.9.9-r0               apk     
 procps-ng               4.0.4-r0               apk     
 pyc                     3.11.8-r0              apk     
