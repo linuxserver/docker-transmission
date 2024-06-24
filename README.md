@@ -106,7 +106,7 @@ services:
       - PEERPORT= #optional
       - HOST_WHITELIST= #optional
     volumes:
-      - /path/to/data:/config
+      - /path/to/transmission/data:/config
       - /path/to/downloads:/downloads
       - /path/to/watch/folder:/watch
     ports:
@@ -133,7 +133,7 @@ docker run -d \
   -p 9091:9091 \
   -p 51413:51413 \
   -p 51413:51413/udp \
-  -v /path/to/data:/config \
+  -v /path/to/transmission/data:/config \
   -v /path/to/downloads:/downloads \
   -v /path/to/watch/folder:/watch \
   --restart unless-stopped \
