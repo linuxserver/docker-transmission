@@ -29,6 +29,7 @@ RUN \
     transmission-daemon==${TRANSMISSION_VERSION} \
     transmission-extra==${TRANSMISSION_VERSION} \
     transmission-remote==${TRANSMISSION_VERSION} && \
+  printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   echo "**** cleanup ****" && \
   apk del --purge \
     build-dependencies && \

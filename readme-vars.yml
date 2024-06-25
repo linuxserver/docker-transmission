@@ -6,26 +6,18 @@ project_url: "https://www.transmissionbt.com/"
 project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more."
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
-project_blurb_optional_extras_enabled: false
 
 # supported architectures
 available_architectures:
   - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
   - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
 
-# development version
-development_versions: false
-
 # container parameters
 common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
-param_usage_include_net: false
-param_usage_include_env: true
-param_env_vars:
-  - { env_var: "TZ", env_value: "Europe/London", desc: "Specify a timezone to use EG Europe/London." }
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "/path/to/data", desc: "Where transmission should store config files and logs." }
+  - { vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/data", desc: "Where transmission should store config files and logs." }
   - { vol_path: "/downloads", vol_host_path: "/path/to/downloads", desc: "Local path for downloads." }
   - { vol_path: "/watch", vol_host_path: "/path/to/watch/folder", desc: "Watch folder for torrent files." }
 param_usage_include_ports: true
@@ -33,8 +25,6 @@ param_ports:
   - { external_port: "9091", internal_port: "9091", port_desc: "WebUI" }
   - { external_port: "51413", internal_port: "51413", port_desc: "Torrent Port TCP" }
   - { external_port: "51413", internal_port: "51413/udp", port_desc: "Torrent Port UDP" }
-param_device_map: false
-cap_add_param: false
 
 # optional container parameters
 opt_param_usage_include_env: true
@@ -45,11 +35,6 @@ opt_param_env_vars:
   - { env_var: "WHITELIST", env_value: "", desc: "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."}
   - { env_var: "PEERPORT", env_value: "", desc: "Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting."}
   - { env_var: "HOST_WHITELIST", env_value: "", desc: "Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting."}
-opt_param_usage_include_vols: false
-opt_param_usage_include_ports: false
-opt_param_device_map: false
-opt_cap_add_param: false
-optional_block_1: false
 
 # application setup block
 app_setup_block_enabled: true
@@ -73,9 +58,9 @@ app_setup_block: |
   Use `WHITELIST` to enable a list of ip as whitelist. This enable support for `rpc-whitelist`. When `WHITELIST` is empty support for whitelist is disabled.
 
   Use `HOST_WHITELIST` to enable an list of dns names as host-whitelist. This enable support for `rpc-host-whitelist`. When `HOST_WHITELIST` is empty support for host-whitelist is disabled.
-  
+
   ## Use alternative Transmission torrent ports
-  
+
   Use `PEERPORT` to specify the port(s) Transmission should listen on.  This disables random port selection.  This should be the same as the port mapped in your docker configuration.
 
 # changelog

@@ -6,7 +6,6 @@ external_type: alpine_repo
 release_type: stable
 release_tag: latest
 ls_branch: master
-build_armhf: false
 repo_vars:
   - BUILD_VERSION_ARG = 'TRANSMISSION_VERSION'
   - LS_USER = 'linuxserver'
@@ -25,6 +24,6 @@ repo_vars:
   - CI_PORT='9091'
   - CI_SSL='false'
   - CI_DELAY='120'
-  - CI_DOCKERENV='TZ=US/Pacific'
-  - CI_AUTH='user:password'
+  - CI_DOCKERENV=''
+  - CI_AUTH=''
   - CI_WEBPATH=''
