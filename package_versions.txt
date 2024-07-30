@@ -1,14 +1,14 @@
 NAME                    VERSION                TYPE   
 7zip                    23.01-r0               apk     
-alpine-baselayout       3.6.5-r0               apk     
-alpine-baselayout-data  3.6.5-r0               apk     
+alpine-baselayout       3.6.6-r0               apk     
+alpine-baselayout-data  3.6.6-r0               apk     
 alpine-keys             2.4-r1                 apk     
 apk-tools               2.14.4-r2              apk     
 bash                    5.2.26-r0              apk     
 brotli-libs             1.1.0-r2               apk     
 busybox                 1.36.1-r31             apk     
 busybox-binsh           1.36.1-r31             apk     
-c-ares                  1.32.2-r0              apk     
+c-ares                  1.32.3-r0              apk     
 ca-certificates         20240705-r0            apk     
 ca-certificates-bundle  20240705-r0            apk     
 catatonit               0.2.0-r0               apk     
@@ -16,7 +16,7 @@ coreutils               9.5-r1                 apk
 coreutils-env           9.5-r1                 apk     
 coreutils-fmt           9.5-r1                 apk     
 coreutils-sha512sum     9.5-r1                 apk     
-curl                    8.8.0-r1               apk     
+curl                    8.9.0-r0               apk     
 findutils               4.10.0-r0              apk     
 gdbm                    1.24-r0                apk     
 jq                      1.7.1-r0               apk     
@@ -25,7 +25,7 @@ libattr                 2.5.2-r0               apk
 libbsd                  0.12.2-r0              apk     
 libbz2                  1.0.8-r6               apk     
 libcrypto3              3.3.1-r3               apk     
-libcurl                 8.8.0-r1               apk     
+libcurl                 8.9.0-r0               apk     
 libdeflate              1.20-r0                apk     
 libevent                2.1.12-r7              apk     
 libexpat                2.6.2-r0               apk     
