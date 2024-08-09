@@ -44,7 +44,7 @@ libunistring            1.2-r0            apk
 linux-pam               1.6.0-r0          apk     
 miniupnpc               2.2.8-r0          apk     
 mpdecimal               4.0.0-r0          apk     
-musl                    1.2.5-r1          apk     
+musl                    1.2.5-r2          apk     
 musl-utils              1.2.5-r1          apk     
 ncurses-terminfo-base   6.5_p20240601-r0  apk     
 netcat-openbsd          1.226-r0          apk     
