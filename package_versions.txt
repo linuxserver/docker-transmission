@@ -8,7 +8,7 @@ bash                    5.2.32-r0         apk
 brotli-libs             1.1.0-r2          apk     
 busybox                 1.36.1-r31        apk     
 busybox-binsh           1.36.1-r31        apk     
-c-ares                  1.33.0-r0         apk     
+c-ares                  1.33.1-r0         apk     
 ca-certificates         20240705-r0       apk     
 ca-certificates-bundle  20240705-r0       apk     
 catatonit               0.2.0-r0          apk     
@@ -26,11 +26,11 @@ libbsd                  0.12.2-r0         apk
 libbz2                  1.0.8-r6          apk     
 libcrypto3              3.3.1-r3          apk     
 libcurl                 8.9.1-r1          apk     
-libdeflate              1.20-r0           apk     
+libdeflate              1.21-r0           apk     
 libevent                2.1.12-r7         apk     
 libexpat                2.6.2-r0          apk     
 libffi                  3.4.6-r0          apk     
-libgcc                  14.2.0-r1         apk     
+libgcc                  14.2.0-r2         apk     
 libidn2                 2.3.7-r0          apk     
 libintl                 0.22.5-r0         apk     
 libmd                   1.1.0-r0          apk     
@@ -39,7 +39,7 @@ libpanelw               6.5_p20240601-r0  apk
 libproc2                4.0.4-r1          apk     
 libpsl                  0.21.5-r2         apk     
 libssl3                 3.3.1-r3          apk     
-libstdc++               14.2.0-r1         apk     
+libstdc++               14.2.0-r2         apk     
 libunistring            1.2-r0            apk     
 linux-pam               1.6.1-r0          apk     
 miniupnpc               2.2.8-r0          apk     
