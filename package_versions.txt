@@ -28,14 +28,14 @@ libcrypto3              3.3.2-r2          apk
 libcurl                 8.9.1-r2          apk     
 libdeflate              1.22-r0           apk     
 libevent                2.1.12-r7         apk     
-libexpat                2.6.3-r0          apk     
+libexpat                2.6.4-r0          apk     
 libffi                  3.4.6-r0          apk     
 libgcc                  14.2.0-r4         apk     
 libidn2                 2.3.7-r0          apk     
 libintl                 0.22.5-r0         apk     
 libmd                   1.1.0-r0          apk     
-libncursesw             6.5_p20241006-r2  apk     
-libpanelw               6.5_p20241006-r2  apk     
+libncursesw             6.5_p20241006-r3  apk     
+libpanelw               6.5_p20241006-r3  apk     
 libproc2                4.0.4-r2          apk     
 libpsl                  0.21.5-r2         apk     
 libssl3                 3.3.2-r2          apk     
@@ -46,7 +46,7 @@ miniupnpc               2.2.8-r0          apk
 mpdecimal               4.0.0-r0          apk     
 musl                    1.2.5-r5          apk     
 musl-utils              1.2.5-r3          apk     
-ncurses-terminfo-base   6.5_p20241006-r2  apk     
+ncurses-terminfo-base   6.5_p20241006-r3  apk     
 netcat-openbsd          1.226-r0          apk     
 nghttp2-libs            1.63.0-r0         apk     
 oniguruma               6.9.9-r0          apk     
