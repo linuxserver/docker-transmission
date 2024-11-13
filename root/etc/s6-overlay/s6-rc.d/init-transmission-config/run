@@ -41,6 +41,10 @@ if [[ -n "${PEERPORT}" ]]; then
     sed -i '/peer-port-random-on-start/c\     "peer-port-random-on-start": false,' /config/settings.json
 fi
 
+if [[ -n "${UMASK}" ]]; then
+    sed -i "/\"umask\"/c\    \"umask\": ${UMASK}," /config/settings.json
+fi
+
 # Handle old theme locations
 mkdir -p {/transmissionic,/combustion-release,/flood-for-transmission,/kettu,/transmission-web-control}
 echo /transmissionic /combustion-release /flood-for-transmission /kettu /transmission-web-control | xargs -n1 ln -s /defaults/index.html
