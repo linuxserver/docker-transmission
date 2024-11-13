@@ -42,7 +42,7 @@ if [[ -n "${PEERPORT}" ]]; then
 fi
 
 if [[ -n "${UMASK}" ]]; then
-    sed -i "/\"umask\"/c\    \"umask\": ${UMASK}," /config/settings.json
+    sed -i "/\"umask\"/c\    \"umask\": \"${UMASK}\"," /config/settings.json
 fi
 
 # Handle old theme locations
