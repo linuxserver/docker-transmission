@@ -1,55 +1,51 @@
 #!/usr/bin/with-contenv bash
 # shellcheck shell=bash
 
-# make folders
+# make folders
 mkdir -p \
     /downloads/{complete,incomplete} /watch
 
-# copy config
+# copy config
 if [[ ! -f /config/settings.json ]]; then
     cp /defaults/settings.json /config/settings.json
 fi
 
-if [[ -n "$USER" ]] && [[ -n "$PASS" ]]; then
-    sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": true,' /config/settings.json
-    sed -i "/rpc-username/c\    \"rpc-username\": \"$USER\"," /config/settings.json
-    sed -i "/rpc-password/c\    \"rpc-password\": \"$PASS\"," /config/settings.json
+if [[ -n "${USER}" ]] && [[ -n "${PASS}" ]]; then
+    echo -E "$(jq -r '.["rpc-authentication-required"] = true' /config/settings.json)" >/config/settings.json
 else
-    sed -i '/rpc-authentication-required/c\    "rpc-authentication-required": false,' /config/settings.json
-    sed -i "/rpc-username/c\    \"rpc-username\": \"$USER\"," /config/settings.json
-    sed -i "/rpc-password/c\    \"rpc-password\": \"$PASS\"," /config/settings.json
+    echo -E "$(jq -r '.["rpc-authentication-required"] = false' /config/settings.json)" >/config/settings.json
 fi
+echo -E "$(jq -r --arg user "${USER}" '.["rpc-username"] = $user' /config/settings.json)" >/config/settings.json
+echo -E "$(jq -r --arg pass "${PASS}" '.["rpc-password"] = $pass' /config/settings.json)" >/config/settings.json
 
-if [[ -n "$WHITELIST" ]]; then
-    sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": true,' /config/settings.json
-    sed -i "/\"rpc-whitelist\"/c\    \"rpc-whitelist\": \"$WHITELIST\"," /config/settings.json
+if [[ -n "${WHITELIST}" ]]; then
+    echo -E "$(jq -r '.["rpc-whitelist-enabled"] = true' /config/settings.json)" >/config/settings.json
 else
-    sed -i '/rpc-whitelist-enabled/c\    "rpc-whitelist-enabled": false,' /config/settings.json
-    sed -i "/\"rpc-whitelist\"/c\    \"rpc-whitelist\": \"$WHITELIST\"," /config/settings.json
+    echo -E "$(jq -r '.["rpc-whitelist-enabled"] = false' /config/settings.json)" >/config/settings.json
 fi
+echo -E "$(jq -r --arg whitelist "${WHITELIST}" '.["rpc-whitelist"] = $whitelist' /config/settings.json)" >/config/settings.json
 
-if [[ -n "$HOST_WHITELIST" ]]; then
-    sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": true,' /config/settings.json
-    sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$HOST_WHITELIST\"," /config/settings.json
+if [[ -n "${HOST_WHITELIST}" ]]; then
+    echo -E "$(jq -r '.["rpc-host-whitelist-enabled"] = true' /config/settings.json)" >/config/settings.json
 else
-    sed -i '/rpc-host-whitelist-enabled/c\    "rpc-host-whitelist-enabled": false,' /config/settings.json
-    sed -i "/\"rpc-host-whitelist\"/c\    \"rpc-host-whitelist\": \"$HOST_WHITELIST\"," /config/settings.json
+    echo -E "$(jq -r '.["rpc-host-whitelist-enabled"] = false' /config/settings.json)" >/config/settings.json
 fi
+echo -E "$(jq -r --arg host_whitelist "${HOST_WHITELIST}" '.["rpc-host-whitelist"] = $host_whitelist' /config/settings.json)" >/config/settings.json
 
 if [[ -n "${PEERPORT}" ]]; then
-    sed -i "/\"peer-port\"/c\    \"peer-port\": ${PEERPORT}," /config/settings.json
-    sed -i '/peer-port-random-on-start/c\     "peer-port-random-on-start": false,' /config/settings.json
+    echo -E "$(jq -r --arg peerport "${PEERPORT}" '.["peer-port"] = $peerport' /config/settings.json)" >/config/settings.json
+    echo -E "$(jq -r '.["peer-port-random-on-start"] = false' /config/settings.json)" >/config/settings.json
 fi
 
 if [[ -n "${UMASK}" ]]; then
-    sed -i "/\"umask\"/c\    \"umask\": \"${UMASK}\"," /config/settings.json
+    echo -E "$(jq -r --arg umask "${UMASK}" '.["umask"] = $umask' /config/settings.json)" >/config/settings.json
 fi
 
 # Handle old theme locations
 mkdir -p {/transmissionic,/combustion-release,/flood-for-transmission,/kettu,/transmission-web-control}
 echo /transmissionic /combustion-release /flood-for-transmission /kettu /transmission-web-control | xargs -n1 ln -s /defaults/index.html
 
-# permissions
+# permissions
 lsiown abc:abc \
     /config/settings.json
 
