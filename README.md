@@ -325,6 +325,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **29.11.24:** - Fix PEERPORT setting.
 * **07.10.23:** - Install unrar from [linuxserver repo](https://github.com/linuxserver/docker-unrar).
 * **10.08.23:** - Bump unrar to 6.2.10.
 * **10.06.23:** - Bump unrar to 6.2.8, install transmission-extra.

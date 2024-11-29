@@ -33,7 +33,7 @@ fi
 echo -E "$(jq -r --arg host_whitelist "${HOST_WHITELIST}" '.["rpc-host-whitelist"] = $host_whitelist' /config/settings.json)" >/config/settings.json
 
 if [[ -n "${PEERPORT}" ]]; then
-    echo -E "$(jq -r --arg peerport "${PEERPORT}" '.["peer-port"] = $peerport' /config/settings.json)" >/config/settings.json
+    echo -E "$(jq -r --argjson peerport "${PEERPORT}" '.["peer-port"] = $peerport' /config/settings.json)" >/config/settings.json
     echo -E "$(jq -r '.["peer-port-random-on-start"] = false' /config/settings.json)" >/config/settings.json
 fi
 

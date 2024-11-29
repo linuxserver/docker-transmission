@@ -65,6 +65,7 @@ app_setup_block: |
 
 # changelog
 changelogs:
+  - { date: "29.11.24:", desc: "Fix PEERPORT setting."}
   - { date: "07.10.23:", desc: "Install unrar from [linuxserver repo](https://github.com/linuxserver/docker-unrar)."}
   - { date: "10.08.23:", desc: "Bump unrar to 6.2.10."}
   - { date: "10.06.23:", desc: "Bump unrar to 6.2.8, install transmission-extra." }
