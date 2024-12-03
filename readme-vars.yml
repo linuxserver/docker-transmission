@@ -6,36 +6,32 @@ project_url: "https://www.transmissionbt.com/"
 project_logo: "https://raw.githubusercontent.com/linuxserver/docker-templates/master/linuxserver.io/img/transmission.png"
 project_blurb: "[{{ project_name|capitalize }}]({{ project_url }}) is designed for easy, powerful use. Transmission has the features you want from a BitTorrent client: encryption, a web interface, peer exchange, magnet links, DHT, µTP, UPnP and NAT-PMP port forwarding, webseed support, watch directories, tracker editing, global and per-torrent speed limits, and more."
 project_lsio_github_repo_url: "https://github.com/linuxserver/docker-{{ project_name }}"
-
 # supported architectures
 available_architectures:
-  - { arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
-  - { arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
-
+  - {arch: "{{ arch_x86_64 }}", tag: "amd64-latest"}
+  - {arch: "{{ arch_arm64 }}", tag: "arm64v8-latest"}
 # container parameters
 common_param_env_vars_enabled: true
 param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
-  - { vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/data", desc: "Where transmission should store config files and logs." }
-  - { vol_path: "/downloads", vol_host_path: "/path/to/downloads", desc: "Local path for downloads." }
-  - { vol_path: "/watch", vol_host_path: "/path/to/watch/folder", desc: "Watch folder for torrent files." }
+  - {vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/data", desc: "Where transmission should store config files and logs."}
+  - {vol_path: "/downloads", vol_host_path: "/path/to/downloads", desc: "Local path for downloads."}
+  - {vol_path: "/watch", vol_host_path: "/path/to/watch/folder", desc: "Watch folder for torrent files."}
 param_usage_include_ports: true
 param_ports:
-  - { external_port: "9091", internal_port: "9091", port_desc: "WebUI" }
-  - { external_port: "51413", internal_port: "51413", port_desc: "Torrent Port TCP" }
-  - { external_port: "51413", internal_port: "51413/udp", port_desc: "Torrent Port UDP" }
-
+  - {external_port: "9091", internal_port: "9091", port_desc: "WebUI"}
+  - {external_port: "51413", internal_port: "51413", port_desc: "Torrent Port TCP"}
+  - {external_port: "51413", internal_port: "51413/udp", port_desc: "Torrent Port UDP"}
 # optional container parameters
 opt_param_usage_include_env: true
 opt_param_env_vars:
-  - { env_var: "TRANSMISSION_WEB_HOME", env_value: "", desc: "Specify the path to an alternative UI folder." }
-  - { env_var: "USER", env_value: "", desc: "Specify an optional username for the interface" }
-  - { env_var: "PASS", env_value: "", desc: "Specify an optional password for the interface" }
-  - { env_var: "WHITELIST", env_value: "", desc: "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."}
-  - { env_var: "PEERPORT", env_value: "", desc: "Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting."}
-  - { env_var: "HOST_WHITELIST", env_value: "", desc: "Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting."}
-
+  - {env_var: "TRANSMISSION_WEB_HOME", env_value: "", desc: "Specify the path to an alternative UI folder."}
+  - {env_var: "USER", env_value: "", desc: "Specify an optional username for the interface"}
+  - {env_var: "PASS", env_value: "", desc: "Specify an optional password for the interface"}
+  - {env_var: "WHITELIST", env_value: "", desc: "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."}
+  - {env_var: "PEERPORT", env_value: "", desc: "Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting."}
+  - {env_var: "HOST_WHITELIST", env_value: "", desc: "Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting."}
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
@@ -62,53 +58,91 @@ app_setup_block: |
   ## Use alternative Transmission torrent ports
 
   Use `PEERPORT` to specify the port(s) Transmission should listen on.  This disables random port selection.  This should be the same as the port mapped in your docker configuration.
-
+# init diagram
+init_diagram: |
+  "transmission:latest": {
+    docker-mods
+    base {
+      fix-attr +\nlegacy cont-init
+    }
+    docker-mods -> base
+    legacy-services
+    custom services
+    init-services -> legacy-services
+    init-services -> custom services
+    custom services -> legacy-services
+    legacy-services -> ci-service-check
+    init-migrations -> init-adduser
+    init-os-end -> init-config
+    init-config -> init-config-end
+    init-crontab-config -> init-config-end
+    init-transmission-config -> init-config-end
+    init-config -> init-crontab-config
+    init-mods-end -> init-custom-files
+    base -> init-envfile
+    base -> init-migrations
+    init-config-end -> init-mods
+    init-mods-package-install -> init-mods-end
+    init-mods -> init-mods-package-install
+    init-adduser -> init-os-end
+    init-envfile -> init-os-end
+    init-custom-files -> init-services
+    init-config -> init-transmission-config
+    init-services -> svc-cron
+    svc-cron -> legacy-services
+    init-services -> svc-transmission
+    svc-transmission -> legacy-services
+  }
+  Base Images: {
+    "baseimage-alpine:edge"
+  }
+  "transmission:latest" <- Base Images
 # changelog
 changelogs:
-  - { date: "29.11.24:", desc: "Fix PEERPORT setting."}
-  - { date: "07.10.23:", desc: "Install unrar from [linuxserver repo](https://github.com/linuxserver/docker-unrar)."}
-  - { date: "10.08.23:", desc: "Bump unrar to 6.2.10."}
-  - { date: "10.06.23:", desc: "Bump unrar to 6.2.8, install transmission-extra." }
-  - { date: "25.05.23:", desc: "Deprecate armhf." }
-  - { date: "14.05.23:", desc: "Explicitly install transmission-remote." }
-  - { date: "02.03.23:", desc: "Add cron init to allow user customizable crontabs." }
-  - { date: "08.02.23:", desc: "Rebase to Alpine Edge to get access to most up to date builds of Transmission. Remove bundled 3rd party UI packages." }
-  - { date: "05.01.23:", desc: "Rebase to Alpine 3.17, restore GNU findutils package." }
-  - { date: "02.11.22:", desc: "Rebase to Alpine 3.16, migrate to s6v3." }
-  - { date: "12.08.22:", desc: "Bump unrar to 6.1.7." }
-  - { date: "03.04.22:", desc: "Add Transmissionic as a UI option." }
-  - { date: "21.02.22:", desc: "Build unrar from source, rebase to Alpine 3.15, add symlinks neeeded for TWC. Credit @alexbelgium" }
-  - { date: "09.07.21:", desc: "Wait for the transmission-daemon termination after a caught sigterm." }
-  - { date: "06.03.21:", desc: "Add Flood for Transmission as a UI option." }
-  - { date: "23.01.21:", desc: "Rebasing to alpine 3.13." }
-  - { date: "02.11.20:", desc: "Add ca-certificates package to allow connecting to https trackers." }
-  - { date: "02.06.20:", desc: "Rebase to alpine 3.12, update to transmission 3.0, remove python2, add python3." }
-  - { date: "11.05.20:", desc: "Remove unnecessary chmod (remnant of previous change)." }
-  - { date: "28.04.20:", desc: "Use transmission-remote to update blocklist." }
-  - { date: "30.03.20:", desc: "Internalize blocklist-update.sh." }
-  - { date: "29.03.20:", desc: "Update auth info in readme." }
-  - { date: "19.12.19:", desc: "Rebasing to alpine 3.11." }
-  - { date: "04.10.19:", desc: "Update package label." }
-  - { date: "21.08.19:", desc: "Add optional user/pass environment variables, fix transmission shut down if user/pass are set." }
-  - { date: "19.07.19:", desc: "Send SIGTERM in blocklist update to properly close pid." }
-  - { date: "28.06.19:", desc: "Rebasing to alpine 3.10." }
-  - { date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag." }
-  - { date: "22.02.19:", desc: "Rebase to Alpine 3.9, add themes to baseimage, add python and findutils." }
-  - { date: "22.02.19:", desc: "Catch term and clean exit." }
-  - { date: "07.02.19:", desc: "Add pipeline logic and multi arch." }
-  - { date: "15.08.18:", desc: "Rebase to alpine linux 3.8." }
-  - { date: "12.02.18:", desc: "Pull transmission from edge repo." }
-  - { date: "10.01.18:", desc: "Rebase to alpine linux 3.7." }
-  - { date: "25.07.17:", desc: "Add rsync package." }
-  - { date: "27.05.17:", desc: "Rebase to alpine linux 3.6." }
-  - { date: "06.02.17:", desc: "Rebase to alpine linux 3.5." }
-  - { date: "15.01.17:", desc: "Add p7zip, tar, unrar, and unzip packages." }
-  - { date: "16.10.16:", desc: "Blocklist autoupdate with optional authentication." }
-  - { date: "14.10.16:", desc: "Add version layer informationE." }
-  - { date: "23.09.16:", desc: "Add information about securing the webui to README." }
-  - { date: "21.09.16:", desc: "Add curl package." }
-  - { date: "09.09.16:", desc: "Add layer badges to README." }
-  - { date: "28.08.16:", desc: "Add badges to README." }
-  - { date: "09.08.16:", desc: "Rebase to alpine linux." }
-  - { date: "06.12.15:", desc: "Separate mapping for watch folder." }
-  - { date: "16.11.15:", desc: "Initial Release." }
+  - {date: "29.11.24:", desc: "Fix PEERPORT setting."}
+  - {date: "07.10.23:", desc: "Install unrar from [linuxserver repo](https://github.com/linuxserver/docker-unrar)."}
+  - {date: "10.08.23:", desc: "Bump unrar to 6.2.10."}
+  - {date: "10.06.23:", desc: "Bump unrar to 6.2.8, install transmission-extra."}
+  - {date: "25.05.23:", desc: "Deprecate armhf."}
+  - {date: "14.05.23:", desc: "Explicitly install transmission-remote."}
+  - {date: "02.03.23:", desc: "Add cron init to allow user customizable crontabs."}
+  - {date: "08.02.23:", desc: "Rebase to Alpine Edge to get access to most up to date builds of Transmission. Remove bundled 3rd party UI packages."}
+  - {date: "05.01.23:", desc: "Rebase to Alpine 3.17, restore GNU findutils package."}
+  - {date: "02.11.22:", desc: "Rebase to Alpine 3.16, migrate to s6v3."}
+  - {date: "12.08.22:", desc: "Bump unrar to 6.1.7."}
+  - {date: "03.04.22:", desc: "Add Transmissionic as a UI option."}
+  - {date: "21.02.22:", desc: "Build unrar from source, rebase to Alpine 3.15, add symlinks neeeded for TWC. Credit @alexbelgium"}
+  - {date: "09.07.21:", desc: "Wait for the transmission-daemon termination after a caught sigterm."}
+  - {date: "06.03.21:", desc: "Add Flood for Transmission as a UI option."}
+  - {date: "23.01.21:", desc: "Rebasing to alpine 3.13."}
+  - {date: "02.11.20:", desc: "Add ca-certificates package to allow connecting to https trackers."}
+  - {date: "02.06.20:", desc: "Rebase to alpine 3.12, update to transmission 3.0, remove python2, add python3."}
+  - {date: "11.05.20:", desc: "Remove unnecessary chmod (remnant of previous change)."}
+  - {date: "28.04.20:", desc: "Use transmission-remote to update blocklist."}
+  - {date: "30.03.20:", desc: "Internalize blocklist-update.sh."}
+  - {date: "29.03.20:", desc: "Update auth info in readme."}
+  - {date: "19.12.19:", desc: "Rebasing to alpine 3.11."}
+  - {date: "04.10.19:", desc: "Update package label."}
+  - {date: "21.08.19:", desc: "Add optional user/pass environment variables, fix transmission shut down if user/pass are set."}
+  - {date: "19.07.19:", desc: "Send SIGTERM in blocklist update to properly close pid."}
+  - {date: "28.06.19:", desc: "Rebasing to alpine 3.10."}
+  - {date: "23.03.19:", desc: "Switching to new Base images, shift to arm32v7 tag."}
+  - {date: "22.02.19:", desc: "Rebase to Alpine 3.9, add themes to baseimage, add python and findutils."}
+  - {date: "22.02.19:", desc: "Catch term and clean exit."}
+  - {date: "07.02.19:", desc: "Add pipeline logic and multi arch."}
+  - {date: "15.08.18:", desc: "Rebase to alpine linux 3.8."}
+  - {date: "12.02.18:", desc: "Pull transmission from edge repo."}
+  - {date: "10.01.18:", desc: "Rebase to alpine linux 3.7."}
+  - {date: "25.07.17:", desc: "Add rsync package."}
+  - {date: "27.05.17:", desc: "Rebase to alpine linux 3.6."}
+  - {date: "06.02.17:", desc: "Rebase to alpine linux 3.5."}
+  - {date: "15.01.17:", desc: "Add p7zip, tar, unrar, and unzip packages."}
+  - {date: "16.10.16:", desc: "Blocklist autoupdate with optional authentication."}
+  - {date: "14.10.16:", desc: "Add version layer informationE."}
+  - {date: "23.09.16:", desc: "Add information about securing the webui to README."}
+  - {date: "21.09.16:", desc: "Add curl package."}
+  - {date: "09.09.16:", desc: "Add layer badges to README."}
+  - {date: "28.08.16:", desc: "Add badges to README."}
+  - {date: "09.08.16:", desc: "Rebase to alpine linux."}
+  - {date: "06.12.15:", desc: "Separate mapping for watch folder."}
+  - {date: "16.11.15:", desc: "Initial Release."}
