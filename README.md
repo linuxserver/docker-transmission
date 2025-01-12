@@ -83,6 +83,14 @@ Use `HOST_WHITELIST` to enable an list of dns names as host-whitelist. This enab
 
 Use `PEERPORT` to specify the port(s) Transmission should listen on.  This disables random port selection.  This should be the same as the port mapped in your docker configuration.
 
+## Read-Only Operation
+
+This image can be run with a read-only container filesystem. For details please [read the docs](https://docs.linuxserver.io/misc/read-only/).
+
+## Non-Root Operation
+
+This image can be run with a non-root user. For details please [read the docs](https://docs.linuxserver.io/misc/non-root/).
+
 ## Usage
 
 To help you get started creating a container from this image you can either use docker-compose or the docker cli.
@@ -110,8 +118,8 @@ services:
       - HOST_WHITELIST= #optional
     volumes:
       - /path/to/transmission/data:/config
-      - /path/to/downloads:/downloads
-      - /path/to/watch/folder:/watch
+      - /path/to/downloads:/downloads #optional
+      - /path/to/watch/folder:/watch #optional
     ports:
       - 9091:9091
       - 51413:51413
@@ -137,8 +145,8 @@ docker run -d \
   -p 51413:51413 \
   -p 51413:51413/udp \
   -v /path/to/transmission/data:/config \
-  -v /path/to/downloads:/downloads \
-  -v /path/to/watch/folder:/watch \
+  -v /path/to/downloads:/downloads `#optional` \
+  -v /path/to/watch/folder:/watch `#optional` \
   --restart unless-stopped \
   lscr.io/linuxserver/transmission:latest
 ```
@@ -164,6 +172,8 @@ Containers are configured using parameters passed at runtime (such as those abov
 | `-v /config` | Where transmission should store config files and logs. |
 | `-v /downloads` | Local path for downloads. |
 | `-v /watch` | Watch folder for torrent files. |
+| `--read-only=true` | Run container with a read-only filesystem. Please [read the docs](https://docs.linuxserver.io/misc/read-only/). |
+| `--user=1000:1000` | Run container with a non-root user. Please [read the docs](https://docs.linuxserver.io/misc/non-root/). |
 
 ## Environment variables from files (Docker secrets)
 
