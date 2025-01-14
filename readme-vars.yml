@@ -16,6 +16,8 @@ param_container_name: "{{ project_name }}"
 param_usage_include_vols: true
 param_volumes:
   - {vol_path: "/config", vol_host_path: "/path/to/{{ project_name }}/data", desc: "Where transmission should store config files and logs."}
+opt_param_usage_include_vols: true
+opt_param_volumes:
   - {vol_path: "/downloads", vol_host_path: "/path/to/downloads", desc: "Local path for downloads."}
   - {vol_path: "/watch", vol_host_path: "/path/to/watch/folder", desc: "Watch folder for torrent files."}
 param_usage_include_ports: true
@@ -32,6 +34,8 @@ opt_param_env_vars:
   - {env_var: "WHITELIST", env_value: "", desc: "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."}
   - {env_var: "PEERPORT", env_value: "", desc: "Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting."}
   - {env_var: "HOST_WHITELIST", env_value: "", desc: "Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting."}
+readonly_supported: true
+nonroot_supported: true
 # application setup block
 app_setup_block_enabled: true
 app_setup_block: |
