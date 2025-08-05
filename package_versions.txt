@@ -1,5 +1,5 @@
 NAME                    VERSION                   TYPE   
-7zip                    25.00-r0                  apk     
+7zip                    25.01-r0                  apk     
 acl-libs                2.3.2-r1                  apk     
 alpine-baselayout       3.7.0-r0                  apk     
 alpine-baselayout-data  3.7.0-r0                  apk     
@@ -19,7 +19,7 @@ coreutils-fmt           9.7-r1                    apk
 coreutils-sha512sum     9.7-r1                    apk     
 curl                    8.15.0-r0                 apk     
 findutils               4.10.0-r0                 apk     
-gdbm                    1.24-r0                   apk     
+gdbm                    1.26-r0                   apk     
 jq                      1.8.0-r0                  apk     
 libapk                  3.0.0_rc5_git20250715-r0  apk     
 libattr                 2.5.2-r2                  apk     
@@ -30,8 +30,8 @@ libcurl                 8.15.0-r0                 apk
 libdeflate              1.24-r0                   apk     
 libevent                2.1.12-r8                 apk     
 libexpat                2.7.1-r0                  apk     
-libffi                  3.5.1-r0                  apk     
-libgcc                  15.1.1_git20250719-r3     apk     
+libffi                  3.5.2-r0                  apk     
+libgcc                  15.1.1_git20250726-r0     apk     
 libidn2                 2.3.8-r0                  apk     
 libintl                 0.24.1-r1                 apk     
 libmd                   1.1.0-r0                  apk     
@@ -40,13 +40,13 @@ libpanelw               6.5_p20250705-r0          apk
 libproc2                4.0.4-r3                  apk     
 libpsl                  0.21.5-r3                 apk     
 libssl3                 3.5.1-r0                  apk     
-libstdc++               15.1.1_git20250719-r3     apk     
+libstdc++               15.1.1_git20250726-r0     apk     
 libunistring            1.3-r0                    apk     
 linux-pam               1.7.0-r4                  apk     
 miniupnpc               2.3.2-r0                  apk     
 mpdecimal               4.0.1-r0                  apk     
-musl                    1.2.5-r15                 apk     
-musl-utils              1.2.5-r14                 apk     
+musl                    1.2.5-r17                 apk     
+musl-utils              1.2.5-r17                 apk     
 ncurses-terminfo-base   6.5_p20250705-r0          apk     
 netcat-openbsd          1.229.1-r0                apk     
 nghttp2-libs            1.66.0-r0                 apk     
@@ -60,7 +60,7 @@ readline                8.3.1-r0                  apk
 scanelf                 1.3.8-r2                  apk     
 shadow                  4.18.0-r0                 apk     
 skalibs-libs            2.14.4.0-r0               apk     
-sqlite-libs             3.50.3-r0                 apk     
+sqlite-libs             3.50.4-r0                 apk     
 ssl_client              1.37.0-r21                apk     
 transmission-cli        4.0.6-r4                  apk     
 transmission-daemon     4.0.6-r4                  apk     
@@ -70,4 +70,4 @@ tzdata                  2025b-r0                  apk
 utmps-libs              0.1.3.1-r0                apk     
 xz-libs                 5.8.1-r0                  apk     
 zlib                    1.3.1-r2                  apk     
-zstd-libs               1.5.7-r1                  apk     
+zstd-libs               1.5.7-r2                  apk     
