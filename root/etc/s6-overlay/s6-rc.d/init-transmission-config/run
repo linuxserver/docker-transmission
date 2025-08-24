@@ -37,18 +37,6 @@ if [[ -n "${UMASK}" ]]; then
     echo -E "$(jq -r --arg umask "${UMASK}" '.["umask"] = $umask' /config/settings.json)" >/config/settings.json
 fi
 
-if [[ -z ${LSIO_NON_ROOT_USER} ]] && [[ -z ${LSIO_READ_ONLY_FS} ]]; then
-    # Handle old theme locations
-    declare -a theme_dirs=("transmissionic" "combustion-release" "flood-for-transmission" "kettu" "transmission-web-control")
-    
-    for dir in "${theme_dirs[@]}"; do
-        mkdir -p "/$dir"
-        if [[ ! -f "/$dir/index.html" ]] && [[ ! -L "/$dir/index.html" ]]; then
-            ln -s "/defaults/index.html" "/$dir/index.html"
-        fi
-    done
-fi
-
 if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
     lsiown -R abc:abc \
         /config
