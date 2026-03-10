@@ -37,7 +37,7 @@ libintl                 0.24.1-r1         apk
 libmd                   1.1.0-r0          apk     
 libncursesw             6.6_p20251231-r0  apk     
 libpanelw               6.6_p20251231-r0  apk     
-libproc2                4.0.5-r0          apk     
+libproc2                4.0.6-r0          apk     
 libpsl                  0.21.5-r3         apk     
 libssl3                 3.5.5-r0          apk     
 libstdc++               15.2.0-r2         apk     
@@ -52,7 +52,7 @@ netcat-openbsd          1.234.1-r0        apk
 nghttp2-libs            1.68.0-r0         apk     
 nghttp3                 1.13.1-r0         apk     
 oniguruma               6.9.10-r0         apk     
-procps-ng               4.0.5-r0          apk     
+procps-ng               4.0.6-r0          apk     
 pyc                     3.12.12-r0        apk     
 python3                 3.12.12-r0        apk     
 python3-pyc             3.12.12-r0        apk     
@@ -67,8 +67,8 @@ transmission-cli        4.1.1-r1          apk
 transmission-daemon     4.1.1-r1          apk     
 transmission-extra      4.1.1-r1          apk     
 transmission-remote     4.1.1-r1          apk     
-tzdata                  2025c-r0          apk     
+tzdata                  2026a-r0          apk     
 utmps-libs              0.1.3.2-r1        apk     
 xz-libs                 5.8.2-r0          apk     
-zlib                    1.3.1-r2          apk     
+zlib                    1.3.2-r0          apk     
 zstd-libs               1.5.7-r2          apk     
