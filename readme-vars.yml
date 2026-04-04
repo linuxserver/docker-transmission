@@ -106,6 +106,7 @@ init_diagram: |
   "transmission:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "04.04.26:", desc: "Read download, incomplete, and watch directory paths from settings.json instead of hardcoding them in init script."}
   - {date: "29.11.24:", desc: "Fix PEERPORT setting."}
   - {date: "07.10.23:", desc: "Install unrar from [linuxserver repo](https://github.com/linuxserver/docker-unrar)."}
   - {date: "10.08.23:", desc: "Bump unrar to 6.2.10."}
