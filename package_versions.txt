@@ -49,7 +49,7 @@ musl                    1.2.6-r0          apk
 musl-utils              1.2.6-r0          apk     
 ncurses-terminfo-base   6.6_p20251231-r0  apk     
 netcat-openbsd          1.234.1-r0        apk     
-nghttp2-libs            1.68.0-r0         apk     
+nghttp2-libs            1.68.1-r0         apk     
 oniguruma               6.9.10-r0         apk     
 procps-ng               4.0.6-r0          apk     
 pyc                     3.14.3-r0         apk     
