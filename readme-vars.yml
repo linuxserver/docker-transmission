@@ -34,6 +34,7 @@ opt_param_env_vars:
   - {env_var: "PASS", env_value: "", desc: "Specify an optional password for the interface"}
   - {env_var: "WHITELIST", env_value: "", desc: "Specify an optional list of comma separated ip whitelist. Fills rpc-whitelist setting."}
   - {env_var: "PEERPORT", env_value: "", desc: "Specify an optional port for torrent TCP/UDP connections. Fills peer-port setting."}
+  - {env_var: "DISABLE_IPV6", env_value: "", desc: "Changes setting rpc-bind-address to IPv4 only."}
   - {env_var: "HOST_WHITELIST", env_value: "", desc: "Specify an optional list of comma separated dns name whitelist. Fills rpc-host-whitelist setting."}
 readonly_supported: true
 nonroot_supported: true
@@ -106,6 +107,7 @@ init_diagram: |
   "transmission:latest" <- Base Images
 # changelog
 changelogs:
+  - {date: "30.04.26:", desc: "Change rpc-bind-address to dualstack."}
   - {date: "29.11.24:", desc: "Fix PEERPORT setting."}
   - {date: "07.10.23:", desc: "Install unrar from [linuxserver repo](https://github.com/linuxserver/docker-unrar)."}
   - {date: "10.08.23:", desc: "Bump unrar to 6.2.10."}

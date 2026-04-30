@@ -33,6 +33,10 @@ if [[ -n "${PEERPORT}" ]]; then
     echo -E "$(jq -r '.["peer-port-random-on-start"] = false' /config/settings.json)" >/config/settings.json
 fi
 
+if [[ "${DISABLE_IPV6}" == "true" ]]; then
+    echo -E "$(jq -r '.["rpc-bind-address"] = "0.0.0.0"' /config/settings.json)" > /config/settings.json
+fi
+
 if [[ -n "${UMASK}" ]]; then
     echo -E "$(jq -r --arg umask "${UMASK}" '.["umask"] = $umask' /config/settings.json)" >/config/settings.json
 fi
