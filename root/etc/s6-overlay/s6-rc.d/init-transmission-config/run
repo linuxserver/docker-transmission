@@ -47,23 +47,29 @@ if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
     lsiown -R abc:abc \
         /config
 
-    if grep -qe ' /downloads ' /proc/mounts; then
-        if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
-            lsiown abc:abc /downloads
-        fi
-
-        if [[ "$(stat -c '%U' /downloads/complete)" != "abc" ]]; then
-            lsiown abc:abc /downloads/complete
-        fi
-
-        if [[ "$(stat -c '%U' /downloads/incomplete)" != "abc" ]]; then
-            lsiown abc:abc /downloads/incomplete
-        fi
+    if [[ -f /config/settings.json ]]; then
+        DOWNLOAD_DIR=$(jq -r '.["download-dir"] // "/downloads"' /config/settings.json)
+        INCOMPLETE_DIR=$(jq -r '.["incomplete-dir"] // "/downloads/incomplete"' /config/settings.json)
+        INCOMPLETE_ENABLED=$(jq -r '.["incomplete-dir-enabled"] // false' /config/settings.json)
+        WATCH_DIR=$(jq -r '.["watch-dir"] // "/watch"' /config/settings.json)
+        WATCH_ENABLED=$(jq -r '.["watch-dir-enabled"] // false' /config/settings.json)
+    else
+        DOWNLOAD_DIR="/downloads"
+        INCOMPLETE_DIR="/downloads/incomplete"
+        INCOMPLETE_ENABLED="true"
+        WATCH_DIR="/watch"
+        WATCH_ENABLED="true"
     fi
 
-    if grep -qe ' /watch ' /proc/mounts; then
-        if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then
-            lsiown abc:abc /watch
-        fi
+    if [[ -d "${DOWNLOAD_DIR}" ]] && [[ "$(stat -c '%U' "${DOWNLOAD_DIR}")" != "abc" ]]; then
+        lsiown abc:abc "${DOWNLOAD_DIR}"
+    fi
+
+    if [[ "${INCOMPLETE_ENABLED}" == "true" ]] && [[ -d "${INCOMPLETE_DIR}" ]] && [[ "$(stat -c '%U' "${INCOMPLETE_DIR}")" != "abc" ]]; then
+        lsiown abc:abc "${INCOMPLETE_DIR}"
+    fi
+
+    if [[ "${WATCH_ENABLED}" == "true" ]] && [[ -d "${WATCH_DIR}" ]] && [[ "$(stat -c '%U' "${WATCH_DIR}")" != "abc" ]]; then
+        lsiown abc:abc "${WATCH_DIR}"
     fi
 fi
