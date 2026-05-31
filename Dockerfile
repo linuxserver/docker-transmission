@@ -11,9 +11,6 @@ LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DA
 LABEL maintainer="aptalca"
 
 RUN \
-  echo "**** install build packages ****" && \
-  apk add --no-cache --virtual=build-dependencies \
-    build-base && \
   echo "**** install packages ****" && \
   apk add --no-cache \
     findutils \
@@ -31,8 +28,6 @@ RUN \
     transmission-remote==${TRANSMISSION_VERSION} && \
   printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
   echo "**** cleanup ****" && \
-  apk del --purge \
-    build-dependencies && \
   rm -rf \
     /tmp/* \
     $HOME/.cache
