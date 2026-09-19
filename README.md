@@ -334,6 +334,7 @@ Once registered you can define the dockerfile to use with `-f Dockerfile.aarch64
 
 ## Versions
 
+* **01.08.26:** - Derive the RPC readiness check and shutdown request from `rpc-bind-address`/`rpc-url` instead of hardcoding localhost, and raise the service finish timeout.
 * **31.05.26:** - Bind RPC to IPv6 interface by default, fall back to IPv4 if unavailable.
 * **29.11.24:** - Fix PEERPORT setting.
 * **07.10.23:** - Install unrar from [linuxserver repo](https://github.com/linuxserver/docker-unrar).

@@ -3,11 +3,18 @@
 
 pid=$(pidof transmission-daemon)
 PORT=$(jq '.["rpc-port"]' /config/settings.json)
+HOST=$(jq -r '.["rpc-bind-address"] // empty' /config/settings.json | tr -d '[]')
+URL=$(jq -r '.["rpc-url"] // "/transmission/"' /config/settings.json)
+
+case "${HOST}" in
+    "" | 0.0.0.0 | ::) HOST="127.0.0.1" ;;
+    *:*) HOST="[${HOST}]" ;;
+esac
 
 if [[ -n "$USER" ]] && [[ -n "$PASS" ]]; then
-    /usr/bin/transmission-remote 127.0.0.1:${PORT:-9091} -n "$USER":"$PASS" --exit
+    /usr/bin/transmission-remote "http://${HOST}:${PORT:-9091}${URL%/}" -n "$USER":"$PASS" --exit
 else
-    /usr/bin/transmission-remote 127.0.0.1:${PORT:-9091} --exit
+    /usr/bin/transmission-remote "http://${HOST}:${PORT:-9091}${URL%/}" --exit
 fi
 
 tail --pid=${pid} -f /dev/null
