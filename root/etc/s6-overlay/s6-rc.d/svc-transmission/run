@@ -2,13 +2,18 @@
 # shellcheck shell=bash
 
 PORT=$(jq '.["rpc-port"]' /config/settings.json)
+HOST=$(jq -r '.["rpc-bind-address"] // empty' /config/settings.json | tr -d '[]')
+
+case "${HOST}" in
+    "" | 0.0.0.0 | ::) HOST="localhost" ;;
+esac
 
 if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
-    s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z localhost ${PORT:-9091}" \
+    s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z ${HOST} ${PORT:-9091}" \
         s6-setuidgid abc /usr/bin/transmission-daemon \
         -g /config -f
 else
-    s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z localhost ${PORT:-9091}" \
+    s6-notifyoncheck -d -n 300 -w 1000 -c "nc -z ${HOST} ${PORT:-9091}" \
         /usr/bin/transmission-daemon \
         -g /config -f
 fi
