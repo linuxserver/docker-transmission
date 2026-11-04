@@ -47,27 +47,37 @@ if [[ -z ${LSIO_NON_ROOT_USER} ]] && [[ -z ${LSIO_READ_ONLY_FS} ]]; then
     echo /transmissionic /combustion-release /flood-for-transmission /kettu /transmission-web-control | xargs -n1 ln -s /defaults/index.html
 fi
 
-if [[ -z ${LSIO_NON_ROOT_USER} ]]; then
-    lsiown -R abc:abc \
-        /config
 
-    if grep -qe ' /downloads ' /proc/mounts; then
-        if [[ "$(stat -c '%U' /downloads)" != "abc" ]]; then
-            lsiown abc:abc /downloads
+if [[ -z ${LSIO_NON_ROOT_USER:-} ]]; then
+    lsiown -R abc:abc /config
+
+    # Read configured directories from settings.json
+    mapfile -t configured_dirs < <(
+        jq -r '
+            .["download-dir"],
+            .["incomplete-dir"],
+            .["watch-dir"]
+            | select(type == "string" and length > 0)
+        ' /config/settings.json | sort -u
+    )
+
+    # Apply ownership to configured directories
+    for dir in "${configured_dirs[@]}"; do
+        if [[ ! -d "$dir" ]]; then
+            echo "Skipping non-existent directory: $dir"
+            continue
         fi
 
-        if [[ "$(stat -c '%U' /downloads/complete)" != "abc" ]]; then
-            lsiown abc:abc /downloads/complete
-        fi
+        # Only change ownership when the directory is a mount point
+        # or is located within a mounted download/watch volume.
+        if mountpoint -q "$dir" ||
+           [[ "$dir" == /downloads/* ]] && mountpoint -q /downloads ||
+           [[ "$dir" == /watch/* ]] && mountpoint -q /watch; then
 
-        if [[ "$(stat -c '%U' /downloads/incomplete)" != "abc" ]]; then
-            lsiown abc:abc /downloads/incomplete
+            if [[ "$(stat -c '%U' "$dir")" != "abc" ]]; then
+                echo "Setting ownership of $dir to abc:abc"
+                lsiown abc:abc "$dir"
+            fi
         fi
-    fi
-
-    if grep -qe ' /watch ' /proc/mounts; then
-        if [[ "$(stat -c '%U' /watch)" != "abc" ]]; then
-            lsiown abc:abc /watch
-        fi
-    fi
+    done
 fi
